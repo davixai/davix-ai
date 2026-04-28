@@ -5,7 +5,6 @@ import SiteUriHero from "@/components/site-uri/hero"
 import SiteUriFeatures from "@/components/site-uri/features"
 import SiteUriPachete from "@/components/site-uri/pachete"
 import SiteUriAddons from "@/components/site-uri/addons"
-import { ProiecteDemonstrative } from "@/components/proiecte-demonstrative"
 import { Contact } from "@/components/contact"
 import { Chatbot } from "@/components/chatbot"
 
@@ -23,7 +22,6 @@ export default function Home() {
         <SiteUriFeatures />
         <SiteUriPachete />
         <SiteUriAddons />
-        <ProiecteDemonstrative />
         <Contact />
         <Footer />
         <Chatbot />

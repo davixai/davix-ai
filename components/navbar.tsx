@@ -23,6 +23,7 @@ const serviciiDropdown = [
 ]
 
 const navItems = [
+  { label: "Proiecte", href: "/proiecte" },
   { label: "Despre noi", href: "/despre-noi" },
   { label: "Testimoniale", href: "/testimoniale" },
   { label: "FAQ", href: "/intrebari-frecvente" },
