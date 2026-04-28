@@ -2,13 +2,13 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Sparkles, Users, Clock, ShieldCheck } from "lucide-react"
+import { Sparkles, Clock, ShieldCheck, Receipt } from "lucide-react"
 
 const stats = [
-  { icon: Users, value: "50+", label: "Clienți mulțumiți" },
-  { icon: Clock, value: "7–10", label: "Zile livrare" },
+  { icon: Clock, value: "3–10 zile", label: "Depinde de proiect" },
   { icon: ShieldCheck, value: "100%", label: "Garanție satisfacție" },
-  { icon: Sparkles, value: "24/7", label: "Suport AI disponibil" },
+  { icon: Sparkles, value: "24/7", label: "Suport de echipa noastră disponibil" },
+  { icon: Receipt, value: "E-Factură", label: "Totul legal" },
 ]
 
 const values = [
@@ -80,8 +80,8 @@ export default function DespreNoi() {
               <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-3 group-hover:bg-emerald-500/20 transition-colors duration-300">
                 <stat.icon className="w-4 h-4 text-emerald-400" strokeWidth={1.5} />
               </div>
-              <span className="text-2xl font-bold text-white mb-1">{stat.value}</span>
-              <span className="text-xs text-zinc-500 leading-tight">{stat.label}</span>
+              <span className="text-xl font-bold text-white mb-1 leading-tight text-center">{stat.value}</span>
+              <span className="text-xs text-zinc-500 leading-tight text-center">{stat.label}</span>
             </motion.div>
           ))}
         </div>

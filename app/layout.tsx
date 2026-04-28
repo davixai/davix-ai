@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Manrope, Inter } from "next/font/google"
 
 import { Analytics } from "@vercel/analytics/next"
+import { FloatingCta } from "@/components/floating-cta"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="ro" className="dark">
       <body className={`${manrope.variable} ${inter.variable} font-sans antialiased`}>
         <div className="noise-overlay" aria-hidden="true" />
+        <FloatingCta />
         {children}
         <Analytics />
       </body>
