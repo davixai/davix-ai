@@ -63,21 +63,21 @@ const servicii = [
 ]
 
 const colorMap: Record<string, string> = {
-  emerald: "border-emerald-500/30 bg-emerald-500/5",
-  blue: "border-blue-500/30 bg-blue-500/5",
-  violet: "border-violet-500/30 bg-violet-500/5",
+  emerald: "border-emerald-200 bg-emerald-50/60",
+  blue: "border-sky-200 bg-sky-50/60",
+  violet: "border-violet-200 bg-violet-50/60",
 }
 
 const iconColorMap: Record<string, string> = {
-  emerald: "text-emerald-400 bg-emerald-500/10",
-  blue: "text-blue-400 bg-blue-500/10",
-  violet: "text-violet-400 bg-violet-500/10",
+  emerald: "text-emerald-600 bg-emerald-50 border border-emerald-100",
+  blue: "text-sky-600 bg-sky-50 border border-sky-100",
+  violet: "text-violet-600 bg-violet-50 border border-violet-100",
 }
 
 const badgeColorMap: Record<string, string> = {
-  emerald: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
-  blue: "text-blue-400 bg-blue-500/10 border-blue-500/20",
-  violet: "text-violet-400 bg-violet-500/10 border-violet-500/20",
+  emerald: "text-emerald-700 bg-emerald-50 border-emerald-200",
+  blue: "text-sky-700 bg-sky-50 border-sky-200",
+  violet: "text-violet-700 bg-violet-50 border-violet-200",
 }
 
 export function AutomatizariServicii() {
@@ -85,7 +85,7 @@ export function AutomatizariServicii() {
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="servicii" ref={ref} className="py-20 px-4">
+    <section id="servicii" ref={ref} className="py-20 px-4 bg-gradient-to-b from-white via-zinc-50 to-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,11 +93,14 @@ export function AutomatizariServicii() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2
+            style={{ letterSpacing: "-0.025em" }}
+            className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4"
+          >
             Ce automatizăm pentru tine
           </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto">
-            Trei soluții clare, implementate rapid, care îți returnează ore întregi de muncă manuală în fiecare săptămână.
+          <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
+            Soluții implementate rapid care îți returnează ore întregi de muncă manuală în fiecare săptămână.
           </p>
         </motion.div>
 
@@ -106,7 +109,7 @@ export function AutomatizariServicii() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className={`relative rounded-2xl border p-8 mb-4 ${colorMap.emerald}`}
+          className={`relative rounded-2xl border p-8 mb-4 card-elevated ${colorMap.emerald}`}
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -118,10 +121,17 @@ export function AutomatizariServicii() {
                   {servicii[0].badge}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{servicii[0].title}</h3>
+              <h3
+                style={{ letterSpacing: "-0.02em" }}
+                className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-2"
+              >
+                {servicii[0].title}
+              </h3>
               <p className="text-sm text-zinc-500 mb-4">{servicii[0].subtitle}</p>
-              <p className="text-zinc-400 leading-relaxed mb-6">{servicii[0].description}</p>
-              <Button className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-full" asChild>
+              <p className="text-zinc-600 mb-6" style={{ lineHeight: "1.65" }}>
+                {servicii[0].description}
+              </p>
+              <Button className="shimmer-btn bg-emerald-600 text-white hover:bg-emerald-700 rounded-full" asChild>
                 <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">
                   {servicii[0].cta}
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -130,9 +140,12 @@ export function AutomatizariServicii() {
             </div>
             <div className="grid grid-cols-1 gap-2.5">
               {servicii[0].features.map((f) => (
-                <div key={f} className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-sm text-zinc-300">{f}</span>
+                <div
+                  key={f}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-zinc-200"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                  <span className="text-sm text-zinc-700">{f}</span>
                 </div>
               ))}
             </div>
@@ -149,7 +162,7 @@ export function AutomatizariServicii() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                className={`relative rounded-2xl border p-6 ${colorMap[serviciu.color]}`}
+                className={`relative rounded-2xl border p-6 card-elevated ${colorMap[serviciu.color]}`}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-2.5 rounded-xl ${iconColorMap[serviciu.color]}`}>
@@ -159,13 +172,18 @@ export function AutomatizariServicii() {
                     {serviciu.badge}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">{serviciu.title}</h3>
+                <h3 className="text-xl font-bold text-zinc-900 mb-1">{serviciu.title}</h3>
                 <p className="text-xs text-zinc-500 mb-3">{serviciu.subtitle}</p>
-                <p className="text-sm text-zinc-400 leading-relaxed mb-5">{serviciu.description}</p>
+                <p className="text-sm text-zinc-600 mb-5" style={{ lineHeight: "1.6" }}>
+                  {serviciu.description}
+                </p>
                 <ul className="space-y-2 mb-6">
                   {serviciu.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-sm text-zinc-300">
-                      <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${serviciu.color === "blue" ? "text-blue-400" : "text-violet-400"}`} />
+                    <li key={f} className="flex items-center gap-2.5 text-sm text-zinc-700">
+                      <CheckCircle2
+                        className={`w-3.5 h-3.5 shrink-0 ${serviciu.color === "blue" ? "text-sky-600" : "text-violet-600"}`}
+                        strokeWidth={2}
+                      />
                       {f}
                     </li>
                   ))}
@@ -173,7 +191,7 @@ export function AutomatizariServicii() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="rounded-full border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                  className="rounded-full border-zinc-300 text-zinc-800 hover:bg-zinc-50 bg-white"
                   asChild
                 >
                   <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">

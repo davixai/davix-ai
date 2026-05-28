@@ -6,13 +6,14 @@ import FaqPage from "@/components/faq-page"
 
 export const metadata = {
   title: "Întrebări Frecvente — DaviX AI",
-  description: "Răspunsuri la cele mai comune întrebări despre site-uri, automatizări și serviciile DaviX AI.",
+  description:
+    "Răspunsuri la întrebări despre costuri, integrări (WhatsApp, SMS, email), proces și Davix Dental.",
 }
 
 export default function IntrebariFrecvente() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-zinc-950">
+      <main className="min-h-screen bg-white text-zinc-900">
         <Navbar />
         <FaqPage />
         <Footer />

@@ -16,15 +16,15 @@ export default function SiteUriAddons() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="py-8 px-4 sm:px-6">
+    <section ref={ref} className="py-12 px-4 sm:px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800"
+          className="p-8 rounded-2xl bg-white border border-zinc-200 card-elevated"
         >
-          <h3 className="text-lg font-semibold text-white mb-6 text-center">Vrei mai mult?</h3>
+          <h3 className="text-lg font-semibold text-zinc-900 mb-6 text-center">Vrei mai mult?</h3>
           <div className="flex flex-wrap justify-center gap-4 mb-6">
             {addons.map((addon, index) => (
               <motion.div
@@ -32,9 +32,9 @@ export default function SiteUriAddons() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-800 border border-zinc-700 text-sm text-zinc-300"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-sm text-zinc-700"
               >
-                <addon.icon className="w-4 h-4 text-emerald-400" strokeWidth={1.5} />
+                <addon.icon className="w-4 h-4 text-emerald-600" strokeWidth={1.8} />
                 {addon.label}
               </motion.div>
             ))}
@@ -43,7 +43,7 @@ export default function SiteUriAddons() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-zinc-400 hover:text-white text-sm rounded-full"
+              className="text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50 text-sm rounded-full"
               asChild
             >
               <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">

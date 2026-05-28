@@ -1,27 +1,26 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import SiteUriHero from "@/components/site-uri/hero"
-import SiteUriFeatures from "@/components/site-uri/features"
-import SiteUriPachete from "@/components/site-uri/pachete"
-import SiteUriAddons from "@/components/site-uri/addons"
+import { HeroHome } from "@/components/hero-home"
+import { ServicesGrid } from "@/components/services-grid"
+import { DavixDental } from "@/components/davix-dental"
 import { Contact } from "@/components/contact"
 import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
-  title: "DaviX AI — Site-uri & Automatizări AI pentru Business",
-  description: "Design modern, livrare rapidă, optimizat pentru business-uri locale. De la 300€. Hosting inclus, fără costuri ascunse.",
+  title: "DaviX AI — Aplicații, site-uri și automatizări AI pentru business",
+  description:
+    "Construim aplicații web custom, site-uri moderne și automatizări AI (SMS, email, WhatsApp, CRM) pentru afaceri locale care vor mai mulți clienți.",
 }
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-zinc-950">
+      <main className="min-h-screen bg-white text-zinc-900">
         <Navbar />
-        <SiteUriHero />
-        <SiteUriFeatures />
-        <SiteUriPachete />
-        <SiteUriAddons />
+        <HeroHome />
+        <ServicesGrid />
+        <DavixDental />
         <Contact />
         <Footer />
         <Chatbot />

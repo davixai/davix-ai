@@ -33,7 +33,7 @@ export default function SiteUriFaq() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section ref={ref} className="py-20 px-4 sm:px-6">
+    <section ref={ref} className="py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,8 +41,11 @@ export default function SiteUriFaq() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-balance">
-            Intrebari frecvente
+          <h2
+            style={{ letterSpacing: "-0.025em" }}
+            className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 text-balance"
+          >
+            Întrebări frecvente
           </h2>
         </motion.div>
 
@@ -53,17 +56,17 @@ export default function SiteUriFaq() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden"
+              className="rounded-xl border border-zinc-200 bg-white overflow-hidden hover:border-emerald-300 transition-colors"
             >
               <button
                 onClick={() => setOpen(open === index ? null : index)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-medium text-white hover:text-emerald-400 transition-colors"
+                className="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-medium text-zinc-900 hover:text-emerald-700 transition-colors"
               >
                 <span>{faq.q}</span>
                 {open === index ? (
-                  <Minus className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <Minus className="w-4 h-4 text-emerald-600 shrink-0" />
                 ) : (
-                  <Plus className="w-4 h-4 text-zinc-500 shrink-0" />
+                  <Plus className="w-4 h-4 text-zinc-400 shrink-0" />
                 )}
               </button>
               <AnimatePresence initial={false}>
@@ -74,7 +77,12 @@ export default function SiteUriFaq() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25, ease: "easeInOut" }}
                   >
-                    <p className="px-5 pb-4 text-sm text-zinc-400 leading-relaxed">{faq.a}</p>
+                    <p
+                      className="px-5 pb-4 text-sm text-zinc-600 border-t border-zinc-100 pt-3"
+                      style={{ lineHeight: "1.65" }}
+                    >
+                      {faq.a}
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>

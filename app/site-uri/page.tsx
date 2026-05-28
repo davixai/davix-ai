@@ -17,7 +17,7 @@ export const metadata = {
 export default function SiteUriPage() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-zinc-950">
+      <main className="min-h-screen bg-white text-zinc-900">
         <Navbar />
         <SiteUriHero />
         <SiteUriFeatures />

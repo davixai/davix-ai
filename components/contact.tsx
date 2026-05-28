@@ -2,11 +2,22 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
-import { ArrowRight, Phone, Mail, MapPin, Calendar, Clock, Check, ChevronLeft, ChevronRight } from "lucide-react"
+import {
+  ArrowRight,
+  Phone,
+  Mail,
+  MapPin,
+  Calendar,
+  Clock,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const timeSlots = [
-  "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"
+  "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
+  "17:00", "18:00", "19:00", "20:00", "21:00", "22:00",
 ]
 
 interface BookedSlot {
@@ -15,15 +26,17 @@ interface BookedSlot {
   status: string
 }
 
+const auditBullets = [
+  "Identificăm ce poate fi automatizat",
+  "Verificăm dacă ai nevoie de site, aplicație sau automatizare",
+  "Discutăm despre SMS reminder/review, email, WhatsApp sau CRM",
+  "Primești o estimare de cost și timp",
+]
+
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" })
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -31,7 +44,6 @@ export function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [bookedSlots, setBookedSlots] = useState<BookedSlot[]>([])
 
-  // Fetch booked slots when month changes
   useEffect(() => {
     const fetchBookedSlots = async () => {
       const year = currentMonth.getFullYear()
@@ -39,9 +51,7 @@ export function Contact() {
       try {
         const response = await fetch(`/api/bookings?month=${year}-${month}`)
         const data = await response.json()
-        if (data.bookings) {
-          setBookedSlots(data.bookings)
-        }
+        if (data.bookings) setBookedSlots(data.bookings)
       } catch (error) {
         console.error("Error fetching booked slots:", error)
       }
@@ -49,19 +59,14 @@ export function Contact() {
     fetchBookedSlots()
   }, [currentMonth, submitStatus])
 
-  // Check if a specific time slot is booked for a date
   const isTimeSlotBooked = (date: Date, time: string) => {
     const dateStr = date.toISOString().split("T")[0]
-    const isBooked = bookedSlots.some(
-      (slot) => {
-        const slotTime = slot.booking_time?.substring(0, 5) // Handle "09:00:00" -> "09:00"
-        return slot.booking_date === dateStr && slotTime === time
-      }
-    )
-    return isBooked
+    return bookedSlots.some((slot) => {
+      const slotTime = slot.booking_time?.substring(0, 5)
+      return slot.booking_date === dateStr && slotTime === time
+    })
   }
 
-  // Check if all time slots are booked for a date
   const isDateFullyBooked = (date: Date) => {
     const dateStr = date.toISOString().split("T")[0]
     const bookedTimesForDate = bookedSlots.filter((slot) => slot.booking_date === dateStr)
@@ -75,54 +80,43 @@ export function Contact() {
     const lastDay = new Date(year, month + 1, 0)
     const daysInMonth = lastDay.getDate()
     const startingDayOfWeek = firstDay.getDay()
-    
+
     const days: (Date | null)[] = []
-    
-    // Add empty slots for days before the first day of the month
     for (let i = 0; i < (startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1); i++) {
       days.push(null)
     }
-    
-    // Add all days of the month
     for (let i = 1; i <= daysInMonth; i++) {
       days.push(new Date(year, month, i))
     }
-    
     return days
   }
 
   const isDateDisabled = (date: Date) => {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    return date < today // Disable only past dates
+    return date < today
   }
 
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("ro-RO", {
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString("ro-RO", {
       weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",
     })
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
     if (!selectedDate || !selectedTime) {
       alert("Te rugăm să selectezi o dată și o oră pentru programare.")
       return
     }
-
     setIsSubmitting(true)
     setSubmitStatus("idle")
-
     try {
       const response = await fetch("/api/bookings", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -132,12 +126,9 @@ export function Contact() {
           bookingTime: selectedTime,
         }),
       })
-
       const data = await response.json()
-
       if (response.ok) {
         setSubmitStatus("success")
-        // Reset form
         setFormData({ name: "", email: "", phone: "", message: "" })
         setSelectedDate(null)
         setSelectedTime(null)
@@ -154,91 +145,122 @@ export function Contact() {
   }
 
   const days = getDaysInMonth(currentMonth)
-  const monthNames = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"]
+  const monthNames = [
+    "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+    "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie",
+  ]
   const dayNames = ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"]
 
   return (
-    <section id="contact" className="py-14 px-4">
+    <section id="contact" className="py-20 sm:py-28 px-4 bg-gradient-to-b from-white via-emerald-50/30 to-white">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-5xl mx-auto"
+        className="max-w-6xl mx-auto"
       >
-        <div className="text-center mb-12">
+        {/* Audit explainer */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-emerald-700 text-sm font-medium">Audit gratuit 15 min</span>
+          </div>
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
-            style={{ fontFamily: "var(--font-cal-sans)" }}
+            style={{ letterSpacing: "-0.025em" }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-5 text-balance"
           >
-            Programează o discuție
+            Programează audit gratuit
           </h2>
-          <p className="text-lg sm:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
-            Alege o dată și o oră convenabilă pentru un audit gratuit al proceselor tale de business.
+          <p
+            className="text-zinc-600 max-w-2xl mx-auto mb-8"
+            style={{ lineHeight: "1.7" }}
+          >
+            În auditul gratuit vedem ce procese poți automatiza, unde pierzi timp sau clienți și ce
+            soluție se potrivește cel mai bine afacerii tale.
           </p>
+
+          <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-2">
+            {auditBullets.map((b) => (
+              <div key={b} className="flex items-start gap-2 text-sm text-zinc-700 text-left">
+                <Check className="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" strokeWidth={2.5} />
+                <span>{b}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10">
           {/* Contact Info */}
           <div className="space-y-4">
-            <div className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800">
-              <h3 className="text-lg font-semibold text-white mb-4">Informatii de contact</h3>
+            <div className="p-5 rounded-2xl bg-white border border-zinc-200 card-elevated">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-4">Informații de contact</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-zinc-800">
-                    <Phone className="w-5 h-5 text-zinc-400" />
+                  <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
+                    <Phone className="w-5 h-5 text-emerald-600" strokeWidth={1.8} />
                   </div>
                   <div>
-                    <p className="text-zinc-500 text-sm">Telefon</p>
-                    <a href="tel:0729369094" className="text-white hover:text-zinc-300 transition-colors">
+                    <p className="text-zinc-500 text-xs">Telefon</p>
+                    <a href="tel:0729369094" className="text-zinc-900 hover:text-emerald-700 transition-colors">
                       0729 369 094
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-zinc-800">
-                    <Mail className="w-5 h-5 text-zinc-400" />
+                  <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
+                    <Mail className="w-5 h-5 text-emerald-600" strokeWidth={1.8} />
                   </div>
                   <div>
-                    <p className="text-zinc-500 text-sm">Email</p>
-                    <a href="mailto:contact@davixai.website" className="text-white hover:text-zinc-300 transition-colors text-sm">
+                    <p className="text-zinc-500 text-xs">Email</p>
+                    <a
+                      href="mailto:contact@davixai.website"
+                      className="text-zinc-900 hover:text-emerald-700 transition-colors text-sm"
+                    >
                       contact@davixai.website
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-zinc-800">
-                    <MapPin className="w-5 h-5 text-zinc-400" />
+                  <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
+                    <MapPin className="w-5 h-5 text-emerald-600" strokeWidth={1.8} />
                   </div>
                   <div>
-                    <p className="text-zinc-500 text-sm">Locatie</p>
-                    <p className="text-white">Suceava, Romania</p>
+                    <p className="text-zinc-500 text-xs">Locație</p>
+                    <p className="text-zinc-900">Suceava, România</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800">
+            <div className="p-5 rounded-2xl bg-white border border-zinc-200 card-elevated">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />
-                <span className="text-sm text-zinc-400">Disponibil acum</span>
+                <span className="text-sm text-zinc-600">Disponibil acum</span>
               </div>
-              <p className="text-white font-medium">Balta David</p>
+              <p className="text-zinc-900 font-medium">Balta David</p>
               <p className="text-zinc-500 text-sm">Fondator DaviX AI</p>
             </div>
 
-            {/* Selected Date/Time Summary */}
+            <Button
+              variant="outline"
+              className="w-full rounded-full border-emerald-300 text-emerald-700 hover:bg-emerald-50 bg-white"
+              asChild
+            >
+              <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">
+                Scrie pe WhatsApp
+              </a>
+            </Button>
+
             {(selectedDate || selectedTime) && (
-              <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
-                <h4 className="text-emerald-400 font-medium mb-3 flex items-center gap-2">
+              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
+                <h4 className="text-emerald-800 font-medium mb-3 flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  Programare selectata
+                  Programare selectată
                 </h4>
-                {selectedDate && (
-                  <p className="text-white text-sm mb-1">{formatDate(selectedDate)}</p>
-                )}
+                {selectedDate && <p className="text-zinc-900 text-sm mb-1">{formatDate(selectedDate)}</p>}
                 {selectedTime && (
-                  <p className="text-zinc-400 text-sm flex items-center gap-1">
+                  <p className="text-zinc-600 text-sm flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     Ora: {selectedTime}
                   </p>
@@ -248,48 +270,50 @@ export function Contact() {
           </div>
 
           {/* Calendar */}
-          <div className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800">
-            <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-4">
-              <p className="text-emerald-400 text-sm font-medium text-center">
-                Vă rugăm să selectați o oră din Calendar pentru Audit gratuit
+          <div className="p-5 rounded-2xl bg-white border border-zinc-200 card-elevated">
+            <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-100 mb-4">
+              <p className="text-emerald-800 text-sm font-medium text-center">
+                Alege o oră pentru auditul gratuit (15 min)
               </p>
             </div>
-            
+
             <div className="flex items-center justify-between mb-4">
               <button
                 type="button"
-                onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
-                className="p-2 rounded-lg hover:bg-zinc-800 transition-colors text-zinc-400 hover:text-white"
+                onClick={() =>
+                  setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))
+                }
+                className="p-2 rounded-lg hover:bg-zinc-100 transition-colors text-zinc-500 hover:text-zinc-900"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <h3 className="text-white font-semibold">
+              <h3 className="text-zinc-900 font-semibold">
                 {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
               </h3>
               <button
                 type="button"
-                onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
-                className="p-2 rounded-lg hover:bg-zinc-800 transition-colors text-zinc-400 hover:text-white"
+                onClick={() =>
+                  setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))
+                }
+                className="p-2 rounded-lg hover:bg-zinc-100 transition-colors text-zinc-500 hover:text-zinc-900"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Day names */}
             <div className="grid grid-cols-7 gap-1 mb-2">
               {dayNames.map((day) => (
-                <div key={day} className="text-center text-xs text-zinc-500 py-2">
+                <div key={day} className="text-center text-xs text-zinc-400 py-2">
                   {day}
                 </div>
               ))}
             </div>
 
-            {/* Calendar days */}
             <div className="grid grid-cols-7 gap-1">
               {days.map((date, index) => {
                 const isFullyBooked = date && isDateFullyBooked(date)
                 const isDisabled = !date || isDateDisabled(date) || isFullyBooked
-                
+
                 return (
                   <button
                     key={index}
@@ -299,50 +323,51 @@ export function Contact() {
                     className={`
                       aspect-square flex items-center justify-center text-sm rounded-lg transition-all relative
                       ${!date ? "invisible" : ""}
-                      ${date && isDateDisabled(date) ? "text-zinc-700 cursor-not-allowed" : ""}
-                      ${isFullyBooked ? "text-zinc-600 cursor-not-allowed line-through" : ""}
-                      ${date && !isDisabled ? "text-zinc-300 hover:bg-zinc-800 cursor-pointer" : ""}
-                      ${date && selectedDate && date.toDateString() === selectedDate.toDateString() 
-                        ? "bg-emerald-500 text-white hover:bg-emerald-600" 
-                        : ""}
+                      ${date && isDateDisabled(date) ? "text-zinc-300 cursor-not-allowed" : ""}
+                      ${isFullyBooked ? "text-zinc-300 cursor-not-allowed line-through" : ""}
+                      ${date && !isDisabled ? "text-zinc-700 hover:bg-emerald-50 hover:text-emerald-700 cursor-pointer" : ""}
+                      ${
+                        date && selectedDate && date.toDateString() === selectedDate.toDateString()
+                          ? "bg-emerald-600 text-white hover:bg-emerald-700 hover:text-white"
+                          : ""
+                      }
                     `}
                   >
                     {date?.getDate()}
                     {isFullyBooked && (
-                      <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-500" />
+                      <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-400" />
                     )}
                   </button>
                 )
               })}
             </div>
 
-            {/* Time slots */}
             <div className="mt-6">
-              <h4 className="text-sm text-zinc-400 mb-3 flex items-center gap-2">
+              <h4 className="text-sm text-zinc-700 mb-3 flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                Selecteaza ora
+                Selectează ora
               </h4>
               <div className="grid grid-cols-3 gap-2">
                 {timeSlots.map((time) => {
                   const isBooked = selectedDate && isTimeSlotBooked(selectedDate, time)
-                  
                   return (
                     <button
                       key={time}
                       type="button"
-                      disabled={isBooked}
+                      disabled={!!isBooked}
                       onClick={() => !isBooked && setSelectedTime(time)}
                       className={`
                         py-2 px-3 text-sm rounded-lg transition-all
-                        ${isBooked 
-                          ? "bg-zinc-800/50 text-zinc-600 cursor-not-allowed line-through" 
-                          : selectedTime === time 
-                            ? "bg-emerald-500 text-white" 
-                            : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white"}
+                        ${
+                          isBooked
+                            ? "bg-zinc-50 text-zinc-300 cursor-not-allowed line-through"
+                            : selectedTime === time
+                              ? "bg-emerald-600 text-white"
+                              : "bg-zinc-50 text-zinc-700 hover:bg-emerald-50 hover:text-emerald-700"
+                        }
                       `}
                     >
                       {time}
-                      {isBooked && <span className="ml-1 text-xs text-red-400">(ocupat)</span>}
                     </button>
                   )
                 })}
@@ -351,9 +376,12 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            className="p-5 rounded-2xl bg-white border border-zinc-200 space-y-4 card-elevated"
+          >
             <div>
-              <label htmlFor="name" className="block text-sm text-zinc-400 mb-2">
+              <label htmlFor="name" className="block text-sm text-zinc-700 mb-2">
                 Nume *
               </label>
               <input
@@ -361,13 +389,13 @@ export function Contact() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
-                placeholder="Numele tau"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors"
+                placeholder="Numele tău"
                 required
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm text-zinc-400 mb-2">
+              <label htmlFor="email" className="block text-sm text-zinc-700 mb-2">
                 Email *
               </label>
               <input
@@ -375,13 +403,13 @@ export function Contact() {
                 id="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors"
                 placeholder="email@exemplu.com"
                 required
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm text-zinc-400 mb-2">
+              <label htmlFor="phone" className="block text-sm text-zinc-700 mb-2">
                 Telefon
               </label>
               <input
@@ -389,12 +417,12 @@ export function Contact() {
                 id="phone"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors"
                 placeholder="07XX XXX XXX"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm text-zinc-400 mb-2">
+              <label htmlFor="message" className="block text-sm text-zinc-700 mb-2">
                 Mesaj
               </label>
               <textarea
@@ -402,21 +430,21 @@ export function Contact() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={3}
-                className="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
                 placeholder="Descrie pe scurt ce ai nevoie..."
               />
             </div>
 
             {submitStatus === "success" && (
-              <div className="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center gap-2">
-                <Check className="w-5 h-5 text-emerald-400" />
-                <p className="text-emerald-400 text-sm">Programarea a fost inregistrata cu succes!</p>
+              <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2">
+                <Check className="w-5 h-5 text-emerald-600" />
+                <p className="text-emerald-800 text-sm">Programarea a fost înregistrată cu succes!</p>
               </div>
             )}
 
             {submitStatus === "error" && (
-              <div className="p-3 rounded-xl bg-red-500/20 border border-red-500/30">
-                <p className="text-red-400 text-sm">A aparut o eroare. Te rugam sa incerci din nou.</p>
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200">
+                <p className="text-red-700 text-sm">A apărut o eroare. Te rugăm să încerci din nou.</p>
               </div>
             )}
 
@@ -424,13 +452,13 @@ export function Contact() {
               type="submit"
               size="lg"
               disabled={isSubmitting || !selectedDate || !selectedTime}
-              className="shimmer-btn w-full bg-white text-zinc-950 hover:bg-zinc-200 rounded-full h-12 text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="shimmer-btn w-full bg-emerald-600 text-white hover:bg-emerald-700 rounded-full h-12 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 "Se trimite..."
               ) : (
                 <>
-                  Programeaza acum
+                  Programează audit gratuit
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </>
               )}

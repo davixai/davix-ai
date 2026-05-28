@@ -6,41 +6,48 @@ import { Button } from "@/components/ui/button"
 
 export function AutomatizariCta() {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-white">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-3xl border border-zinc-800 bg-zinc-900/60 p-10 text-center overflow-hidden"
+          className="relative rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-10 text-center overflow-hidden card-elevated"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.06)_0%,_transparent_70%)]" />
           <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-balance">
+            <h2
+              style={{ letterSpacing: "-0.02em" }}
+              className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 text-balance"
+            >
               Gata să elimini munca manuală?
             </h2>
-            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+            <p
+              className="text-zinc-600 mb-8 max-w-xl mx-auto"
+              style={{ lineHeight: "1.7" }}
+            >
               15 minute de discuție și știm exact ce automatizăm pentru tine. Fără obligații, fără pitch agresiv.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 size="lg"
-                className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-full px-8 font-semibold"
+                className="shimmer-btn bg-emerald-600 text-white hover:bg-emerald-700 rounded-full px-7 font-semibold h-12"
                 asChild
               >
-                <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">
-                  Consultație Gratuită pe WhatsApp
+                <a href="#contact">
+                  Programează audit gratuit
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                className="rounded-full px-7 h-12 border-zinc-300 text-zinc-800 hover:bg-zinc-50 bg-white"
                 asChild
               >
-                <a href="#contact">Programează o discuție</a>
+                <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">
+                  Scrie pe WhatsApp
+                </a>
               </Button>
             </div>
           </div>

@@ -16,7 +16,7 @@ export const metadata = {
 export default function AutomatizariPage() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-zinc-950">
+      <main className="min-h-screen bg-white text-zinc-900">
         <Navbar />
         <AutomatizariHero />
         <AutomatizariServicii />

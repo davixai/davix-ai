@@ -6,13 +6,14 @@ import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Despre noi — DaviX AI",
-  description: "Află mai multe despre echipa DaviX AI, valorile noastre și cum ajutăm business-urile locale să crească online.",
+  description:
+    "Echipa DaviX AI: cum lucrăm, ce livrăm și de ce afacerile locale aleg site-urile, aplicațiile și automatizările noastre.",
 }
 
 export default function DespreNoiPage() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-zinc-950">
+      <main className="min-h-screen bg-white text-zinc-900">
         <Navbar />
         <div className="pt-28 pb-8">
           <DespreNoi />

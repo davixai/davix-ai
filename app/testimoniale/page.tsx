@@ -1,21 +1,24 @@
 import { Navbar } from "@/components/navbar"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
+import { Chatbot } from "@/components/chatbot"
+import { SmoothScroll } from "@/components/smooth-scroll"
 
 export const metadata = {
-  title: "Testimoniale - Davix AI",
-  description: "Ce spun clientii nostri despre serviciile de automatizare AI oferite de Davix AI.",
+  title: "Studii de caz — DaviX AI",
+  description:
+    "Studii de caz și rezultate concrete: site-uri, CRM-uri și automatizări AI livrate de DaviX AI pentru afaceri locale.",
 }
 
 export default function TestimonialePage() {
   return (
-    <main className="relative min-h-screen bg-zinc-950 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-zinc-950" />
-      
-      <Navbar />
-      <TestimonialsSection />
-      <Footer />
-    </main>
+    <SmoothScroll>
+      <main className="relative min-h-screen bg-white text-zinc-900 overflow-hidden">
+        <Navbar />
+        <TestimonialsSection />
+        <Footer />
+        <Chatbot />
+      </main>
+    </SmoothScroll>
   )
 }
