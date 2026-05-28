@@ -21,7 +21,7 @@ const serviciiDropdown = [
     desc: "Chatbot, WhatsApp, Email, Excel",
   },
   {
-    href: "/#davix-dental",
+    href: "/davix-dental",
     icon: Stethoscope,
     label: "Davix Dental",
     desc: "CRM stomatologic pentru clinici",
@@ -31,7 +31,7 @@ const serviciiDropdown = [
 const navItems = [
   { label: "Proiecte", href: "/proiecte" },
   { label: "Despre noi", href: "/despre-noi" },
-  { label: "Davix Dental", anchor: "davix-dental" },
+  { label: "Davix Dental", href: "/davix-dental" },
   { label: "FAQ", href: "/intrebari-frecvente" },
   { label: "Contact", anchor: "contact" },
 ]
@@ -72,8 +72,12 @@ export function Navbar() {
       <nav className="relative flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-zinc-200 shadow-sm">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden p-1">
-            <img src="/davix-logo.png" alt="DaviX AI" className="w-full h-full object-contain" />
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white flex items-center justify-center overflow-hidden ring-1 ring-zinc-200 shadow-sm">
+            <img
+              src="/davix-logo.png"
+              alt="DaviX AI"
+              className="w-[88%] h-[88%] object-contain"
+            />
           </div>
           <span className="font-semibold text-zinc-900 text-sm sm:text-base">DaviX AI</span>
         </Link>

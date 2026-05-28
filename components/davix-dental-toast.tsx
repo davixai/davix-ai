@@ -16,16 +16,8 @@ export function DavixDentalToast() {
 
   const handleCta = () => {
     setVisible(false)
-    // Allow same-page anchor and cross-page navigation
     if (typeof window !== "undefined") {
-      if (window.location.pathname === "/") {
-        const el = document.getElementById("davix-dental")
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" })
-          return
-        }
-      }
-      window.location.href = "/#davix-dental"
+      window.location.href = "/davix-dental"
     }
   }
 

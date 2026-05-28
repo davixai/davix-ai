@@ -8,7 +8,7 @@ const footerLinks = {
   Servicii: [
     { label: "Site-uri web", href: "/site-uri" },
     { label: "Automatizări AI", href: "/automatizari" },
-    { label: "Davix Dental", href: "/#davix-dental" },
+    { label: "Davix Dental", href: "/davix-dental" },
     { label: "Proiecte", href: "/proiecte" },
   ],
   Companie: [
@@ -39,8 +39,12 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden p-1.5">
-                <img src="/davix-logo.png" alt="DaviX AI" className="w-full h-full object-contain" />
+              <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center overflow-hidden ring-1 ring-zinc-200 shadow-sm">
+                <img
+                  src="/davix-logo.png"
+                  alt="DaviX AI"
+                  className="w-[88%] h-[88%] object-contain"
+                />
               </div>
               <span className="font-semibold text-zinc-900">DaviX AI</span>
             </Link>

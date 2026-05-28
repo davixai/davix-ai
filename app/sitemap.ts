@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/site-uri`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/automatizari`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/davix-dental`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
     { url: `${BASE}/proiecte`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/despre-noi`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/testimoniale`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },

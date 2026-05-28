@@ -3,7 +3,6 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { HeroHome } from "@/components/hero-home"
 import { ServicesGrid } from "@/components/services-grid"
-import { DavixDental } from "@/components/davix-dental"
 import { Contact } from "@/components/contact"
 import { Chatbot } from "@/components/chatbot"
 
@@ -20,7 +19,6 @@ export default function Home() {
         <Navbar />
         <HeroHome />
         <ServicesGrid />
-        <DavixDental />
         <Contact />
         <Footer />
         <Chatbot />
