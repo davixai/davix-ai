@@ -464,3 +464,18 @@ html[data-theme="cosmic"] .text-emerald-700,
 html[data-theme="cosmic"] .text-emerald-800 {
   color: #6ee7b7 !important;
 }
+/* Sky accent palette (Davix Dental page) → dark-friendly */
+html[data-theme="cosmic"] .bg-sky-50 {
+  background-color: rgba(56, 189, 248, 0.12) !important;
+}
+html[data-theme="cosmic"] .bg-sky-200\/30 {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+}
+html[data-theme="cosmic"] .border-sky-100,
+html[data-theme="cosmic"] .border-sky-200 {
+  border-color: rgba(56, 189, 248, 0.28) !important;
+}
+html[data-theme="cosmic"] .text-sky-700,
+html[data-theme="cosmic"] .text-sky-800 {
+  color: #7dd3fc !important;
+}

@@ -147,7 +147,7 @@ export function DavixDental() {
     <section
       id="davix-dental"
       ref={ref}
-      className="relative py-20 sm:py-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-white via-sky-50/40 to-white"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 overflow-hidden bg-transparent"
     >
       {/* Soft blue accents for Davix Dental */}
       <div className="absolute top-32 -left-32 w-[400px] h-[400px] bg-sky-200/30 rounded-full blur-[120px] pointer-events-none" />
