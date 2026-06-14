@@ -88,7 +88,7 @@ export default function ProiectePage() {
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
 
         <div className="pt-28 pb-20 px-4 sm:px-6">

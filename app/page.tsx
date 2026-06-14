@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { HeroHome } from "@/components/hero-home"
 import { ServicesGrid } from "@/components/services-grid"
+import { ProofSection } from "@/components/proof-section"
 import { Contact } from "@/components/contact"
 import { Chatbot } from "@/components/chatbot"
 
@@ -15,10 +16,11 @@ export const metadata = {
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
         <HeroHome />
         <ServicesGrid />
+        <ProofSection />
         <Contact />
         <Footer />
         <Chatbot />

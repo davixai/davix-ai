@@ -241,3 +241,213 @@
 .toast-slide-in {
   animation: toast-slide-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* ============================================================
+   COSMIC PARALLAX BACKGROUND (?bg=cosmic) + dark theme
+   ============================================================ */
+:root {
+  --animation-iteration: infinite;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+.cosmic-parallax-container {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at bottom, #0c1f1a 0%, #04070a 100%);
+}
+
+.cosmic-stars,
+.cosmic-stars-medium,
+.cosmic-stars-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border-radius: 50%;
+  animation-name: animStar;
+  animation-timing-function: linear;
+  animation-iteration-count: var(--animation-iteration);
+}
+
+.cosmic-stars {
+  width: 1px;
+  height: 1px;
+  animation-duration: 60s;
+}
+.cosmic-stars::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+.cosmic-stars-medium {
+  width: 2px;
+  height: 2px;
+  animation-duration: 120s;
+}
+.cosmic-stars-medium::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+.cosmic-stars-large {
+  width: 3px;
+  height: 3px;
+  animation-duration: 180s;
+}
+.cosmic-stars-large::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+/* Brand-tinted horizon glow at the bottom */
+.cosmic-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px;
+}
+.cosmic-glow {
+  position: absolute;
+  left: 50%;
+  bottom: -140px;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 320px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(16, 185, 129, 0.35),
+    rgba(16, 185, 129, 0.06) 45%,
+    transparent 70%
+  );
+  filter: blur(34px);
+}
+.cosmic-earth {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -60%;
+  height: 90%;
+  border-radius: 50% 50% 0 0;
+  background: radial-gradient(ellipse at top, #0b3b2e 0%, #061a14 55%, transparent 100%);
+}
+
+/* Hero-mode title/subtitle (only when showText) */
+.cosmic-title {
+  position: absolute;
+  top: 44%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 9vw, 5.5rem);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+}
+.cosmic-subtitle {
+  position: absolute;
+  top: 58%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-stars,
+  .cosmic-stars-medium,
+  .cosmic-stars-large {
+    animation: none;
+  }
+}
+
+/* ---------- Dark theme overrides (only when ?bg=cosmic) ---------- */
+html[data-theme="cosmic"] body {
+  color: #e5e7eb;
+}
+/* Surfaces → translucent dark glass */
+html[data-theme="cosmic"] .bg-white,
+html[data-theme="cosmic"] .bg-white\/80,
+html[data-theme="cosmic"] .bg-white\/78 {
+  background-color: rgba(15, 23, 23, 0.72) !important;
+  backdrop-filter: blur(10px);
+}
+html[data-theme="cosmic"] .bg-zinc-50 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+html[data-theme="cosmic"] .bg-zinc-100,
+html[data-theme="cosmic"] .bg-zinc-200 {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+}
+/* Text → light scale */
+html[data-theme="cosmic"] .text-zinc-900,
+html[data-theme="cosmic"] .text-zinc-800,
+html[data-theme="cosmic"] .text-zinc-700 {
+  color: #f1f5f9 !important;
+}
+html[data-theme="cosmic"] .text-zinc-600,
+html[data-theme="cosmic"] .text-zinc-500 {
+  color: #9ca3af !important;
+}
+html[data-theme="cosmic"] .text-zinc-400,
+html[data-theme="cosmic"] .text-zinc-300 {
+  color: #6b7280 !important;
+}
+/* Borders → subtle light */
+html[data-theme="cosmic"] .border-zinc-100,
+html[data-theme="cosmic"] .border-zinc-200,
+html[data-theme="cosmic"] .border-zinc-300 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+/* Inputs */
+html[data-theme="cosmic"] input,
+html[data-theme="cosmic"] textarea {
+  color: #f1f5f9;
+}
+html[data-theme="cosmic"] input::placeholder,
+html[data-theme="cosmic"] textarea::placeholder {
+  color: #6b7280;
+}
+/* Kill the bright light-emerald hero glows that wash out the dark center.
+   Turn them into a faint deep-emerald ambient glow instead. */
+html[data-theme="cosmic"] .bg-emerald-100\/60,
+html[data-theme="cosmic"] .bg-emerald-200\/40,
+html[data-theme="cosmic"] .bg-emerald-200\/30,
+html[data-theme="cosmic"] .bg-emerald-300\/30 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}

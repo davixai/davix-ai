@@ -13,7 +13,7 @@ export const metadata = {
 export default function IntrebariFrecvente() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
         <FaqPage />
         <Footer />

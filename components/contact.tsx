@@ -152,7 +152,7 @@ export function Contact() {
   const dayNames = ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"]
 
   return (
-    <section id="contact" className="py-20 sm:py-28 px-4 bg-gradient-to-b from-white via-emerald-50/30 to-white">
+    <section id="contact" className="py-20 sm:py-28 px-4 bg-transparent">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40 }}

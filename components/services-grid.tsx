@@ -78,7 +78,7 @@ export function ServicesGrid() {
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="servicii" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-white via-zinc-50 to-white">
+    <section id="servicii" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 16 }}

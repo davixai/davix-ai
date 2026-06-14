@@ -32,7 +32,7 @@ export const metadata = {
 export default function DavixDentalPage() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
         <div className="pt-20">
           <DavixDental />

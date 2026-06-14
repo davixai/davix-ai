@@ -12,7 +12,7 @@ export const metadata = {
 export default function ConfidentialitatePage() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
         <section className="pt-32 pb-20 px-4 sm:px-6">
           <article className="max-w-3xl mx-auto">

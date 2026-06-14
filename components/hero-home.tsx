@@ -105,7 +105,7 @@ export function HeroHome() {
             </motion.div>
           </div>
 
-          {/* Right - browser mockup */}
+          {/* Right - realistic product preview */}
           <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -117,48 +117,90 @@ export function HeroHome() {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="rounded-2xl overflow-hidden border border-zinc-200 bg-white card-elevated">
+                <div className="rounded-2xl overflow-hidden border border-zinc-200/80 bg-white card-elevated">
+                  {/* Browser chrome */}
                   <div className="flex items-center gap-2 px-4 py-3 bg-zinc-50 border-b border-zinc-200">
                     <div className="flex gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-red-300" />
                       <div className="w-2.5 h-2.5 rounded-full bg-amber-300" />
                       <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                     </div>
-                    <div className="flex-1 mx-3 h-5 rounded bg-white border border-zinc-200 flex items-center px-3">
-                      <span className="text-[10px] text-zinc-400">davixai.website</span>
+                    <div className="flex-1 mx-3 h-5 rounded bg-white border border-zinc-200 flex items-center gap-1 px-2">
+                      <span className="text-emerald-600 text-[9px]">●</span>
+                      <span className="text-[10px] text-zinc-500">app.davixai.website</span>
                     </div>
                   </div>
 
-                  <div className="p-5 space-y-3 bg-white">
-                    <div className="h-28 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-zinc-100 p-4 flex flex-col justify-between">
-                      <div className="space-y-1.5">
-                        <div className="h-3 w-3/4 rounded bg-zinc-200" />
-                        <div className="h-2 w-1/2 rounded bg-zinc-100" />
+                  {/* App body */}
+                  <div className="bg-white">
+                    {/* Header bar */}
+                    <div className="flex items-center justify-between px-4 pt-4 pb-3">
+                      <div>
+                        <p className="text-[11px] text-zinc-400 leading-none mb-1">Panou de control</p>
+                        <p className="text-sm font-bold text-zinc-900 leading-none">Bună, Andrei 👋</p>
                       </div>
-                      <div className="flex gap-2">
-                        <div className="h-6 w-20 rounded-full bg-emerald-500" />
-                        <div className="h-6 w-16 rounded-full bg-zinc-100" />
+                      <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-50 border border-emerald-100">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[10px] font-medium text-emerald-700">Live</span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      {[0, 1, 2].map((i) => (
-                        <div
-                          key={i}
-                          className="h-14 rounded-lg bg-zinc-50 border border-zinc-100 p-2 space-y-1"
-                        >
-                          <div className="h-2 w-1/2 rounded bg-emerald-400/60" />
-                          <div className="h-1.5 w-full rounded bg-zinc-200" />
-                          <div className="h-1.5 w-3/4 rounded bg-zinc-200" />
-                        </div>
-                      ))}
+
+                    {/* KPI cards */}
+                    <div className="grid grid-cols-2 gap-2.5 px-4">
+                      <div className="rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 p-3 text-white shadow-lg shadow-emerald-600/20">
+                        <p className="text-[10px] text-emerald-100 mb-1">Cereri luna asta</p>
+                        <p className="text-xl font-bold leading-none">128</p>
+                        <p className="text-[9px] text-emerald-100 mt-1.5">↑ 34% vs. luna trecută</p>
+                      </div>
+                      <div className="rounded-xl bg-zinc-50 border border-zinc-100 p-3">
+                        <p className="text-[10px] text-zinc-400 mb-1">Programări</p>
+                        <p className="text-xl font-bold leading-none text-zinc-900">42</p>
+                        <p className="text-[9px] text-emerald-600 mt-1.5">↑ 12 confirmate azi</p>
+                      </div>
                     </div>
-                    <div className="h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-                      <div className="h-2 w-28 rounded bg-emerald-500/60" />
+
+                    {/* Mini chart */}
+                    <div className="mx-4 mt-2.5 rounded-xl border border-zinc-100 p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-[10px] font-medium text-zinc-600">Cereri noi</p>
+                        <p className="text-[9px] text-zinc-400">ultimele 7 zile</p>
+                      </div>
+                      <div className="flex items-end gap-1.5 h-12">
+                        {[40, 55, 35, 70, 50, 85, 100].map((h, i) => (
+                          <div
+                            key={i}
+                            className={`flex-1 rounded-sm ${i === 6 ? "bg-emerald-500" : "bg-emerald-200"}`}
+                            style={{ height: `${h}%` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Activity row */}
+                    <div className="mx-4 my-3 flex items-center gap-2.5 rounded-xl bg-emerald-50/70 border border-emerald-100 p-2.5">
+                      <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[11px] font-bold shrink-0">
+                        SM
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-medium text-zinc-800 truncate">SMS reminder trimis</p>
+                        <p className="text-[9px] text-zinc-500 truncate">14 pacienți · automat · acum 3 min</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute -inset-4 bg-emerald-200/30 rounded-3xl blur-2xl -z-10" />
+                {/* Floating accent badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="absolute -left-5 bottom-10 hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-zinc-200 card-elevated"
+                >
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
+                  <span className="text-[11px] font-semibold text-zinc-800">Automatizare activă</span>
+                </motion.div>
+
+                <div className="absolute -inset-4 bg-emerald-300/30 rounded-3xl blur-2xl -z-10" />
               </motion.div>
             </motion.div>
           </div>

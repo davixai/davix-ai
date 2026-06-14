@@ -13,7 +13,7 @@ export const metadata = {
 export default function TestimonialePage() {
   return (
     <SmoothScroll>
-      <main className="relative min-h-screen bg-white text-zinc-900 overflow-hidden">
+      <main className="relative min-h-screen bg-transparent text-zinc-900 overflow-hidden">
         <Navbar />
         <TestimonialsSection />
         <Footer />

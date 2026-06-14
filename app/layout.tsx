@@ -5,6 +5,7 @@ import { Manrope, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { FloatingCta } from "@/components/floating-cta"
 import { DavixDentalToast } from "@/components/davix-dental-toast"
+import { SiteBackground } from "@/components/ui/background-shader"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -68,7 +69,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${manrope.variable} ${inter.variable} font-sans antialiased bg-white text-zinc-900`}>
+      <body className={`${manrope.variable} ${inter.variable} font-sans antialiased bg-transparent text-zinc-900`}>
+        <SiteBackground />
         <div className="noise-overlay" aria-hidden="true" />
         <DavixDentalToast />
         <FloatingCta />
