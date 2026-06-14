@@ -68,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ro">
+    <html lang="ro" data-theme="cosmic">
       <body className={`${manrope.variable} ${inter.variable} font-sans antialiased bg-transparent text-zinc-900`}>
         <SiteBackground />
         <div className="noise-overlay" aria-hidden="true" />

@@ -14,13 +14,14 @@ type BgMode = "mesh" | "cosmic"
  * Respects prefers-reduced-motion.
  */
 export function SiteBackground() {
-  const [mode, setMode] = useState<BgMode>("mesh")
+  const [mode, setMode] = useState<BgMode>("cosmic")
   const [reducedMotion, setReducedMotion] = useState(false)
   const [scrolling, setScrolling] = useState(false)
 
   useEffect(() => {
+    // Cosmic dark is the default/live theme; ?bg=mesh shows the green variant.
     const params = new URLSearchParams(window.location.search)
-    const next: BgMode = params.get("bg") === "cosmic" ? "cosmic" : "mesh"
+    const next: BgMode = params.get("bg") === "mesh" ? "mesh" : "cosmic"
     setMode(next)
     if (next === "cosmic") {
       document.documentElement.dataset.theme = "cosmic"
