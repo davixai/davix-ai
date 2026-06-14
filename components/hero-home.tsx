@@ -177,7 +177,7 @@ export function HeroHome() {
                     </div>
 
                     {/* Activity row */}
-                    <div className="mx-4 my-3 flex items-center gap-2.5 rounded-xl bg-emerald-50/70 border border-emerald-100 p-2.5">
+                    <div className="mx-4 my-3 flex items-center gap-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-2.5">
                       <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[11px] font-bold shrink-0">
                         SM
                       </div>

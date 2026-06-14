@@ -451,3 +451,16 @@ html[data-theme="cosmic"] .bg-emerald-200\/30,
 html[data-theme="cosmic"] .bg-emerald-300\/30 {
   background-color: rgba(16, 185, 129, 0.1) !important;
 }
+/* Emerald accent panels/chips → dark-green glass with light-green text so
+   they stop looking like washed-out white boxes on the dark theme. */
+html[data-theme="cosmic"] .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+html[data-theme="cosmic"] .border-emerald-100,
+html[data-theme="cosmic"] .border-emerald-200 {
+  border-color: rgba(16, 185, 129, 0.28) !important;
+}
+html[data-theme="cosmic"] .text-emerald-700,
+html[data-theme="cosmic"] .text-emerald-800 {
+  color: #6ee7b7 !important;
+}
