@@ -19,28 +19,28 @@ const shot = (url: string) =>
 
 const projects: Proof[] = [
   {
-    category: "Stomatologie",
-    name: "DaviDent",
+    category: "Site stomatologic",
+    name: "Model site cabinet stomatologic",
     blurb:
-      "Site de prezentare modern cu integrare WhatsApp și formular de programare.",
-    metric: "Programări intrate direct din site",
-    url: "https://davident.lovable.app/",
+      "Site de prezentare profesional pentru o clinică dentară, optimizat să transforme vizitatorii în pacienți noi.",
+    metric: "Construit pentru conversie",
+    url: "https://democlinicastomatologica.netlify.app/",
   },
   {
-    category: "SaaS / CRM",
-    name: "Dental CRM",
+    category: "Aplicație CRM",
+    name: "Davix Dental",
     blurb:
-      "Aplicație web pentru clinici: pacienți, programări, fișe, financiar și roluri.",
+      "Aplicație web pentru clinici: pacienți, programări, fișe, financiar și automatizări SMS.",
     metric: "Tot fluxul clinicii într-un singur loc",
-    url: "https://dental-crm1.pages.dev/",
+    url: "https://davixdental.online/",
   },
   {
-    category: "Auto",
-    name: "PieseAutoSmart",
+    category: "Site stomatologic",
+    name: "Cabinet Dr. Domnar Gabriel",
     blurb:
-      "Magazin online cu căutare avansată și filtre pe marcă și model.",
-    metric: "Conversie mai mare la cumpărare",
-    url: "https://pieseautosmart.netlify.app/",
+      "Site profesional cu servicii, echipă și programare online, gândit să aducă programări direct din site.",
+    metric: "Mai puține apeluri, mai mulți pacienți",
+    url: "https://cabinet-domnargabriel.netlify.app/",
   },
 ]
 

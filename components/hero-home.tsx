@@ -127,7 +127,7 @@ export function HeroHome() {
                     </div>
                     <div className="flex-1 mx-3 h-5 rounded bg-white border border-zinc-200 flex items-center gap-1 px-2">
                       <span className="text-emerald-600 text-[9px]">●</span>
-                      <span className="text-[10px] text-zinc-500">app.davixai.website</span>
+                      <span className="text-[10px] text-zinc-500">davixai.website</span>
                     </div>
                   </div>
 

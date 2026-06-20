@@ -7,27 +7,27 @@ import Link from "next/link"
 const cases = [
   {
     industry: "Stomatologie",
-    title: "DaviDent — site de prezentare",
+    title: "Model site pentru cabinet stomatologic",
     summary:
-      "Cabinet stomatologic care nu avea canal direct pentru programări. Am livrat un site modern cu integrare WhatsApp și formular, iar pacienții pot trimite cereri în câteva secunde.",
-    metric: "Programări intrate direct din site",
-    url: "https://davident.lovable.app/#recenzii",
+      "Site de prezentare profesional pentru o clinică dentară, construit să transforme vizitatorii în pacienți noi: servicii explicate clar, dovezi de încredere și programare rapidă în câțiva pași.",
+    metric: "Design premium, optimizat pentru conversie",
+    url: "https://democlinicastomatologica.netlify.app/",
   },
   {
     industry: "SaaS / CRM dentar",
-    title: "Dental CRM — aplicație web pentru clinici",
+    title: "Davix Dental — aplicație web pentru clinici",
     summary:
-      "Clinici care lucrau cu Excel pentru pacienți, programări și financiar. Am construit o aplicație SaaS cu pacienți, programări, fișe medicale, financiar și roluri pe utilizatori.",
+      "Clinici care lucrau cu Excel pentru pacienți, programări și financiar. Am construit o aplicație cu pacienți, programări, fișe medicale, financiar, roluri și automatizări SMS.",
     metric: "Toate datele clinicii într-un singur loc",
-    url: "https://dental-crm1.pages.dev",
+    url: "https://davixdental.online/",
   },
   {
-    industry: "Auto",
-    title: "PieseAutoSmart — magazin cu filtrare avansată",
+    industry: "Stomatologie",
+    title: "Cabinet Dr. Domnar Gabriel — site profesional",
     summary:
-      "Magazin online care pierdea utilizatori din lipsa filtrelor pe marcă/model. Am rescris experiența de căutare și flow-ul de cumpărare.",
-    metric: "Căutare rapidă pe marcă/model, conversie crescută",
-    url: "https://pieseautosmart.netlify.app/",
+      "Cabinet stomatologic care primea multe apeluri pentru detalii și programări. Am livrat un site cu pagini de servicii, echipă și programare online, care inspiră încredere și aduce programări direct din site.",
+    metric: "Mai puține apeluri, mai mulți pacienți noi",
+    url: "https://cabinet-domnargabriel.netlify.app/",
   },
 ]
 

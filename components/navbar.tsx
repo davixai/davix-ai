@@ -72,11 +72,11 @@ export function Navbar() {
       <nav className="relative flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-zinc-200 shadow-sm">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white flex items-center justify-center overflow-hidden ring-1 ring-zinc-200 shadow-sm">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/5 flex items-center justify-center overflow-hidden ring-1 ring-white/10">
             <img
-              src="/davix-logo.png"
+              src="/davix-logo-white.png"
               alt="DaviX AI"
-              className="w-[88%] h-[88%] object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
           <span className="font-semibold text-zinc-900 text-sm sm:text-base">DaviX AI</span>

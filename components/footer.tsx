@@ -39,11 +39,11 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center overflow-hidden ring-1 ring-zinc-200 shadow-sm">
+              <div className="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center overflow-hidden ring-1 ring-white/10">
                 <img
-                  src="/davix-logo.png"
+                  src="/davix-logo-white.png"
                   alt="DaviX AI"
-                  className="w-[88%] h-[88%] object-contain"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="font-semibold text-zinc-900">DaviX AI</span>
