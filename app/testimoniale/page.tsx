@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
-import { Chatbot } from "@/components/chatbot"
 import { SmoothScroll } from "@/components/smooth-scroll"
 
 export const metadata = {
@@ -17,7 +16,6 @@ export default function TestimonialePage() {
         <Navbar />
         <TestimonialsSection />
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

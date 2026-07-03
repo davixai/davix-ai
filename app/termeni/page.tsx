@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Termeni și Condiții — DaviX AI",
@@ -107,7 +106,6 @@ export default function TermeniPage() {
           </article>
         </section>
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

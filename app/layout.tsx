@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Manrope, Inter } from "next/font/google"
 
 import { Analytics } from "@vercel/analytics/next"
+import { Chatbot } from "@/components/chatbot"
 import { FloatingCta } from "@/components/floating-cta"
 import { DavixDentalToast } from "@/components/davix-dental-toast"
 import { SiteBackground } from "@/components/ui/background-shader"
@@ -75,6 +76,7 @@ export default function RootLayout({
         <DavixDentalToast />
         <FloatingCta />
         {children}
+        <Chatbot />
         <Analytics />
       </body>
     </html>

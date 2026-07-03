@@ -5,7 +5,6 @@ import { HeroHome } from "@/components/hero-home"
 import { ServicesGrid } from "@/components/services-grid"
 import { ProofSection } from "@/components/proof-section"
 import { Contact } from "@/components/contact"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "DaviX AI — Aplicații, site-uri și automatizări AI pentru business",
@@ -23,7 +22,6 @@ export default function Home() {
         <ProofSection />
         <Contact />
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

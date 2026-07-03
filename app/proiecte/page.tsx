@@ -7,7 +7,6 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Chatbot } from "@/components/chatbot"
 import { Button } from "@/components/ui/button"
 
 type Project = {
@@ -218,7 +217,6 @@ export default function ProiectePage() {
         </div>
 
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

@@ -2,7 +2,6 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import DespreNoi from "@/components/despre-noi"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Despre noi — DaviX AI",
@@ -19,7 +18,6 @@ export default function DespreNoiPage() {
           <DespreNoi />
         </div>
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

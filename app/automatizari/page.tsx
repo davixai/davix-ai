@@ -6,7 +6,6 @@ import { AutomatizariFaq } from "@/components/automatizari/faq"
 import { AutomatizariCta } from "@/components/automatizari/cta"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Automatizări AI pentru Business | DaviX AI",
@@ -24,7 +23,6 @@ export default function AutomatizariPage() {
         <Contact />
         <AutomatizariFaq />
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

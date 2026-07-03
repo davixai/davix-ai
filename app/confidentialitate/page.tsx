@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Politica de Confidențialitate — DaviX AI",
@@ -114,7 +113,6 @@ export default function ConfidentialitatePage() {
           </article>
         </section>
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Chatbot } from "@/components/chatbot"
 import { DavixDental } from "@/components/davix-dental"
 
 export const metadata = {
@@ -38,7 +37,6 @@ export default function DavixDentalPage() {
           <DavixDental />
         </div>
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

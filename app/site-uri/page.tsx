@@ -7,7 +7,6 @@ import SiteUriPachete from "@/components/site-uri/pachete"
 import SiteUriAddons from "@/components/site-uri/addons"
 import SiteUriFaq from "@/components/site-uri/faq"
 import SiteUriCta from "@/components/site-uri/cta"
-import { Chatbot } from "@/components/chatbot"
 
 export const metadata = {
   title: "Site-uri de prezentare care aduc clienți | DaviX AI",
@@ -26,7 +25,6 @@ export default function SiteUriPage() {
         <SiteUriCta />
         <SiteUriFaq />
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )

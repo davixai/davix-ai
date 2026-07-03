@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Chatbot } from "@/components/chatbot"
 import FaqPage from "@/components/faq-page"
 
 export const metadata = {
@@ -17,7 +16,6 @@ export default function IntrebariFrecvente() {
         <Navbar />
         <FaqPage />
         <Footer />
-        <Chatbot />
       </main>
     </SmoothScroll>
   )
