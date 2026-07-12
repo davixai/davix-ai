@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button"
 
 export function AutomatizariCta() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-transparent">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-10 text-center overflow-hidden card-elevated"
+          className="relative rounded-3xl border border-emerald-200 bg-emerald-50/60 p-10 text-center overflow-hidden card-elevated"
         >
           <div className="relative z-10">
             <h2
