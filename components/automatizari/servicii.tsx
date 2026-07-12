@@ -85,7 +85,7 @@ export function AutomatizariServicii() {
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="servicii" ref={ref} className="py-20 px-4 bg-gradient-to-b from-white via-zinc-50 to-white">
+    <section id="servicii" ref={ref} className="py-20 px-4 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

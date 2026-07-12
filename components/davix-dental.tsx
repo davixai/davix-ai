@@ -59,7 +59,7 @@ const plans: Plan[] = [
   {
     id: "starter",
     name: "Starter",
-    price: "699",
+    price: "400",
     description:
       "Pentru clinici care vor CRM dentar complet, fără automatizări SMS.",
     includes: [
@@ -84,7 +84,7 @@ const plans: Plan[] = [
     name: "Pro",
     badge: "Recomandat",
     highlight: true,
-    price: "749",
+    price: "600",
     description:
       "Pentru clinici care vor automatizări active, cu SMS plătit direct de clinică.",
     includes: [
@@ -106,7 +106,7 @@ const plans: Plan[] = [
     id: "max",
     name: "Max",
     badge: "Gestionat",
-    price: "950",
+    price: "800",
     description:
       "Pentru clinici care vor automatizări SMS fără administrarea contului Calisero.",
     includes: [
