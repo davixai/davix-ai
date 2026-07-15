@@ -20,8 +20,17 @@ type Project = {
 
 const projects: Project[] = [
   {
+    category: "Site firmă — client real",
+    name: "DISCIF — Vidanjare profesională Suceava",
+    story:
+      "Site de prezentare pentru o firmă reală de vidanjare din Suceava. Servicii explicate clar, formular de solicitare ofertă rapid și contact direct vizibil — construit să transforme vizitatorii în clienți care sună sau cer o ofertă pe loc.",
+    url: "https://discifsuceava.ro/",
+    image: "/projects/discif.webp",
+    waMessage: "Salut! Vreau un site pentru firma mea, ca cel al DISCIF Suceava.",
+  },
+  {
     category: "Site stomatologic",
-    name: "Model site pentru cabinet stomatologic",
+    name: "Lumident — Clinică stomatologică",
     story:
       "Site de prezentare profesional pentru o clinică dentară, construit să transforme vizitatorii în pacienți noi: servicii explicate clar, dovezi de încredere (recenzii, rezultate) și programare rapidă în câțiva pași. Design curat și premium, optimizat pentru conversie.",
     url: "https://democlinicastomatologica.netlify.app/",
@@ -29,13 +38,22 @@ const projects: Project[] = [
     waMessage: "Salut! Vreau un site pentru cabinetul meu stomatologic, ca acest model.",
   },
   {
-    category: "Site stomatologic",
-    name: "Cabinet Dr. Domnar Gabriel",
+    category: "Site electrician",
+    name: "Electric Pro — Electrician autorizat",
     story:
-      "Site profesional pentru un cabinet stomatologic, cu pagini de servicii, echipă și programare online. Gândit să inspire încredere și să aducă programări direct din site — mai puține apeluri, mai mulți pacienți noi.",
-    url: "https://cabinet-domnargabriel.netlify.app/",
-    image: "/projects/domnar.webp",
-    waMessage: "Salut! Vreau un site profesional pentru cabinetul meu, ca cel al Dr. Domnar.",
+      "Site de prezentare pentru un electrician autorizat: instalații rezidențiale și comerciale, branșamente și intervenții urgente 24/7. Servicii cu prețuri orientative, galerie de proiecte și formular de ofertă — gândit să aducă cereri direct din site.",
+    url: "https://electroivi-website-design.vercel.app/",
+    image: "/projects/electroivi.webp",
+    waMessage: "Salut! Vreau un site pentru firma mea de servicii electrice, ca acest model.",
+  },
+  {
+    category: "Site tractări auto",
+    name: "DAR Assist — Tractări auto non-stop",
+    story:
+      "Site pentru un serviciu de tractări auto non-stop din Bucovina: disponibilitate 24/7, telefoane vizibile imediat, servicii și prețuri clare și un buton de apel rapid pentru urgențe. Optimizat pentru clienți care caută ajutor pe loc.",
+    url: "https://demotractari.netlify.app/",
+    image: "/projects/tractari.webp",
+    waMessage: "Salut! Vreau un site pentru serviciul meu de tractări auto, ca acest model.",
   },
   {
     category: "Aplicație CRM stomatologic",
