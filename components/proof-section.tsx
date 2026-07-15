@@ -11,36 +11,36 @@ type Proof = {
   blurb: string
   metric: string
   url: string
+  image: string
 }
-
-// Live screenshots of the real projects (no extra setup, no API key).
-const shot = (url: string) =>
-  `https://image.thum.io/get/width/900/crop/750/noanimate/${url}`
 
 const projects: Proof[] = [
   {
+    category: "Site firmă — client real",
+    name: "DISCIF — Vidanjare Suceava",
+    blurb:
+      "Site de prezentare pentru o firmă reală de vidanjare din Suceava, cu formular de ofertă și contact direct.",
+    metric: "Client real, livrat",
+    url: "https://discifsuceava.ro/",
+    image: "/projects/discif.webp",
+  },
+  {
+    category: "Site tractări auto",
+    name: "DAR Assist — Tractări auto",
+    blurb:
+      "Site pentru un serviciu de tractări auto non-stop din Bucovina, cu telefoane vizibile și apel rapid pentru urgențe.",
+    metric: "Disponibil 24/7",
+    url: "https://demotractari.netlify.app/",
+    image: "/projects/tractari.webp",
+  },
+  {
     category: "Site stomatologic",
-    name: "Model site cabinet stomatologic",
+    name: "Lumident — Clinică stomatologică",
     blurb:
       "Site de prezentare profesional pentru o clinică dentară, optimizat să transforme vizitatorii în pacienți noi.",
     metric: "Construit pentru conversie",
     url: "https://democlinicastomatologica.netlify.app/",
-  },
-  {
-    category: "Aplicație CRM",
-    name: "Davix Dental",
-    blurb:
-      "Aplicație web pentru clinici: pacienți, programări, fișe, financiar și automatizări SMS.",
-    metric: "Tot fluxul clinicii într-un singur loc",
-    url: "https://davixdental.online/",
-  },
-  {
-    category: "Site stomatologic",
-    name: "Cabinet Dr. Domnar Gabriel",
-    blurb:
-      "Site profesional cu servicii, echipă și programare online, gândit să aducă programări direct din site.",
-    metric: "Mai puține apeluri, mai mulți pacienți",
-    url: "https://cabinet-domnargabriel.netlify.app/",
+    image: "/projects/lumident.webp",
   },
 ]
 
@@ -103,7 +103,7 @@ export function ProofSection() {
               <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={shot(p.url)}
+                  src={p.image}
                   alt={`Screenshot ${p.name}`}
                   loading="lazy"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
