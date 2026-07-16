@@ -56,7 +56,7 @@ export function TestimonialsSection() {
             style={{ lineHeight: "1.7" }}
           >
             Adunăm aici proiectele unde am putut măsura impactul real. Mai jos găsești exemple
-            concrete, urmate de testimoniale reale pe măsură ce clinicile și business-urile cu care
+            concrete, urmate de testimoniale reale pe măsură ce clienții și business-urile cu care
             lucrăm acceptă să le publicăm.
           </p>
         </motion.div>

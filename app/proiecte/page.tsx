@@ -111,8 +111,8 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Exemple reale realizate de echipa DaviX AI — site-uri de prezentare care aduc pacienți
-                și aplicații care organizează clinica. Apasă pe oricare proiect ca să-l deschizi live.
+                Exemple reale realizate de echipa DaviX AI — site-uri de prezentare care aduc clienți noi
+                și aplicații care organizează activitatea afacerii. Apasă pe oricare proiect ca să-l deschizi live.
               </p>
             </motion.div>
 
