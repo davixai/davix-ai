@@ -117,7 +117,7 @@ export async function POST(request: Request) {
     const supabase = await createClient()
 
     // Insert booking into database
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("bookings")
       .insert({
         name: normalizedName,
@@ -128,11 +128,14 @@ export async function POST(request: Request) {
         booking_time: bookingTime,
         status: "pending",
       })
-      .select()
-      .single()
 
     if (error) {
-      console.error("Supabase error:", error)
+      console.error("Supabase booking insert error:", {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+      })
       return NextResponse.json(
         { error: "Eroare la salvarea programării" },
         { status: 500 }
@@ -161,6 +164,7 @@ export async function POST(request: Request) {
     const safePhone = escapeHtml(normalizedPhone || "Nespecificat")
     const safeMessage = escapeHtml(normalizedMessage || "Fără mesaj").replace(/\n/g, "<br>")
     const safeBookingTime = escapeHtml(bookingTime)
+    const notificationId = crypto.randomUUID()
     const formattedDate = new Date(`${bookingDate}T12:00:00Z`).toLocaleDateString("ro-RO", {
       weekday: "long",
       year: "numeric",
@@ -189,7 +193,7 @@ export async function POST(request: Request) {
             <p>Programarea așteaptă confirmare.</p>
           `,
         },
-        `booking-${data.id}-admin`,
+        `booking-${notificationId}-admin`,
       ),
       sendEmail(
         resendApiKey,
@@ -211,7 +215,7 @@ export async function POST(request: Request) {
             <p><a href="https://wa.me/40729369094">WhatsApp: 0729 369 094</a></p>
           `,
         },
-        `booking-${data.id}-client`,
+        `booking-${notificationId}-client`,
       ),
     ])
 
@@ -237,7 +241,11 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       message: "Programarea a fost înregistrată cu succes!",
-      booking: data,
+      booking: {
+        booking_date: bookingDate,
+        booking_time: bookingTime,
+        status: "pending",
+      },
       confirmationEmailSent: clientResult.status === "fulfilled",
     })
   } catch (error) {
