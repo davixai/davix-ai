@@ -26,6 +26,13 @@ interface BookedSlot {
   status: string
 }
 
+const getLocalDateKey = (date: Date) => {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${year}-${month}-${day}`
+}
+
 const auditBullets = [
   "Identificăm ce poate fi automatizat",
   "Verificăm dacă ai nevoie de site, aplicație sau automatizare",
@@ -41,7 +48,8 @@ export function Contact() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "partial" | "error">("idle")
+  const [submitMessage, setSubmitMessage] = useState("")
   const [bookedSlots, setBookedSlots] = useState<BookedSlot[]>([])
 
   useEffect(() => {
@@ -60,7 +68,7 @@ export function Contact() {
   }, [currentMonth, submitStatus])
 
   const isTimeSlotBooked = (date: Date, time: string) => {
-    const dateStr = date.toISOString().split("T")[0]
+    const dateStr = getLocalDateKey(date)
     return bookedSlots.some((slot) => {
       const slotTime = slot.booking_time?.substring(0, 5)
       return slot.booking_date === dateStr && slotTime === time
@@ -68,7 +76,7 @@ export function Contact() {
   }
 
   const isDateFullyBooked = (date: Date) => {
-    const dateStr = date.toISOString().split("T")[0]
+    const dateStr = getLocalDateKey(date)
     const bookedTimesForDate = bookedSlots.filter((slot) => slot.booking_date === dateStr)
     return bookedTimesForDate.length >= timeSlots.length
   }
@@ -113,6 +121,7 @@ export function Contact() {
     }
     setIsSubmitting(true)
     setSubmitStatus("idle")
+    setSubmitMessage("")
     try {
       const response = await fetch("/api/bookings", {
         method: "POST",
@@ -122,22 +131,33 @@ export function Contact() {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          bookingDate: selectedDate.toISOString().split("T")[0],
+          bookingDate: getLocalDateKey(selectedDate),
           bookingTime: selectedTime,
         }),
       })
-      const data = await response.json()
+      const data = await response.json().catch(() => ({}))
       if (response.ok) {
         setSubmitStatus("success")
+        setSubmitMessage(data.message || "Programarea a fost înregistrată cu succes!")
+        setFormData({ name: "", email: "", phone: "", message: "" })
+        setSelectedDate(null)
+        setSelectedTime(null)
+      } else if (data.bookingSaved) {
+        setSubmitStatus("partial")
+        setSubmitMessage(
+          data.error || "Programarea a fost salvată, dar confirmarea email nu a putut fi trimisă.",
+        )
         setFormData({ name: "", email: "", phone: "", message: "" })
         setSelectedDate(null)
         setSelectedTime(null)
       } else {
         setSubmitStatus("error")
+        setSubmitMessage(data.error || "A apărut o eroare. Te rugăm să încerci din nou.")
         console.error("Booking error:", data.error)
       }
     } catch (error) {
       setSubmitStatus("error")
+      setSubmitMessage("Nu am putut contacta serverul. Te rugăm să încerci din nou.")
       console.error("Submit error:", error)
     } finally {
       setIsSubmitting(false)
@@ -311,7 +331,7 @@ export function Contact() {
 
             <div className="grid grid-cols-7 gap-1">
               {days.map((date, index) => {
-                const isFullyBooked = date && isDateFullyBooked(date)
+                const isFullyBooked = Boolean(date && isDateFullyBooked(date))
                 const isDisabled = !date || isDateDisabled(date) || isFullyBooked
 
                 return (
@@ -436,15 +456,21 @@ export function Contact() {
             </div>
 
             {submitStatus === "success" && (
-              <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2">
+              <div aria-live="polite" className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2">
                 <Check className="w-5 h-5 text-emerald-600" />
-                <p className="text-emerald-800 text-sm">Programarea a fost înregistrată cu succes!</p>
+                <p className="text-emerald-800 text-sm">{submitMessage}</p>
+              </div>
+            )}
+
+            {submitStatus === "partial" && (
+              <div aria-live="polite" className="p-3 rounded-xl bg-amber-50 border border-amber-200">
+                <p className="text-amber-800 text-sm">{submitMessage}</p>
               </div>
             )}
 
             {submitStatus === "error" && (
-              <div className="p-3 rounded-xl bg-red-50 border border-red-200">
-                <p className="text-red-700 text-sm">A apărut o eroare. Te rugăm să încerci din nou.</p>
+              <div role="alert" className="p-3 rounded-xl bg-red-50 border border-red-200">
+                <p className="text-red-700 text-sm">{submitMessage}</p>
               </div>
             )}
 
