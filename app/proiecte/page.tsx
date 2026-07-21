@@ -29,6 +29,15 @@ const projects: Project[] = [
     waMessage: "Salut! Vreau un site pentru firma mea, ca cel al DISCIF Suceava.",
   },
   {
+    category: "Site restaurant — demonstrativ",
+    name: "AMBRA — Restaurant & bar",
+    story:
+      "Site demonstrativ pentru restaurante: un model premium, cu atmosferă, care pune în valoare bucătăria și experiența. Meniu prezentat elegant, poveste, galerie și rezervare de masă rapidă — gândit să transforme vizitatorii în clienți care rezervă direct din site.",
+    url: "https://restaurant-demo-10.netlify.app/",
+    image: "/projects/restaurant.webp",
+    waMessage: "Salut! Vreau un site pentru restaurantul meu, ca acest model demonstrativ.",
+  },
+  {
     category: "Site stomatologic",
     name: "Lumident — Clinică stomatologică",
     story:
