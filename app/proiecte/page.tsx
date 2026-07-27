@@ -6,7 +6,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  Droplets,
+  Hotel,
   LayoutDashboard,
   Star,
   Stethoscope,
@@ -22,7 +22,7 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
-type ProjectStatus = "client" | "demo" | "product"
+type ProjectStatus = "premium" | "demo" | "product"
 
 type Project = {
   businessType: string
@@ -38,19 +38,19 @@ type Project = {
 
 const projects: Project[] = [
   {
-    businessType: "Vidanjări profesionale",
-    name: "DISCIF · Suceava",
+    businessType: "Pensiune boutique",
+    name: "ARBORÉA · Bucovina",
     highlights: [
-      "Servicii explicate clar",
-      "Formular rapid de ofertă",
-      "Optimizare SEO locală",
-      "Contact direct la vedere",
+      "Imagine premium, tip boutique",
+      "Camere și experiențe prezentate clar",
+      "Rezervare și disponibilitate rapidă",
+      "Design cinematic, optimizat pe mobil",
     ],
-    status: "client",
-    icon: Droplets,
-    url: "https://discifsuceava.ro/",
-    image: "/projects/discif.webp",
-    waMessage: "Salut! Vreau un site pentru firma mea, ca cel al DISCIF Suceava.",
+    status: "premium",
+    icon: Hotel,
+    url: "https://pensiune.website/",
+    image: "/projects/pensiune.webp",
+    waMessage: "Salut! Vreau un site premium pentru pensiunea mea, ca modelul ARBORÉA.",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -136,7 +136,7 @@ const projects: Project[] = [
 ]
 
 const industries: { label: string; icon: LucideIcon }[] = [
-  { label: "Vidanjări", icon: Droplets },
+  { label: "Pensiuni", icon: Hotel },
   { label: "Restaurante", icon: UtensilsCrossed },
   { label: "Clinici dentare", icon: Stethoscope },
   { label: "Electricieni", icon: Zap },
@@ -145,8 +145,8 @@ const industries: { label: string; icon: LucideIcon }[] = [
 ]
 
 const statusBadges: Record<ProjectStatus, { label: string; className: string }> = {
-  client: {
-    label: "Client real · site publicat",
+  premium: {
+    label: "Demo premium · exclusiv",
     className:
       "bg-[#f2c46d] border-[#f7d89b] text-zinc-950 shadow-[0_8px_28px_-12px_rgba(242,196,109,0.85)]",
   },
@@ -205,7 +205,7 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real, patru proiecte demonstrative și un produs propriu — toate disponibile live.
+                Cinci proiecte demonstrative și un produs propriu — toate disponibile live.
               </p>
 
               <div className="mt-8">
@@ -244,7 +244,7 @@ export default function ProiectePage() {
               {projects.map((project) => {
                 const ProjectIcon = project.icon
                 const badge = statusBadges[project.status]
-                const isRealClient = project.status === "client"
+                const isPremiumDemo = project.status === "premium"
 
                 return (
                   <motion.article
@@ -253,7 +253,7 @@ export default function ProiectePage() {
                     className={`group flex flex-col rounded-2xl bg-white border overflow-hidden
                                hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-300 card-elevated
                                ${
-                                 isRealClient
+                                 isPremiumDemo
                                    ? "border-[#f2c46d]/55 hover:border-[#f7d89b] shadow-[0_0_0_1px_rgba(242,196,109,0.08),0_22px_60px_-32px_rgba(242,196,109,0.5)]"
                                    : "border-zinc-200 hover:border-emerald-300"
                                }`}
@@ -280,12 +280,12 @@ export default function ProiectePage() {
                       <span
                         className={`absolute top-3 left-3 max-w-[calc(100%-1.5rem)] inline-flex items-center gap-2 rounded-full border uppercase tracking-[0.12em]
                                    ${
-                                     isRealClient
+                                     isPremiumDemo
                                        ? "right-3 justify-center px-3.5 py-2 text-xs sm:text-sm font-extrabold"
                                        : "px-2.5 py-1 text-[10px] font-semibold"
                                    } ${badge.className}`}
                       >
-                        {isRealClient && (
+                        {isPremiumDemo && (
                           <Star className="w-4 h-4 fill-current shrink-0" strokeWidth={1.8} aria-hidden="true" />
                         )}
                         {badge.label}
@@ -301,7 +301,7 @@ export default function ProiectePage() {
                       <div className="flex items-start gap-3">
                         <span
                           className={`mt-0.5 flex w-10 h-10 shrink-0 items-center justify-center rounded-xl border ${
-                            isRealClient
+                            isPremiumDemo
                               ? "border-[#f2c46d]/35 bg-[#f2c46d]/10 text-[#f7d89b]"
                               : "border-white/10 bg-white/5 text-zinc-300"
                           }`}
@@ -324,7 +324,7 @@ export default function ProiectePage() {
                           <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-400">
                             <Check
                               className={`mt-0.5 w-4 h-4 shrink-0 ${
-                                isRealClient ? "text-[#f2c46d]" : "text-zinc-400"
+                                isPremiumDemo ? "text-[#f2c46d]" : "text-zinc-400"
                               }`}
                               strokeWidth={2.2}
                               aria-hidden="true"
@@ -353,7 +353,7 @@ export default function ProiectePage() {
                           rel="noopener noreferrer"
                           className={`ml-auto inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold
                                      active:scale-95 transition-[transform,background-color,box-shadow] duration-200 ${
-                                       isRealClient
+                                       isPremiumDemo
                                          ? "bg-[#f2c46d] text-zinc-950 hover:bg-[#f7d89b] shadow-[0_8px_24px_-12px_rgba(242,196,109,0.8)]"
                                          : "bg-emerald-600 text-white hover:bg-emerald-700"
                                      }`}

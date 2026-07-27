@@ -16,11 +16,11 @@ type Proof = {
 
 const projects: Proof[] = [
   {
-    category: "Site firmă — client real",
+    category: "Site firmă — publicat",
     name: "DISCIF — Vidanjare Suceava",
     blurb:
       "Site de prezentare pentru o firmă reală de vidanjare din Suceava, cu formular de ofertă și contact direct.",
-    metric: "Client real, livrat",
+    metric: "Site publicat",
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
   },
