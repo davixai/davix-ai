@@ -2,78 +2,163 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react"
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Droplets,
+  LayoutDashboard,
+  Star,
+  Stethoscope,
+  Trophy,
+  Truck,
+  UtensilsCrossed,
+  Zap,
+  type LucideIcon,
+} from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
+type ProjectStatus = "client" | "demo" | "product"
+
 type Project = {
-  category: string
+  businessType: string
   name: string
-  story: string
+  highlights: string[]
+  status: ProjectStatus
+  icon: LucideIcon
   url: string
   image: string
   waMessage: string
+  liveLabel: string
 }
 
 const projects: Project[] = [
   {
-    category: "Site firmă — client real",
-    name: "DISCIF — Vidanjare profesională Suceava",
-    story:
-      "Site de prezentare pentru o firmă reală de vidanjare din Suceava. Servicii explicate clar, formular de solicitare ofertă rapid și contact direct vizibil — construit să transforme vizitatorii în clienți care sună sau cer o ofertă pe loc.",
+    businessType: "Vidanjări profesionale",
+    name: "DISCIF · Suceava",
+    highlights: [
+      "Servicii explicate clar",
+      "Formular rapid de ofertă",
+      "Optimizare SEO locală",
+      "Contact direct la vedere",
+    ],
+    status: "client",
+    icon: Droplets,
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
     waMessage: "Salut! Vreau un site pentru firma mea, ca cel al DISCIF Suceava.",
+    liveLabel: "Vezi site-ul",
   },
   {
-    category: "Site restaurant — demonstrativ",
-    name: "AMBRA — Restaurant & bar",
-    story:
-      "Site demonstrativ pentru restaurante: un model premium, cu atmosferă, care pune în valoare bucătăria și experiența. Meniu prezentat elegant, poveste, galerie și rezervare de masă rapidă — gândit să transforme vizitatorii în clienți care rezervă direct din site.",
+    businessType: "Restaurant & bar",
+    name: "AMBRA",
+    highlights: [
+      "Meniu prezentat elegant",
+      "Galerie cu atmosferă",
+      "Rezervare rapidă",
+      "Contact prin WhatsApp",
+    ],
+    status: "demo",
+    icon: UtensilsCrossed,
     url: "https://restaurant-demo-10.netlify.app/",
     image: "/projects/restaurant.webp",
     waMessage: "Salut! Vreau un site pentru restaurantul meu, ca acest model demonstrativ.",
+    liveLabel: "Vezi site-ul",
   },
   {
-    category: "Site stomatologic",
-    name: "Lumident — Clinică stomatologică",
-    story:
-      "Site de prezentare profesional pentru o clinică dentară, construit să transforme vizitatorii în pacienți noi: servicii explicate clar, dovezi de încredere (recenzii, rezultate) și programare rapidă în câțiva pași. Design curat și premium, optimizat pentru conversie.",
+    businessType: "Clinică stomatologică",
+    name: "Lumident",
+    highlights: [
+      "Servicii dentare clare",
+      "Recenzii și rezultate",
+      "Programare în câțiva pași",
+      "Design premium, responsive",
+    ],
+    status: "demo",
+    icon: Stethoscope,
     url: "https://democlinicastomatologica.netlify.app/",
     image: "/projects/lumident.webp",
     waMessage: "Salut! Vreau un site pentru cabinetul meu stomatologic, ca acest model.",
+    liveLabel: "Vezi site-ul",
   },
   {
-    category: "Site electrician",
-    name: "Electric Pro — Electrician autorizat",
-    story:
-      "Site de prezentare pentru un electrician autorizat: instalații rezidențiale și comerciale, branșamente și intervenții urgente 24/7. Servicii cu prețuri orientative, galerie de proiecte și formular de ofertă — gândit să aducă cereri direct din site.",
+    businessType: "Electrician autorizat",
+    name: "Electric Pro",
+    highlights: [
+      "Servicii și tarife orientative",
+      "Galerie de lucrări",
+      "Formular rapid de ofertă",
+      "Contact pentru urgențe 24/7",
+    ],
+    status: "demo",
+    icon: Zap,
     url: "https://electroivi-website-design.vercel.app/",
     image: "/projects/electroivi.webp",
     waMessage: "Salut! Vreau un site pentru firma mea de servicii electrice, ca acest model.",
+    liveLabel: "Vezi site-ul",
   },
   {
-    category: "Site tractări auto",
-    name: "DAR Assist — Tractări auto non-stop",
-    story:
-      "Site pentru un serviciu de tractări auto non-stop din Bucovina: disponibilitate 24/7, telefoane vizibile imediat, servicii și prețuri clare și un buton de apel rapid pentru urgențe. Optimizat pentru clienți care caută ajutor pe loc.",
+    businessType: "Tractări auto 24/7",
+    name: "DAR Assist · Bucovina",
+    highlights: [
+      "Apel rapid, disponibil 24/7",
+      "Servicii și prețuri clare",
+      "Zone de intervenție vizibile",
+      "Asistență rutieră imediată",
+    ],
+    status: "demo",
+    icon: Truck,
     url: "https://demotractari.netlify.app/",
     image: "/projects/tractari.webp",
     waMessage: "Salut! Vreau un site pentru serviciul meu de tractări auto, ca acest model.",
+    liveLabel: "Vezi site-ul",
   },
   {
-    category: "Aplicație CRM stomatologic",
+    businessType: "CRM stomatologic",
     name: "Davix Dental",
-    story:
-      "Aplicație web cu abonament pentru clinici stomatologice: pacienți, programări, fișe medicale, financiar și automatizări SMS — tot fluxul clinicii într-un singur loc, accesibil de pe orice dispozitiv.",
+    highlights: [
+      "Pacienți și programări",
+      "Fișe și planuri de tratament",
+      "Financiar și laborator",
+      "Remindere SMS automate",
+    ],
+    status: "product",
+    icon: LayoutDashboard,
     url: "https://davixdental.online/",
     image: "/projects/davix-dental.webp",
     waMessage: "Salut! Sunt interesat de aplicația Davix Dental pentru clinica mea.",
+    liveLabel: "Vezi aplicația",
   },
 ]
+
+const industries: { label: string; icon: LucideIcon }[] = [
+  { label: "Vidanjări", icon: Droplets },
+  { label: "Restaurante", icon: UtensilsCrossed },
+  { label: "Clinici dentare", icon: Stethoscope },
+  { label: "Electricieni", icon: Zap },
+  { label: "Tractări auto", icon: Truck },
+  { label: "CRM pentru clinici", icon: LayoutDashboard },
+]
+
+const statusBadges: Record<ProjectStatus, { label: string; className: string }> = {
+  client: {
+    label: "Client real · site publicat",
+    className:
+      "bg-[#f2c46d] border-[#f7d89b] text-zinc-950 shadow-[0_8px_28px_-12px_rgba(242,196,109,0.85)]",
+  },
+  demo: {
+    label: "Proiect demonstrativ",
+    className: "bg-zinc-950/70 border-white/15 text-zinc-200 backdrop-blur-md",
+  },
+  product: {
+    label: "Produs DaviX AI",
+    className: "bg-zinc-950/70 border-sky-300/30 text-sky-200 backdrop-blur-md",
+  },
+}
 
 const containerVariants = {
   hidden: {},
@@ -104,7 +189,7 @@ export default function ProiectePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-14 text-center"
+              className="mb-12 text-center"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-6">
                 <Trophy className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.8} />
@@ -112,17 +197,41 @@ export default function ProiectePage() {
               </div>
               <h1
                 style={{ letterSpacing: "-0.025em" }}
-                className="text-4xl sm:text-5xl font-bold text-zinc-900 mb-4 text-balance"
+                className="text-4xl sm:text-5xl font-bold text-zinc-900 mb-4 text-balance max-w-4xl mx-auto"
               >
-                Proiecte demonstrative
+                Site-uri și aplicații pentru afaceri locale
               </h1>
               <p
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Exemple reale realizate de echipa DaviX AI — site-uri de prezentare care aduc clienți noi
-                și aplicații care organizează activitatea afacerii. Apasă pe oricare proiect ca să-l deschizi live.
+                Un client real, patru proiecte demonstrative și un produs propriu — toate disponibile live.
               </p>
+
+              <div className="mt-8">
+                <p className="text-sm font-medium text-zinc-300 mb-3">
+                  Vezi ce putem construi pentru afacerea ta:
+                </p>
+                <div className="flex flex-wrap justify-center gap-2.5">
+                  {industries.map((industry) => {
+                    const IndustryIcon = industry.icon
+
+                    return (
+                      <span
+                        key={industry.label}
+                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-sm font-medium text-zinc-700 card-elevated"
+                      >
+                        <IndustryIcon
+                          className="w-4 h-4 text-emerald-400"
+                          strokeWidth={1.9}
+                          aria-hidden="true"
+                        />
+                        {industry.label}
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -132,80 +241,131 @@ export default function ProiectePage() {
               animate={isInView ? "visible" : "hidden"}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {projects.map((project) => (
-                <motion.article
-                  key={project.url}
-                  variants={cardVariants}
-                  className="group flex flex-col rounded-2xl bg-white border border-zinc-200 overflow-hidden
-                             hover:border-emerald-300 hover:-translate-y-1
-                             transition-[transform,border-color] duration-300 card-elevated"
-                >
-                  {/* Preview image → opens the live site */}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Deschide ${project.name}`}
-                    className="relative block aspect-[16/10] overflow-hidden bg-zinc-900
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+              {projects.map((project) => {
+                const ProjectIcon = project.icon
+                const badge = statusBadges[project.status]
+                const isRealClient = project.status === "client"
+
+                return (
+                  <motion.article
+                    key={project.url}
+                    variants={cardVariants}
+                    className={`group flex flex-col rounded-2xl bg-white border overflow-hidden
+                               hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-300 card-elevated
+                               ${
+                                 isRealClient
+                                   ? "border-[#f2c46d]/55 hover:border-[#f7d89b] shadow-[0_0_0_1px_rgba(242,196,109,0.08),0_22px_60px_-32px_rgba(242,196,109,0.5)]"
+                                   : "border-zinc-200 hover:border-emerald-300"
+                               }`}
                   >
-                    <img
-                      src={project.image}
-                      alt={`Preview ${project.name}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                    />
-                    {/* depth: subtle bottom blend + inset ring */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/35 via-transparent to-transparent" />
-                    <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
-                    {/* category chip */}
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-zinc-950/55 backdrop-blur-sm border border-white/10 text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
-                      {project.category}
-                    </span>
-                    {/* hover open hint */}
-                    <span className="absolute top-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-950/55 backdrop-blur-sm border border-white/10 text-white opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
-                    </span>
-                  </a>
-
-                  {/* Story / text */}
-                  <div className="flex flex-col flex-1 p-5 sm:p-6">
-                    <h2
-                      className="text-lg font-semibold text-zinc-900 mb-2 leading-snug"
-                      style={{ letterSpacing: "-0.02em" }}
+                    {/* Preview image → opens the live project */}
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Deschide ${project.name}`}
+                      className="relative block aspect-[16/10] overflow-hidden bg-zinc-900
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
                     >
-                      {project.name}
-                    </h2>
-                    <p className="text-sm text-zinc-600 flex-1" style={{ lineHeight: "1.7" }}>
-                      {project.story}
-                    </p>
+                      <img
+                        src={project.image}
+                        alt={`Preview ${project.name}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                      />
+                      {/* depth: subtle bottom blend + inset ring */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/35 via-transparent to-transparent" />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+                      {/* project status */}
+                      <span
+                        className={`absolute top-3 left-3 max-w-[calc(100%-1.5rem)] inline-flex items-center gap-2 rounded-full border uppercase tracking-[0.12em]
+                                   ${
+                                     isRealClient
+                                       ? "right-3 justify-center px-3.5 py-2 text-xs sm:text-sm font-extrabold"
+                                       : "px-2.5 py-1 text-[10px] font-semibold"
+                                   } ${badge.className}`}
+                      >
+                        {isRealClient && (
+                          <Star className="w-4 h-4 fill-current shrink-0" strokeWidth={1.8} aria-hidden="true" />
+                        )}
+                        {badge.label}
+                      </span>
+                      {/* hover open hint */}
+                      <span className="absolute bottom-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-950/55 backdrop-blur-sm border border-white/10 text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-[opacity,transform] duration-300">
+                        <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
+                      </span>
+                    </a>
 
-                    <div className="mt-5 flex items-center gap-3">
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-600 transition-colors"
-                      >
-                        Vezi site-ul
-                        <ArrowUpRight
-                          className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          strokeWidth={2}
-                        />
-                      </a>
-                      <a
-                        href={`https://wa.me/40729369094?text=${encodeURIComponent(project.waMessage)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-auto inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-emerald-600 text-white text-xs font-medium hover:bg-emerald-700 active:scale-95 transition-[transform,background-color] duration-200"
-                      >
-                        Vreau ceva similar
-                        <ArrowRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
-                      </a>
+                    {/* Business type / project benefits */}
+                    <div className="flex flex-col flex-1 p-5 sm:p-6">
+                      <div className="flex items-start gap-3">
+                        <span
+                          className={`mt-0.5 flex w-10 h-10 shrink-0 items-center justify-center rounded-xl border ${
+                            isRealClient
+                              ? "border-[#f2c46d]/35 bg-[#f2c46d]/10 text-[#f7d89b]"
+                              : "border-white/10 bg-white/5 text-zinc-300"
+                          }`}
+                        >
+                          <ProjectIcon className="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
+                        </span>
+                        <div>
+                          <h2
+                            className="text-xl font-bold text-zinc-900 leading-tight"
+                            style={{ letterSpacing: "-0.025em" }}
+                          >
+                            {project.businessType}
+                          </h2>
+                          <p className="mt-1 text-sm font-medium text-zinc-500">{project.name}</p>
+                        </div>
+                      </div>
+
+                      <ul className="mt-5 flex-1 space-y-2.5" aria-label={`Beneficii ${project.businessType}`}>
+                        {project.highlights.map((highlight) => (
+                          <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-400">
+                            <Check
+                              className={`mt-0.5 w-4 h-4 shrink-0 ${
+                                isRealClient ? "text-[#f2c46d]" : "text-zinc-400"
+                              }`}
+                              strokeWidth={2.2}
+                              aria-hidden="true"
+                            />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="mt-6 flex flex-wrap items-center gap-3">
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-300 hover:text-white transition-colors"
+                        >
+                          {project.liveLabel}
+                          <ArrowUpRight
+                            className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            strokeWidth={2}
+                          />
+                        </a>
+                        <a
+                          href={`https://wa.me/40729369094?text=${encodeURIComponent(project.waMessage)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`ml-auto inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold
+                                     active:scale-95 transition-[transform,background-color,box-shadow] duration-200 ${
+                                       isRealClient
+                                         ? "bg-[#f2c46d] text-zinc-950 hover:bg-[#f7d89b] shadow-[0_8px_24px_-12px_rgba(242,196,109,0.8)]"
+                                         : "bg-emerald-600 text-white hover:bg-emerald-700"
+                                     }`}
+                        >
+                          Vreau ceva similar
+                          <ArrowRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </motion.article>
-              ))}
+                  </motion.article>
+                )
+              })}
             </motion.div>
 
             <motion.div
@@ -223,7 +383,7 @@ export default function ProiectePage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button
                   size="lg"
-                  className="rounded-full bg-white text-emerald-700 hover:bg-zinc-100 font-semibold"
+                  className="rounded-full bg-[#f8fafc] text-emerald-800 hover:bg-[#ecfdf5] font-semibold shadow-sm"
                   asChild
                 >
                   <Link href="/#contact">Programează audit gratuit</Link>
