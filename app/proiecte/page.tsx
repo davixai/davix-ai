@@ -6,6 +6,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   BadgeCheck,
+  Boxes,
   Check,
   Droplets,
   Hotel,
@@ -24,7 +25,7 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
-type ProjectStatus = "client" | "premium" | "demo" | "product"
+type ProjectStatus = "client" | "premium" | "demo"
 
 type Project = {
   businessType: string
@@ -84,7 +85,7 @@ const projects: Project[] = [
     icon: UtensilsCrossed,
     url: "https://restaurant-demo-10.netlify.app/",
     image: "/projects/restaurant.webp",
-    waMessage: "Salut! Vreau un site pentru restaurantul meu, ca acest model demonstrativ.",
+    waMessage: "Salut! Vreau un site pentru restaurantul meu, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -135,23 +136,23 @@ const projects: Project[] = [
     waMessage: "Salut! Vreau un site pentru serviciul meu de tractări auto, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
-  {
-    businessType: "CRM stomatologic",
-    name: "Davix Dental",
-    highlights: [
-      "Pacienți și programări",
-      "Fișe și planuri de tratament",
-      "Financiar și laborator",
-      "Remindere SMS automate",
-    ],
-    status: "product",
-    icon: LayoutDashboard,
-    url: "https://davixdental.online/",
-    image: "/projects/davix-dental.webp",
-    waMessage: "Salut! Sunt interesat de aplicația Davix Dental pentru clinica mea.",
-    liveLabel: "Vezi aplicația",
-  },
 ]
+
+/** Not a client site — our own software, so it gets its own band under the grid. */
+const ownProduct = {
+  businessType: "CRM stomatologic",
+  name: "Davix Dental",
+  highlights: [
+    "Pacienți și programări",
+    "Fișe și planuri de tratament",
+    "Financiar și laborator",
+    "Remindere SMS automate",
+  ],
+  icon: LayoutDashboard,
+  url: "https://davixdental.online/",
+  image: "/projects/davix-dental.webp",
+  waMessage: "Salut! Sunt interesat de aplicația Davix Dental pentru clinica mea.",
+}
 
 const industries: { label: string; icon: LucideIcon }[] = [
   { label: "Vidanjare & utilaje", icon: Droplets },
@@ -170,17 +171,13 @@ const statusBadges: Record<ProjectStatus, { label: string; className: string }> 
       "bg-emerald-500 border-emerald-300 text-zinc-950 shadow-[0_8px_28px_-12px_rgba(16,185,129,0.9)]",
   },
   premium: {
-    label: "Demo premium · exclusiv",
+    label: "Model premium · exclusiv",
     className:
       "bg-[#f2c46d] border-[#f7d89b] text-zinc-950 shadow-[0_8px_28px_-12px_rgba(242,196,109,0.85)]",
   },
   demo: {
-    label: "Proiect demonstrativ",
+    label: "Model · se personalizează",
     className: "bg-zinc-950/70 border-white/15 text-zinc-200 backdrop-blur-md",
-  },
-  product: {
-    label: "Produs DaviX AI",
-    className: "bg-zinc-950/70 border-sky-300/30 text-sky-200 backdrop-blur-md",
   },
 }
 
@@ -229,7 +226,7 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Șapte proiecte live — vezi-le funcționând.
+                Un client real și șase modele gata de personalizat — toate live.
               </p>
 
               <div className="mt-8">
@@ -405,6 +402,106 @@ export default function ProiectePage() {
                 )
               })}
             </motion.div>
+
+            {/* Own software — sits outside the client grid so it doesn't read as a seventh site */}
+            <motion.section
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              aria-labelledby="produs-propriu"
+              className="group mt-8 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden
+                         rounded-2xl bg-white border border-sky-300/25 card-elevated
+                         shadow-[0_0_0_1px_rgba(56,189,248,0.06),0_22px_60px_-32px_rgba(56,189,248,0.45)]"
+            >
+              <a
+                href={ownProduct.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Deschide ${ownProduct.name}`}
+                className="relative block aspect-[16/10] lg:aspect-auto lg:min-h-[300px] overflow-hidden bg-zinc-900
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-inset"
+              >
+                <img
+                  src={ownProduct.image}
+                  alt={`Preview ${ownProduct.name}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/35 via-transparent to-transparent" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+                <span
+                  className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full border px-3.5 py-2
+                             text-xs sm:text-sm font-extrabold uppercase tracking-[0.12em]
+                             bg-sky-400 border-sky-200 text-zinc-950 shadow-[0_8px_28px_-12px_rgba(56,189,248,0.9)]"
+                >
+                  <Boxes className="w-4 h-4 shrink-0" strokeWidth={2.2} aria-hidden="true" />
+                  Produs propriu
+                </span>
+              </a>
+
+              <div className="flex flex-col justify-center p-6 sm:p-8">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex w-10 h-10 shrink-0 items-center justify-center rounded-xl border border-sky-200 bg-sky-50 text-sky-400">
+                    <ownProduct.icon className="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h2
+                      id="produs-propriu"
+                      className="text-xl sm:text-2xl font-bold text-zinc-900 leading-tight"
+                      style={{ letterSpacing: "-0.025em" }}
+                    >
+                      {ownProduct.businessType}
+                    </h2>
+                    <p className="mt-1 text-sm font-medium text-zinc-500">{ownProduct.name}</p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm text-zinc-600" style={{ lineHeight: "1.7" }}>
+                  Aplicația pe care o construim și o întreținem noi — nu un site de prezentare, ci
+                  software folosit zilnic într-o clinică.
+                </p>
+
+                <ul
+                  className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5"
+                  aria-label={`Ce include ${ownProduct.name}`}
+                >
+                  {ownProduct.highlights.map((highlight) => (
+                    <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-600">
+                      <Check className="mt-0.5 w-4 h-4 shrink-0 text-sky-400" strokeWidth={2.2} aria-hidden="true" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a
+                    href={ownProduct.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full text-sm font-medium text-zinc-700 hover:text-sky-700
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 transition-colors"
+                  >
+                    Vezi aplicația
+                    <ArrowUpRight
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      strokeWidth={2}
+                    />
+                  </a>
+                  <a
+                    href={`https://wa.me/40729369094?text=${encodeURIComponent(ownProduct.waMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold
+                               bg-sky-500 text-white hover:bg-sky-600 active:scale-95
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2
+                               transition-[transform,background-color,box-shadow] duration-200"
+                  >
+                    Vreau demo pentru clinica mea
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
+                  </a>
+                </div>
+              </div>
+            </motion.section>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
