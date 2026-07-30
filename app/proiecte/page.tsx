@@ -5,7 +5,9 @@ import { useRef } from "react"
 import {
   ArrowRight,
   ArrowUpRight,
+  BadgeCheck,
   Check,
+  Droplets,
   Hotel,
   LayoutDashboard,
   Star,
@@ -22,7 +24,7 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
-type ProjectStatus = "premium" | "demo" | "product"
+type ProjectStatus = "client" | "premium" | "demo" | "product"
 
 type Project = {
   businessType: string
@@ -37,6 +39,22 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    businessType: "Vidanjare autorizată",
+    name: "DISCIF S.R.L. · Suceava",
+    highlights: [
+      "Site publicat și folosit zilnic",
+      "Formular de ofertă cu detaliile intervenției",
+      "Telefon vizibil pe tot site-ul",
+      "Zone deservite din județ, clar afișate",
+    ],
+    status: "client",
+    icon: Droplets,
+    url: "https://discifsuceava.ro/",
+    image: "/projects/discif.webp",
+    waMessage: "Salut! Vreau un site pentru firma mea, ca cel construit pentru DISCIF Suceava.",
+    liveLabel: "Vezi site-ul",
+  },
   {
     businessType: "Pensiune boutique",
     name: "ARBORÉA · Bucovina",
@@ -136,6 +154,7 @@ const projects: Project[] = [
 ]
 
 const industries: { label: string; icon: LucideIcon }[] = [
+  { label: "Vidanjare & utilaje", icon: Droplets },
   { label: "Pensiuni", icon: Hotel },
   { label: "Restaurante", icon: UtensilsCrossed },
   { label: "Clinici dentare", icon: Stethoscope },
@@ -145,6 +164,11 @@ const industries: { label: string; icon: LucideIcon }[] = [
 ]
 
 const statusBadges: Record<ProjectStatus, { label: string; className: string }> = {
+  client: {
+    label: "Client real · Suceava",
+    className:
+      "bg-emerald-500 border-emerald-300 text-zinc-950 shadow-[0_8px_28px_-12px_rgba(16,185,129,0.9)]",
+  },
   premium: {
     label: "Demo premium · exclusiv",
     className:
@@ -205,11 +229,11 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Cinci proiecte demonstrative și un produs propriu — toate disponibile live.
+                Șapte proiecte live — vezi-le funcționând.
               </p>
 
               <div className="mt-8">
-                <p className="text-sm font-medium text-zinc-300 mb-3">
+                <p className="text-sm font-medium text-zinc-600 mb-3">
                   Vezi ce putem construi pentru afacerea ta:
                 </p>
                 <div className="flex flex-wrap justify-center gap-2.5">
@@ -244,7 +268,9 @@ export default function ProiectePage() {
               {projects.map((project) => {
                 const ProjectIcon = project.icon
                 const badge = statusBadges[project.status]
+                const isClient = project.status === "client"
                 const isPremiumDemo = project.status === "premium"
+                const isFeatured = isClient || isPremiumDemo
 
                 return (
                   <motion.article
@@ -253,9 +279,11 @@ export default function ProiectePage() {
                     className={`group flex flex-col rounded-2xl bg-white border overflow-hidden
                                hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-300 card-elevated
                                ${
-                                 isPremiumDemo
-                                   ? "border-[#f2c46d]/55 hover:border-[#f7d89b] shadow-[0_0_0_1px_rgba(242,196,109,0.08),0_22px_60px_-32px_rgba(242,196,109,0.5)]"
-                                   : "border-zinc-200 hover:border-emerald-300"
+                                 isClient
+                                   ? "border-emerald-400/70 hover:border-emerald-500 shadow-[0_0_0_1px_rgba(16,185,129,0.1),0_22px_60px_-32px_rgba(16,185,129,0.55)]"
+                                   : isPremiumDemo
+                                     ? "border-[#f2c46d]/55 hover:border-[#f7d89b] shadow-[0_0_0_1px_rgba(242,196,109,0.08),0_22px_60px_-32px_rgba(242,196,109,0.5)]"
+                                     : "border-zinc-200 hover:border-emerald-300"
                                }`}
                   >
                     {/* Preview image → opens the live project */}
@@ -280,11 +308,14 @@ export default function ProiectePage() {
                       <span
                         className={`absolute top-3 left-3 max-w-[calc(100%-1.5rem)] inline-flex items-center gap-2 rounded-full border uppercase tracking-[0.12em]
                                    ${
-                                     isPremiumDemo
+                                     isFeatured
                                        ? "right-3 justify-center px-3.5 py-2 text-xs sm:text-sm font-extrabold"
                                        : "px-2.5 py-1 text-[10px] font-semibold"
                                    } ${badge.className}`}
                       >
+                        {isClient && (
+                          <BadgeCheck className="w-4 h-4 shrink-0" strokeWidth={2.2} aria-hidden="true" />
+                        )}
                         {isPremiumDemo && (
                           <Star className="w-4 h-4 fill-current shrink-0" strokeWidth={1.8} aria-hidden="true" />
                         )}
@@ -301,9 +332,11 @@ export default function ProiectePage() {
                       <div className="flex items-start gap-3">
                         <span
                           className={`mt-0.5 flex w-10 h-10 shrink-0 items-center justify-center rounded-xl border ${
-                            isPremiumDemo
-                              ? "border-[#f2c46d]/35 bg-[#f2c46d]/10 text-[#f7d89b]"
-                              : "border-white/10 bg-white/5 text-zinc-300"
+                            isClient
+                              ? "border-emerald-200 bg-emerald-50 text-emerald-400"
+                              : isPremiumDemo
+                                ? "border-[#f2c46d]/35 bg-[#f2c46d]/10 text-[#f7d89b]"
+                                : "border-zinc-200 bg-zinc-50 text-zinc-600"
                           }`}
                         >
                           <ProjectIcon className="w-5 h-5" strokeWidth={1.8} aria-hidden="true" />
@@ -321,10 +354,14 @@ export default function ProiectePage() {
 
                       <ul className="mt-5 flex-1 space-y-2.5" aria-label={`Beneficii ${project.businessType}`}>
                         {project.highlights.map((highlight) => (
-                          <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-400">
+                          <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-600">
                             <Check
                               className={`mt-0.5 w-4 h-4 shrink-0 ${
-                                isPremiumDemo ? "text-[#f2c46d]" : "text-zinc-400"
+                                isClient
+                                  ? "text-emerald-400"
+                                  : isPremiumDemo
+                                    ? "text-[#f2c46d]"
+                                    : "text-emerald-500"
                               }`}
                               strokeWidth={2.2}
                               aria-hidden="true"
@@ -339,7 +376,8 @@ export default function ProiectePage() {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-300 hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1.5 rounded-full text-sm font-medium text-zinc-700 hover:text-emerald-700
+                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 transition-colors"
                         >
                           {project.liveLabel}
                           <ArrowUpRight

@@ -7,10 +7,12 @@ import { Calendar } from "lucide-react"
 export function FloatingCta() {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 right-4 z-40 hidden sm:block"
+      /* Bottom-left: the navbar owns the top-right corner and the chat widget
+         owns the bottom-right, so this is the only free anchor. */
+      className="fixed bottom-6 left-6 z-40 hidden sm:block"
     >
       <MagneticButton distance={0.4}>
         <a

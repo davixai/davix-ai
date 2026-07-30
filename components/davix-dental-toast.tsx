@@ -1,24 +1,40 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Sparkles, X, ArrowRight } from "lucide-react"
 
+/** Pages where the visitor is already evaluating — don't interrupt with another offer. */
+const SILENT_PATHS = ["/proiecte", "/davix-dental"]
+
+const DISMISS_KEY = "davix-dental-toast-dismissed"
+const DELAY_MS = 30_000
+
 export function DavixDentalToast() {
   const [visible, setVisible] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 1400)
-    return () => clearTimeout(timer)
-  }, [])
+    if (SILENT_PATHS.includes(pathname)) {
+      setVisible(false)
+      return
+    }
+    if (sessionStorage.getItem(DISMISS_KEY) === "1") return
 
-  const close = () => setVisible(false)
+    const timer = setTimeout(() => setVisible(true), DELAY_MS)
+    return () => clearTimeout(timer)
+  }, [pathname])
+
+  const close = () => {
+    setVisible(false)
+    sessionStorage.setItem(DISMISS_KEY, "1")
+  }
 
   const handleCta = () => {
     setVisible(false)
-    if (typeof window !== "undefined") {
-      window.location.href = "/davix-dental"
-    }
+    sessionStorage.setItem(DISMISS_KEY, "1")
+    window.location.href = "/davix-dental"
   }
 
   return (
@@ -31,7 +47,8 @@ export function DavixDentalToast() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           role="status"
           aria-live="polite"
-          className="fixed bottom-20 left-4 right-auto lg:left-6 lg:bottom-6 z-40 max-w-[220px] lg:max-w-sm"
+          /* Stacks above the floating CTA, which sits at bottom-left. */
+          className="fixed bottom-24 left-4 right-auto lg:left-6 lg:bottom-28 z-40 max-w-[220px] lg:max-w-sm"
         >
           <div className="relative overflow-hidden rounded-xl lg:rounded-2xl bg-white border border-zinc-200 shadow-2xl shadow-sky-900/10 backdrop-blur">
             {/* Accent bar */}
