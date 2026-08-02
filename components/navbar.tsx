@@ -72,14 +72,14 @@ export function Navbar() {
       <nav className="relative flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-zinc-200 shadow-sm">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden ring-1 ring-white/20 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden ring-1 ring-white/20 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
             <img
               src="/davix-avatar.jpg"
               alt="David — DaviX AI"
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-bold text-zinc-900 text-base sm:text-lg tracking-tight">DaviX AI</span>
+          <span className="font-bold text-zinc-900 text-base sm:text-xl tracking-tight">DaviX AI</span>
         </Link>
 
         {/* Desktop Nav Items */}
