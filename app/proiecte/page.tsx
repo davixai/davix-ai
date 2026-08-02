@@ -140,13 +140,13 @@ const projects: Project[] = [
 
 /** Not a client site — our own software, so it gets its own band under the grid. */
 const ownProduct = {
-  businessType: "CRM stomatologic",
+  businessType: "Aplicație pentru cabinete stomatologice",
   name: "Davix Dental",
   highlights: [
     "Pacienți și programări",
     "Fișe și planuri de tratament",
-    "Financiar și laborator",
-    "Remindere SMS automate",
+    "Încasări și laborator",
+    "Mesaje automate către pacienți",
   ],
   icon: LayoutDashboard,
   url: "https://davixdental.online/",
@@ -161,7 +161,7 @@ const industries: { label: string; icon: LucideIcon }[] = [
   { label: "Clinici dentare", icon: Stethoscope },
   { label: "Electricieni", icon: Zap },
   { label: "Tractări auto", icon: Truck },
-  { label: "CRM pentru clinici", icon: LayoutDashboard },
+  { label: "Cabinete dentare", icon: LayoutDashboard },
 ]
 
 const statusBadges: Record<ProjectStatus, { label: string; className: string }> = {

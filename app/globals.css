@@ -226,6 +226,26 @@
     0 24px 48px -12px rgba(16, 185, 129, 0.05);
 }
 
+/* "În lucru" progress sweep — folosit pe cardurile de aplicații în producție */
+@keyframes wip-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.wip-bar {
+  animation: wip-bar 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wip-bar {
+    animation: none;
+  }
+}
+
 /* Toast slide-in animation */
 @keyframes toast-slide-in {
   from {
@@ -506,6 +526,28 @@ html[data-theme="cosmic"] .bg-emerald-50\/60 {
 }
 html[data-theme="cosmic"] .bg-emerald-100 {
   background-color: rgba(16, 185, 129, 0.2) !important;
+}
+/* Amber accent palette (aplicații în producție) → dark-friendly */
+html[data-theme="cosmic"] .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+html[data-theme="cosmic"] .bg-amber-100 {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+}
+html[data-theme="cosmic"] .border-amber-100,
+html[data-theme="cosmic"] .border-amber-200 {
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+html[data-theme="cosmic"] .text-amber-600,
+html[data-theme="cosmic"] .text-amber-700,
+html[data-theme="cosmic"] .text-amber-800 {
+  color: #fcd34d !important;
+}
+html[data-theme="cosmic"] .hover\:text-amber-700:hover {
+  color: #fde68a !important;
+}
+html[data-theme="cosmic"] .bg-zinc-50\/70 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 /* Hover / focus / group-hover states of the surface classes above must also

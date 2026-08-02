@@ -1,21 +1,21 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import DespreNoi from "@/components/despre-noi"
+import { Aplicatii } from "@/components/aplicatii"
 
 export const metadata = {
-  title: "Despre mine — DaviX AI",
+  title: "Aplicații personalizate — DaviX AI",
   description:
-    "Balta David Ioan, Suceava. Construiesc site-uri și aplicații pentru afaceri locale. Contract, factură și termene clare la fiecare proiect.",
+    "Aplicații construite special pentru afacerea ta: DaviX Dental pentru cabinete stomatologice și aplicația de fidelizare pentru cafenele.",
 }
 
-export default function DespreNoiPage() {
+export default function AplicatiiPage() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-transparent text-zinc-900">
         <Navbar />
-        <div className="pt-28 pb-8">
-          <DespreNoi />
+        <div className="pt-20">
+          <Aplicatii />
         </div>
         <Footer />
       </main>

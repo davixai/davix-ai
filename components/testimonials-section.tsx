@@ -14,10 +14,10 @@ const cases = [
     url: "https://democlinicastomatologica.netlify.app/",
   },
   {
-    industry: "SaaS / CRM dentar",
-    title: "Davix Dental — aplicație web pentru clinici",
+    industry: "Aplicație pentru cabinete dentare",
+    title: "Davix Dental — aplicație pentru cabinete stomatologice",
     summary:
-      "Clinici care lucrau cu Excel pentru pacienți, programări și financiar. Am construit o aplicație cu pacienți, programări, fișe medicale, financiar, roluri și automatizări SMS.",
+      "Cabinete care țineau pacienții, programările și încasările în Excel. Am construit o aplicație cu pacienți, programări, fișe medicale, încasări, acces pe roluri și mesaje automate.",
     metric: "Toate datele clinicii într-un singur loc",
     url: "https://davixdental.online/",
   },

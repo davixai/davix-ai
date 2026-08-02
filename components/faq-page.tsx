@@ -9,45 +9,45 @@ const categories = [
     label: "Costuri și estimări",
     faqs: [
       {
-        q: "Cât costă o automatizare AI?",
-        a: "Depinde de complexitate. Pentru automatizări simple (email, SMS, WhatsApp, sortări de date) începem de la câteva sute de euro. Pentru sisteme complete cu CRM și agenți AI, estimarea o discutăm în auditul gratuit, după ce înțelegem fluxul real.",
+        q: "Cât costă un chatbot AI?",
+        a: "Depinde de cât de multe trebuie să facă. Un chatbot care răspunde la întrebările frecvente și preia cereri pornește de la câteva sute de euro. Prețul exact ți-l spunem în auditul gratuit.",
       },
       {
-        q: "Cât costă o aplicație web?",
-        a: "Aplicațiile web custom (CRM-uri, portaluri, dashboard-uri) pornesc, de obicei, de la 1.500–2.500 € pentru un MVP simplu și cresc în funcție de roluri, integrări și volum de date. În audit primești o estimare concretă.",
+        q: "Cât costă o aplicație personalizată?",
+        a: "O primă versiune simplă pornește, de obicei, de la 1.500–2.500 €. Prețul crește în funcție de câți oameni o folosesc și câte lucruri trebuie să facă. În audit primești o cifră concretă.",
       },
       {
         q: "Pot începe doar cu un site?",
-        a: "Da. Mulți clienți pornesc cu un site de prezentare modern și adaugă, în timp, formulare inteligente, automatizări SMS sau chatbot. Construim pe etape, fără să te blocăm într-un pachet mare.",
+        a: "Da. Mulți clienți pornesc cu un site de prezentare și adaugă mai târziu un chatbot sau alte lucruri. Construim pe etape, fără să te blocăm într-un pachet mare.",
       },
       {
         q: "Există abonament lunar?",
-        a: "Pentru produsele de tip aplicație/CRM (ex. Davix Dental) lucrăm cu abonament lunar care include update-uri, suport și hosting. Pentru site-uri și automatizări one-off, abonamentul este opțional (mentenanță, optimizări).",
+        a: "Pentru aplicații (de exemplu Davix Dental) lucrăm cu abonament lunar, care include actualizări, suport și găzduire. La site-uri, abonamentul e opțional și acoperă întreținerea.",
       },
       {
         q: "Primesc factură și contract?",
-        a: "Da. Lucrăm cu factură și contract de prestări servicii. Suportăm e-Factură, iar termenii sunt clari înainte de începerea proiectului.",
+        a: "Da. Contract de prestări servicii și factură la fiecare proiect. Termenii sunt clari înainte să începem.",
       },
     ],
   },
   {
-    label: "Integrări",
+    label: "Chatboți și legături cu alte programe",
     faqs: [
       {
-        q: "Se poate integra cu WhatsApp?",
-        a: "Da. Putem conecta WhatsApp Business pentru chatbot, răspunsuri automate, preluare cereri și lead-uri direct în CRM sau email.",
+        q: "Chatbotul merge pe WhatsApp?",
+        a: "Da. Îl putem pune pe WhatsApp Business, ca să răspundă singur clienților și să-ți trimită cererile mai departe, pe email sau pe telefon.",
       },
       {
-        q: "Se poate integra cu SMS pentru reminder și review?",
-        a: "Da. Folosim integrări cu furnizori SMS pentru România (ex. Calisero). Trimitem reminder-e de programări, confirmări și cereri automate de review Google, cu jurnal complet pe fiecare mesaj.",
+        q: "Poate trimite singur mesaje clienților?",
+        a: "Da. Se pot trimite mesaje de reamintire înainte de programare, confirmări și cereri de recenzie pe Google. Pentru fiecare mesaj vezi dacă a ajuns sau nu.",
       },
       {
-        q: "Se poate integra cu email?",
-        a: "Da. Conectăm Gmail, Outlook sau alți provideri pentru secvențe automate: welcome, follow-up oferte, facturi, notificări interne și newsletter.",
+        q: "Merge cu emailul meu?",
+        a: "Da. Îl conectăm cu Gmail sau Outlook, pentru mesaje trimise automat: bun venit, revenire la o ofertă, facturi sau anunțuri.",
       },
       {
-        q: "Pot integra automatizările cu site-ul meu existent?",
-        a: "În cele mai multe cazuri da, indiferent de platformă. Ne spui ce folosești și verificăm compatibilitatea fără cost, în cadrul auditului gratuit.",
+        q: "Merge cu site-ul pe care îl am deja?",
+        a: "În cele mai multe cazuri, da. Ne spui ce ai acum și verificăm gratuit, în cadrul auditului.",
       },
     ],
   },
@@ -56,19 +56,19 @@ const categories = [
     faqs: [
       {
         q: "Ce se întâmplă după auditul gratuit?",
-        a: "Primești o propunere de soluție cu scope, cost estimativ și timp de livrare. Dacă mergem mai departe, semnăm contractul și începem cu o etapă de design/architecture, urmată de dezvoltare în iterații.",
+        a: "Primești o ofertă cu ce construim, cât costă și în cât timp e gata. Dacă mergem mai departe, semnăm contractul și pornim.",
       },
       {
-        q: "Cât durează implementarea?",
-        a: "Site-uri: 5–7 zile. Automatizări simple: 3–5 zile. Aplicații web / CRM-uri: 2–6 săptămâni, în funcție de scope și integrări. Davix Dental se poate implementa rapid pentru clinici mici/medii.",
+        q: "Cât durează?",
+        a: "Site de prezentare: 2–5 zile lucrătoare. Chatbot: 3–5 zile. Aplicație personalizată: 2–6 săptămâni, în funcție de cât de mare e.",
       },
       {
         q: "Trebuie să știu programare?",
-        a: "Nu. Ne ocupăm noi de tot — design, dezvoltare, integrări și publicare. Tu rămâi concentrat pe afacerea ta.",
+        a: "Nu. Ne ocupăm noi de tot: design, construcție și publicare. Tu rămâi concentrat pe afacerea ta.",
       },
       {
-        q: "Pot să modific conținutul singur după?",
-        a: "Da. Pentru site-uri îți explicăm cum să editezi texte și imagini. Pentru CRM-uri și aplicații, fiecare rol are interfața lui și nu ai nevoie de cunoștințe tehnice.",
+        q: "Pot să modific singur textele după?",
+        a: "Da. La site-uri îți arătăm cum să schimbi texte și poze. La aplicații, fiecare om din echipă vede doar ecranele de care are nevoie — nu trebuie să fii tehnic.",
       },
     ],
   },
@@ -77,15 +77,15 @@ const categories = [
     faqs: [
       {
         q: "Ce este Davix Dental?",
-        a: "Davix Dental este un CRM stomatologic pentru cabinete și clinici dentare. Include pacienți, programări, fișiere medicale, odontogramă, tratamente, financiar, laborator, roluri și automatizări SMS pentru reminder și review Google.",
+        a: "E o aplicație pentru cabinete stomatologice. Ține pacienții, programările, fișele, tratamentele, încasările și lucrările de laborator într-un singur loc și trimite singură mesaje de reamintire pacienților.",
       },
       {
-        q: "Pentru ce clinici este potrivit Davix Dental?",
-        a: "Pentru cabinete și clinici mici/medii care vor să-și organizeze pacienții, programările și financiarul într-o singură aplicație și să automatizeze partea de comunicare cu pacienții (reminder, review). Planurile sunt: Starter 699 RON, Pro 749 RON, Max 950 RON / lună.",
+        q: "Pentru ce cabinete e potrivită?",
+        a: "Pentru cabinete și clinici mici și medii care vor totul într-un singur loc, în locul caietelor, al fișierelor Excel și al mesajelor trimise de mână.",
       },
       {
-        q: "Cum funcționează SMS-urile în planul Pro vs. Max?",
-        a: "În Pro, clinica folosește propriul cont Calisero și plătește direct consumul SMS (~0,25 RON/mesaj). În Max, gestionăm noi 450 SMS incluse lunar, iar extra-SMS sunt facturate la 0,39 RON/mesaj, lunar.",
+        q: "Care e diferența dintre planul Pro și Max?",
+        a: "În Pro, cabinetul plătește direct mesajele trimise. În Max, ne ocupăm noi și sunt incluse 450 de mesaje pe lună; peste ele, se facturează separat.",
       },
     ],
   },

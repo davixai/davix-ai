@@ -1,10 +1,24 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { Fragment } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight, Check, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const EASE = [0.22, 1, 0.36, 1] as const
+
+/** Titlul intră cuvânt cu cuvânt — efectul premium stă în stagger, nu în viteză. */
+const line1 = ["Noi", "construim", "sistemele."]
+const line2 = ["Tu", "construiești", "afacerea."]
+
 export function HeroHome() {
+  const reduceMotion = useReducedMotion()
+  const word = (i: number) => ({
+    initial: reduceMotion ? { opacity: 0 } : { opacity: 0, y: "0.45em" },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.65, delay: 0.1 + i * 0.07, ease: EASE },
+  })
+
   return (
     <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
       {/* Soft layered background */}
@@ -33,41 +47,59 @@ export function HeroHome() {
             >
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.8} />
               <span className="text-emerald-700 text-sm font-medium">
-                Aplicații, site-uri și automatizări AI
+                Site-uri web · Aplicații · Chatboți AI
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.08 }}
+            <h1
               style={{ letterSpacing: "-0.03em" }}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-zinc-900 leading-[1.05] mb-6 text-balance"
             >
-              Aplicații, site-uri și{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-emerald-600">automatizări AI</span>
-                <span className="absolute left-0 bottom-1 right-0 h-3 bg-emerald-200/70 -z-0 rounded" />
-              </span>{" "}
-              pentru afaceri care vor mai mulți clienți
-            </motion.h1>
+              <span className="block">
+                {line1.map((w, i) => (
+                  <Fragment key={w}>
+                    <motion.span {...word(i)} className="inline-block">
+                      {w}
+                    </motion.span>{" "}
+                  </Fragment>
+                ))}
+              </span>
+              <span className="block text-emerald-400">
+                {line2.map((w, i) => (
+                  <Fragment key={w}>
+                    <motion.span {...word(line1.length + i)} className="relative inline-block">
+                      <span className="relative z-10">{w}</span>
+                      {/* linia se desenează sub fiecare cuvânt: rezistă la orice rupere de rând
+                          și stă sub cozile literelor, ca să nu pară text tăiat */}
+                      <motion.span
+                        aria-hidden="true"
+                        initial={reduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.5, delay: 0.6 + i * 0.09, ease: EASE }}
+                        className="absolute left-0 right-0 -bottom-1 z-0 h-1.5 origin-left rounded-full bg-emerald-400/70"
+                      />
+                    </motion.span>
+                    {i < line2.length - 1 ? " " : null}
+                  </Fragment>
+                ))}
+              </span>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.18 }}
+              transition={{ duration: 0.55, delay: 0.5 }}
               className="text-lg text-zinc-600 mb-8 max-w-xl"
               style={{ lineHeight: "1.7" }}
             >
-              Construim site-uri moderne, aplicații web custom și automatizări pentru SMS, email,
-              WhatsApp și procese interne, ca afacerea ta să economisească timp și să primească mai
-              multe cereri.
+              Site-uri web, aplicații personalizate și chatboți AI create pentru a economisi timp, a
+              simplifica procesele și a transforma mai mulți vizitatori în clienți.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.26 }}
+              transition={{ duration: 0.55, delay: 0.62 }}
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
               <Button
@@ -93,7 +125,7 @@ export function HeroHome() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.36 }}
+              transition={{ duration: 0.5, delay: 0.72 }}
               className="flex flex-wrap gap-x-5 gap-y-2"
             >
               {["Audit gratuit 15 min", "Fără costuri ascunse", "Livrare rapidă"].map((badge) => (
@@ -179,11 +211,11 @@ export function HeroHome() {
                     {/* Activity row */}
                     <div className="mx-4 my-3 flex items-center gap-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-2.5">
                       <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[11px] font-bold shrink-0">
-                        SM
+                        DX
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11px] font-medium text-zinc-800 truncate">SMS reminder trimis</p>
-                        <p className="text-[9px] text-zinc-500 truncate">14 pacienți · automat · acum 3 min</p>
+                        <p className="text-[11px] font-medium text-zinc-800 truncate">Cerere nouă din chat</p>
+                        <p className="text-[9px] text-zinc-500 truncate">preluată automat · acum 3 min</p>
                       </div>
                     </div>
                   </div>
@@ -197,7 +229,7 @@ export function HeroHome() {
                   className="absolute -left-5 bottom-10 hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-zinc-200 card-elevated"
                 >
                   <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
-                  <span className="text-[11px] font-semibold text-zinc-800">Automatizare activă</span>
+                  <span className="text-[11px] font-semibold text-zinc-800">Chatbot activ</span>
                 </motion.div>
 
                 <div className="absolute -inset-4 bg-emerald-300/30 rounded-3xl blur-2xl -z-10" />

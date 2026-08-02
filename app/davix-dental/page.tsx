@@ -4,11 +4,12 @@ import { SmoothScroll } from "@/components/smooth-scroll"
 import { DavixDental } from "@/components/davix-dental"
 
 export const metadata = {
-  title: "Davix Dental — CRM stomatologic pentru clinici",
+  title: "Davix Dental — aplicație pentru cabinete stomatologice",
   description:
-    "Davix Dental: CRM stomatologic pentru cabinete și clinici. Programări, pacienți, fișiere medicale, tratamente, financiar, laborator și automatizări SMS într-o singură aplicație. Planuri Starter, Pro și Max.",
+    "Davix Dental: aplicația care ține cabinetul stomatologic organizat. Pacienți, programări, fișe, tratamente, încasări, laborator și mesaje automate, într-un singur loc.",
   keywords: [
     "Davix Dental",
+    "aplicație cabinet stomatologic",
     "CRM stomatologic",
     "software clinică dentară",
     "programări pacienți",
@@ -18,9 +19,9 @@ export const metadata = {
     "review Google pacienți",
   ],
   openGraph: {
-    title: "Davix Dental — CRM stomatologic pentru clinici",
+    title: "Davix Dental — aplicație pentru cabinete stomatologice",
     description:
-      "Pacienți, programări, fișiere medicale, tratamente, financiar, laborator și automatizări SMS într-un sistem configurat pentru fluxul clinicii.",
+      "Pacienți, programări, fișe medicale, tratamente, încasări, laborator și mesaje automate, într-o singură aplicație gândită pentru cabinet.",
     url: "https://www.davixai.website/davix-dental",
     siteName: "DaviX AI",
     locale: "ro_RO",

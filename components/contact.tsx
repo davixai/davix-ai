@@ -34,10 +34,10 @@ const getLocalDateKey = (date: Date) => {
 }
 
 const auditBullets = [
-  "Identificăm ce poate fi automatizat",
-  "Verificăm dacă ai nevoie de site, aplicație sau automatizare",
-  "Discutăm despre SMS reminder/review, email, WhatsApp sau CRM",
-  "Primești o estimare de cost și timp",
+  "Ne spui ce face afacerea ta",
+  "Îți spunem dacă ai nevoie de site, aplicație sau chatbot",
+  "Vedem ce se poate face automat, fără să stai tu",
+  "Primești un preț și un termen clar",
 ]
 
 export function Contact() {
@@ -196,8 +196,8 @@ export function Contact() {
             className="text-zinc-600 max-w-2xl mx-auto mb-8"
             style={{ lineHeight: "1.7" }}
           >
-            În auditul gratuit vedem ce procese poți automatiza, unde pierzi timp sau clienți și ce
-            soluție se potrivește cel mai bine afacerii tale.
+            15 minute de discuție, fără obligații. La final știi exact ce ți se potrivește, cât
+            costă și în cât timp e gata.
           </p>
 
           <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-2">

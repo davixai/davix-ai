@@ -38,9 +38,8 @@ export default function TermeniPage() {
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">1. Cine suntem</h2>
                 <p>
                   DaviX AI este un brand de servicii digitale operat de Balta David, cu sediul în
-                  Suceava, România. Oferim aplicații web custom, site-uri de prezentare, CRM-uri
-                  (inclusiv produsul Davix Dental) și automatizări AI pentru SMS, email, WhatsApp și
-                  fluxuri interne.
+                  Suceava, România. Oferim site-uri web, aplicații personalizate (inclusiv produsul
+                  Davix Dental) și chatboți AI pentru afaceri locale.
                 </p>
                 <p className="mt-3">
                   Contact: <a href="mailto:contact@davixai.website" className="text-emerald-700 hover:underline">contact@davixai.website</a>
@@ -79,9 +78,9 @@ export default function TermeniPage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">5. Suport și mentenanță</h2>
                 <p>
-                  Pentru produsele tip aplicație/CRM, suportul este inclus în abonamentul lunar. Pentru
-                  proiecte one-off, suportul se poate contracta separat. Timpii de răspuns standard
-                  sunt în zile lucrătoare (L–V).
+                  Pentru aplicații, suportul este inclus în abonamentul lunar. Pentru proiectele
+                  livrate o singură dată (site-uri), suportul se poate contracta separat. Timpii de
+                  răspuns standard sunt în zile lucrătoare (L–V).
                 </p>
               </section>
 

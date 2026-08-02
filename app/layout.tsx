@@ -20,25 +20,24 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "DaviX AI — Aplicații, site-uri și automatizări AI pentru afaceri",
+  title: "DaviX AI — Site-uri web, aplicații personalizate și chatboți AI",
   description:
-    "Construim aplicații web custom, site-uri moderne și automatizări AI (SMS, email, WhatsApp, CRM) pentru afaceri locale care vor mai mulți clienți. Programează un audit gratuit.",
+    "Construim site-uri web premium, aplicații personalizate și chatboți AI pentru afaceri locale care vor să economisească timp și să primească mai multe cereri. Audit gratuit 15 minute.",
   keywords: [
-    "aplicații web",
     "site-uri web",
-    "automatizări AI",
-    "automatizări SMS",
-    "automatizări email",
+    "aplicații personalizate",
+    "chatbot AI",
     "chatbot WhatsApp",
-    "CRM stomatologic",
+    "magazin online",
+    "aplicație pentru cabinet stomatologic",
     "software clinică dentară",
     "Davix Dental",
     "DaviX AI",
   ],
   openGraph: {
-    title: "DaviX AI — Aplicații, site-uri și automatizări AI pentru afaceri",
+    title: "DaviX AI — Site-uri web, aplicații personalizate și chatboți AI",
     description:
-      "Aplicații web custom, site-uri și automatizări (SMS, email, WhatsApp, CRM) pentru afaceri locale. Programează un audit gratuit.",
+      "Site-uri web, aplicații personalizate și chatboți AI pentru afaceri locale. Programează un audit gratuit de 15 minute.",
     url: "https://www.davixai.website",
     siteName: "DaviX AI",
     locale: "ro_RO",
@@ -54,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DaviX AI — Aplicații, site-uri și automatizări AI",
+    title: "DaviX AI — Site-uri web, aplicații și chatboți AI",
     description:
-      "Aplicații web, site-uri și automatizări AI pentru afaceri care vor mai mulți clienți.",
+      "Site-uri web, aplicații personalizate și chatboți AI pentru afaceri care vor mai mulți clienți.",
     images: ["/davix-logo.png"],
   },
   metadataBase: new URL("https://www.davixai.website"),

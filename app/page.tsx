@@ -7,9 +7,9 @@ import { ProofSection } from "@/components/proof-section"
 import { Contact } from "@/components/contact"
 
 export const metadata = {
-  title: "DaviX AI — Aplicații, site-uri și automatizări AI pentru business",
+  title: "DaviX AI — Site-uri web, aplicații personalizate și chatboți AI",
   description:
-    "Construim aplicații web custom, site-uri moderne și automatizări AI (SMS, email, WhatsApp, CRM) pentru afaceri locale care vor mai mulți clienți.",
+    "Construim site-uri web premium, aplicații personalizate și chatboți AI pentru afaceri locale care vor să economisească timp și să primească mai multe cereri.",
 }
 
 export default function Home() {

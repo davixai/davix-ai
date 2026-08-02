@@ -77,7 +77,7 @@ export function DavixDentalToast() {
                 className="lg:hidden text-[11px] text-zinc-600 mb-2"
                 style={{ lineHeight: "1.45" }}
               >
-                CRM stomatologic pentru cabinete și clinici.
+                Aplicație pentru cabinete stomatologice.
               </p>
 
               {/* Full copy on desktop */}
@@ -85,8 +85,8 @@ export function DavixDentalToast() {
                 className="hidden lg:block text-xs text-zinc-600 mb-3"
                 style={{ lineHeight: "1.55" }}
               >
-                CRM stomatologic pentru cabinete și clinici. Programări, pacienți, fișiere medicale,
-                tratamente, financiar și automatizări SMS — într-o singură aplicație.
+                Aplicație pentru cabinete stomatologice. Pacienți, programări, fișe medicale,
+                tratamente, încasări și mesaje automate — într-un singur loc.
               </p>
 
               <button

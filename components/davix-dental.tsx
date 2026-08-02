@@ -38,7 +38,7 @@ const beneficii = [
   { icon: Wallet, label: "Financiar: plăți, încasări și cheltuieli" },
   { icon: Beaker, label: "Laborator: lucrări, furnizori și costuri" },
   { icon: Users, label: "Roluri pentru medic, asistent, recepție, contabil" },
-  { icon: ShieldCheck, label: "Audit log și notițe rapide" },
+  { icon: ShieldCheck, label: "Istoricul modificărilor și notițe rapide" },
   { icon: MessageSquare, label: "Automatizări SMS pentru reminder și review Google" },
 ]
 
@@ -61,7 +61,7 @@ const plans: Plan[] = [
     name: "Starter",
     price: "400",
     description:
-      "Pentru clinici care vor CRM dentar complet, fără automatizări SMS.",
+      "Pentru cabinete care vor aplicația completă, fără mesaje automate.",
     includes: [
       "Calendar și programări pe medic",
       "Fișe pacienți, istoric medical și consimțământ marketing",
@@ -70,7 +70,7 @@ const plans: Plan[] = [
       "Servicii, prețuri și durate pe clinică/medic",
       "Financiar: plăți, încasări, cheltuieli și metode de plată",
       "Laborator: lucrări, furnizori, statusuri și costuri",
-      "Recall pacienți, notițe rapide și audit log",
+      "Rechemare pacienți la control, notițe și istoricul modificărilor",
     ],
     note:
       "Automatizări SMS: inactive. Plan potrivit când clinica dorește aplicația, dar gestionează comunicarea manual.",
@@ -173,7 +173,7 @@ export function DavixDental() {
             style={{ letterSpacing: "-0.025em" }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-5 text-balance"
           >
-            CRM stomatologic pentru cabinete și clinici organizate
+            Aplicația care ține cabinetul stomatologic organizat
           </h3>
           <p
             className="text-zinc-600 max-w-2xl mx-auto mb-7"

@@ -7,7 +7,7 @@ import { Plus, Minus } from "lucide-react"
 const faqs = [
   {
     q: "Trebuie să schimb aplicațiile pe care le folosesc deja?",
-    a: "Nu. Ne conectăm direct la uneltele tale existente — Excel, Gmail, WhatsApp, CRM, facturare — și le automatizăm fără să fie nevoie să schimbi nimic.",
+    a: "Nu. Ne conectăm direct la ce folosești deja — Excel, Gmail, WhatsApp, programul de facturare — fără să fie nevoie să schimbi nimic.",
   },
   {
     q: "Cât durează implementarea?",

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { ArrowRight, ExternalLink, Star, Trophy } from "lucide-react"
+import { ArrowRight, Check, ExternalLink, Star, Trophy } from "lucide-react"
 import Link from "next/link"
 
 type Proof = {
@@ -10,6 +10,7 @@ type Proof = {
   name: string
   blurb: string
   metric: string
+  badges: string[]
   url: string
   image: string
 }
@@ -18,27 +19,27 @@ const projects: Proof[] = [
   {
     category: "Site firmă — publicat",
     name: "DISCIF — Vidanjare Suceava",
-    blurb:
-      "Site de prezentare pentru o firmă reală de vidanjare din Suceava, cu formular de ofertă și contact direct.",
+    blurb: "Site pentru o firmă reală de vidanjare din Suceava. Clienții cer ofertă direct de pe site.",
     metric: "Site publicat",
+    badges: ["Cerere de ofertă", "Telefon la un click", "Merge bine pe telefon"],
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
   },
   {
     category: "Site tractări auto",
     name: "DAR Assist — Tractări auto",
-    blurb:
-      "Site pentru un serviciu de tractări auto non-stop din Bucovina, cu telefoane vizibile și apel rapid pentru urgențe.",
+    blurb: "Site pentru tractări auto non-stop, unde numărul de telefon se vede din prima secundă.",
     metric: "Disponibil 24/7",
+    badges: ["Apel rapid 24/7", "Zone de intervenție", "Merge bine pe telefon"],
     url: "https://demotractari.netlify.app/",
     image: "/projects/tractari.webp",
   },
   {
     category: "Site stomatologic",
     name: "Lumident — Clinică stomatologică",
-    blurb:
-      "Site de prezentare profesional pentru o clinică dentară, optimizat să transforme vizitatorii în pacienți noi.",
+    blurb: "Site pentru o clinică dentară, gândit să transforme vizitatorii în pacienți noi.",
     metric: "Construit pentru conversie",
+    badges: ["Programări online", "Găsit ușor pe Google", "Design premium"],
     url: "https://democlinicastomatologica.netlify.app/",
     image: "/projects/lumident.webp",
   },
@@ -123,6 +124,28 @@ export function ProofSection() {
                 <p className="text-sm text-zinc-400 mb-4 flex-1" style={{ lineHeight: "1.6" }}>
                   {p.blurb}
                 </p>
+
+                {/* Beneficii reale, pe scurt */}
+                <ul className="flex flex-wrap gap-1.5 mb-4">
+                  {p.badges.map((b, bi) => (
+                    <motion.li
+                      key={b}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.35 + i * 0.1 + bi * 0.06,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] border border-white/10 px-2.5 py-1
+                                 text-[11px] font-medium text-zinc-200 transition-colors duration-300 group-hover:border-emerald-400/30"
+                    >
+                      <Check className="w-3 h-3 shrink-0 text-emerald-400" strokeWidth={2.6} aria-hidden="true" />
+                      {b}
+                    </motion.li>
+                  ))}
+                </ul>
+
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-xs font-medium text-emerald-300 self-start">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   {p.metric}

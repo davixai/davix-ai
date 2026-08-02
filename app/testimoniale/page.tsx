@@ -6,7 +6,7 @@ import { SmoothScroll } from "@/components/smooth-scroll"
 export const metadata = {
   title: "Studii de caz — DaviX AI",
   description:
-    "Studii de caz și rezultate concrete: site-uri, CRM-uri și automatizări AI livrate de DaviX AI pentru afaceri locale.",
+    "Studii de caz și rezultate concrete: site-uri, aplicații personalizate și chatboți AI livrate de DaviX AI pentru afaceri locale.",
 }
 
 export default function TestimonialePage() {

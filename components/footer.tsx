@@ -7,7 +7,8 @@ import Link from "next/link"
 const footerLinks = {
   Servicii: [
     { label: "Site-uri web", href: "/site-uri" },
-    { label: "Automatizări AI", href: "/automatizari" },
+    { label: "Aplicații personalizate", href: "/aplicatii" },
+    { label: "Chatboți AI", href: "/automatizari" },
     { label: "Davix Dental", href: "/davix-dental" },
     { label: "Proiecte", href: "/proiecte" },
   ],
@@ -49,8 +50,8 @@ export function Footer() {
               <span className="font-semibold text-zinc-900">DaviX AI</span>
             </Link>
             <p className="text-sm text-zinc-600 mb-4 max-w-sm" style={{ lineHeight: "1.6" }}>
-              Aplicații web, site-uri și automatizări AI pentru afaceri locale care vor mai mulți
-              clienți.
+              Site-uri web, aplicații personalizate și chatboți AI pentru afaceri locale care vor
+              mai mulți clienți.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />

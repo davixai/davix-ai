@@ -5,26 +5,26 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, Globe, Zap, Stethoscope, Menu, X } from "lucide-react"
+import { ChevronDown, Globe, Blocks, Bot, Menu, X } from "lucide-react"
 
 const serviciiDropdown = [
   {
-    href: "/",
+    href: "/site-uri",
     icon: Globe,
-    label: "Site-uri",
-    desc: "Site-uri care aduc clienți",
+    label: "Site-uri Web",
+    desc: "Prezentare, magazin online, campanii",
+  },
+  {
+    href: "/aplicatii",
+    icon: Blocks,
+    label: "Aplicații personalizate",
+    desc: "Construite pe afacerea ta",
   },
   {
     href: "/automatizari",
-    icon: Zap,
-    label: "Automatizări",
-    desc: "Chatbot, WhatsApp, Email, Excel",
-  },
-  {
-    href: "/davix-dental",
-    icon: Stethoscope,
-    label: "Davix Dental",
-    desc: "CRM stomatologic pentru clinici",
+    icon: Bot,
+    label: "Chatboți AI",
+    desc: "Răspund clienților non-stop",
   },
 ]
 
