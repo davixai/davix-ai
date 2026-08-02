@@ -16,7 +16,10 @@ export async function GET(request: Request) {
 
   try {
     const supabase = await createClient()
-    const { error } = await supabase.from("bookings").select("id").limit(1)
+    // The anon role only has SELECT granted on these columns (see
+    // scripts/001_create_bookings.sql) — matches what the public
+    // availability calendar reads.
+    const { error } = await supabase.from("bookings").select("status").limit(1)
 
     if (error) {
       console.error("Keep-alive ping failed:", error)
