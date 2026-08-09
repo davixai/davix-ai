@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   BadgeCheck,
   Boxes,
+  Calculator,
   Check,
   Droplets,
   Hotel,
@@ -25,7 +26,7 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
-type ProjectStatus = "client" | "premium" | "demo"
+type ProjectStatus = "client" | "premium" | "demo" | "tool"
 
 type Project = {
   businessType: string
@@ -71,6 +72,22 @@ const projects: Project[] = [
     image: "/projects/pensiune.webp",
     waMessage: "Salut! Vreau un site premium pentru pensiunea mea, ca modelul ARBORÉA.",
     liveLabel: "Vezi site-ul",
+  },
+  {
+    businessType: "Firmă de acoperișuri",
+    name: "NGU Construction · Calculator acoperiș",
+    highlights: [
+      "Calculator de ofertă în 9 pași",
+      "Estimare live: suprafață, greutate, cost",
+      "Alegere producător, sistem și accesorii",
+      "Lead-uri calificate direct din site",
+    ],
+    status: "tool",
+    icon: Calculator,
+    url: "https://ngu-calculator.netlify.app/",
+    image: "/projects/ngu-calculator.webp",
+    waMessage: "Salut! Vreau un calculator de ofertă pe site, ca modelul NGU Construction.",
+    liveLabel: "Vezi calculatorul",
   },
   {
     businessType: "Restaurant & bar",
@@ -161,6 +178,7 @@ const industries: { label: string; icon: LucideIcon }[] = [
   { label: "Clinici dentare", icon: Stethoscope },
   { label: "Electricieni", icon: Zap },
   { label: "Tractări auto", icon: Truck },
+  { label: "Firme de acoperișuri", icon: Calculator },
   { label: "Cabinete dentare", icon: LayoutDashboard },
 ]
 
@@ -178,6 +196,10 @@ const statusBadges: Record<ProjectStatus, { label: string; className: string }> 
   demo: {
     label: "Model · se personalizează",
     className: "bg-zinc-950/70 border-white/15 text-zinc-200 backdrop-blur-md",
+  },
+  tool: {
+    label: "Aplicație web · live",
+    className: "bg-zinc-950/70 border-emerald-300/30 text-emerald-200 backdrop-blur-md",
   },
 }
 
@@ -226,7 +248,8 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real și șase modele gata de personalizat — toate live.
+                Un client real, o aplicație de calcul ofertă și cinci modele gata de personalizat —
+                toate live.
               </p>
 
               <div className="mt-8">

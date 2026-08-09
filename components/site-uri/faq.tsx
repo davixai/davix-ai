@@ -14,6 +14,10 @@ const faqs = [
     a: "Da. Dupa livrare, site-ul si tot continutul sunt proprietatea ta exclusiva.",
   },
   {
+    q: "De ce pretul e un interval si nu unul fix?",
+    a: "Pentru ca fiecare site e diferit. Un site de prezentare costa intre 700 si 1.000 lei, unul complex intre 1.000 si 2.000 lei, iar un magazin online cu comenzi si plati porneste de la 2.000 lei. Pretul exact depinde de numarul de pagini, functii si integrari — il stabilim impreuna la auditul gratuit.",
+  },
+  {
     q: "Cat dureaza livrarea?",
     a: "Intre 5 si 10 zile lucratoare, in functie de complexitate si disponibilitatea informatiilor de la tine.",
   },

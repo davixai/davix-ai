@@ -2,40 +2,66 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Check, ArrowRight } from "lucide-react"
+import { Check, ArrowRight, Globe, Layers, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const pachete = [
   {
-    id: "start",
-    name: "START",
-    price: "300€+",
-    tagline: "Site simplu, modern, eficient",
+    id: "prezentare",
+    name: "PREZENTARE",
+    icon: Globe,
+    price: "700 – 1.000",
+    currency: "lei",
+    tagline: "Site de prezentare, modern și rapid",
+    idealPentru: "Firme mici, cabinete, saloane, service-uri",
     popular: false,
     features: [
       "3–5 pagini",
-      "Design modern responsive",
-      "Formulare contact",
-      "SEO basic",
-      "Hosting inclus (perioadă inițială)",
-      "Livrare 5–7 zile",
+      "Design modern, responsive (mobil + desktop)",
+      "Formular de contact + buton WhatsApp",
+      "SEO de bază + Google Maps",
+      "Hosting și SSL incluse (perioadă inițială)",
+      "Livrare în 5–7 zile",
     ],
   },
   {
-    id: "pro",
-    name: "PRO",
-    price: "500€+",
-    tagline: "Site modern + automatizări + conversii",
+    id: "complex",
+    name: "COMPLEX",
+    icon: Layers,
+    price: "1.000 – 2.000",
+    currency: "lei",
+    tagline: "Site complex, cu funcții și automatizări",
+    idealPentru: "Business-uri care vor mai mult decât o prezentare",
     popular: true,
     features: [
-      "Tot din pachetul Start",
-      "7–10 pagini",
-      "Design premium",
-      "SEO avansat",
-      "Google Analytics",
-      "Integrare WhatsApp + tracking",
-      "Automatizări (email, lead-uri, formulare inteligente)",
-      "Optimizare performanță",
+      "Tot ce include pachetul Prezentare",
+      "7–12 pagini + secțiuni personalizate",
+      "Design premium, animații și interacțiuni",
+      "Blog / portofoliu / galerie",
+      "SEO avansat + Google Analytics",
+      "Formulare inteligente și automatizări (email, lead-uri)",
+      "Integrare programări sau chatbot AI",
+      "Optimizare performanță și viteză",
+    ],
+  },
+  {
+    id: "magazin",
+    name: "MAGAZIN ONLINE",
+    icon: ShoppingBag,
+    price: "de la 2.000",
+    currency: "lei",
+    tagline: "Site cu comenzi online și plăți",
+    idealPentru: "Magazine, producători, servicii cu comandă online",
+    popular: false,
+    features: [
+      "Tot ce include pachetul Complex",
+      "Catalog de produse cu variante și stoc",
+      "Coș de cumpărături și checkout optimizat",
+      "Plată online (card) + ramburs",
+      "Integrare curier și facturare",
+      "Panou de administrare simplu de folosit",
+      "Emailuri automate (comandă, livrare, coș abandonat)",
+      "Training la livrare + suport la lansare",
     ],
   },
 ]
@@ -45,14 +71,18 @@ export default function SiteUriPachete() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} id="pachete" className="py-16 px-4 sm:px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
+    <section ref={ref} id="pachete" className="py-20 px-4 sm:px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="text-emerald-700 text-sm font-medium">Prețuri transparente</span>
+          </div>
           <h2
             style={{ letterSpacing: "-0.025em" }}
             className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 text-balance"
@@ -60,52 +90,87 @@ export default function SiteUriPachete() {
             Alege pachetul potrivit
           </h2>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Două opțiuni clare, fără complicații. Plătești o dată, site-ul e al tău.
+            Trei niveluri clare, în funcție de cât de complex e site-ul tău. Plătești o dată, site-ul
+            e al tău.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {pachete.map((pachet, index) => (
             <motion.div
               key={pachet.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className={`relative p-8 rounded-2xl border transition-all duration-300 card-elevated ${
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              className={`relative flex flex-col p-7 rounded-2xl border card-elevated ${
                 pachet.popular
-                  ? "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white border-emerald-500"
-                  : "bg-white border-zinc-200 hover:border-emerald-300"
+                  ? "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white border-emerald-500 md:-mt-4 md:mb-4 ring-1 ring-emerald-400/40"
+                  : "bg-white border-zinc-200 hover:border-emerald-300 transition-colors duration-300"
               }`}
             >
               {pachet.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1 text-xs font-semibold bg-white text-emerald-700 rounded-full">
-                    POPULAR
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                  <span className="px-4 py-1 text-xs font-semibold bg-white text-emerald-700 rounded-full shadow-sm">
+                    CEL MAI ALES
                   </span>
                 </div>
               )}
 
-              <div className="mb-6">
+              <div
+                className={`w-10 h-10 rounded-xl flex items-center justify-center mb-5 ${
+                  pachet.popular
+                    ? "bg-white/15 border border-white/25"
+                    : "bg-emerald-50 border border-emerald-100"
+                }`}
+              >
+                <pachet.icon
+                  className={`w-5 h-5 ${pachet.popular ? "text-white" : "text-emerald-600"}`}
+                  strokeWidth={1.8}
+                />
+              </div>
+
+              <div className="mb-5">
                 <span
                   className={`text-xs font-semibold tracking-widest uppercase ${
                     pachet.popular ? "text-emerald-100" : "text-zinc-400"
                   }`}
                 >
-                  Pachet {pachet.name}
+                  {pachet.name}
                 </span>
-                <div className="flex items-baseline gap-1 mt-2 mb-1">
+                <div className="flex items-baseline gap-1.5 mt-2 mb-1.5">
                   <span
-                    className={`text-4xl font-bold ${
+                    className={`text-3xl sm:text-4xl font-bold ${
                       pachet.popular ? "text-white" : "text-zinc-900"
                     }`}
                     style={{ letterSpacing: "-0.03em" }}
                   >
                     {pachet.price}
                   </span>
+                  <span
+                    className={`text-base font-medium ${
+                      pachet.popular ? "text-emerald-100" : "text-zinc-500"
+                    }`}
+                  >
+                    {pachet.currency}
+                  </span>
                 </div>
                 <p className={`text-sm ${pachet.popular ? "text-emerald-50" : "text-zinc-600"}`}>
                   {pachet.tagline}
                 </p>
+              </div>
+
+              <div
+                className={`px-3.5 py-2.5 rounded-xl mb-6 text-xs ${
+                  pachet.popular
+                    ? "bg-white/10 text-emerald-50"
+                    : "bg-zinc-50 border border-zinc-100 text-zinc-600"
+                }`}
+                style={{ lineHeight: "1.6" }}
+              >
+                <span className={pachet.popular ? "text-white font-medium" : "text-zinc-900 font-medium"}>
+                  Ideal pentru:{" "}
+                </span>
+                {pachet.idealPentru}
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -128,7 +193,7 @@ export default function SiteUriPachete() {
               </ul>
 
               <Button
-                className={`w-full rounded-full font-semibold ${
+                className={`w-full rounded-full font-semibold mt-auto ${
                   pachet.popular
                     ? "bg-white text-emerald-700 hover:bg-zinc-100"
                     : "bg-zinc-900 text-white hover:bg-zinc-800"
@@ -136,7 +201,7 @@ export default function SiteUriPachete() {
                 asChild
               >
                 <a href="https://wa.me/40729369094" target="_blank" rel="noopener noreferrer">
-                  Vreau pachetul {pachet.name}
+                  Cere ofertă
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
@@ -144,15 +209,31 @@ export default function SiteUriPachete() {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center text-sm text-zinc-500 mt-8"
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="mt-10 p-6 rounded-2xl bg-zinc-50 border border-zinc-200"
         >
-          Oferim și mentenanță lunară în funcție de nevoi (update-uri, modificări, hosting și suport
-          tehnic).
-        </motion.p>
+          <p className="text-sm text-zinc-700 text-center mb-4" style={{ lineHeight: "1.7" }}>
+            <span className="font-medium text-zinc-900">Prețul final depinde de</span> numărul de
+            pagini, complexitatea designului, funcțiile speciale și integrările dorite. Îl stabilim
+            împreună, la auditul gratuit — fără costuri ascunse.
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-zinc-500">
+            {[
+              "Plată o singură dată",
+              "Hosting inclus inițial",
+              "Site-ul e 100% al tău",
+              "Mentenanță lunară opțională",
+            ].map((item) => (
+              <span key={item} className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" strokeWidth={2.5} />
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

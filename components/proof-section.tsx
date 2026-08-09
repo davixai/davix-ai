@@ -17,6 +17,16 @@ type Proof = {
 
 const projects: Proof[] = [
   {
+    category: "Pensiune boutique",
+    name: "ARBORÉA — Pensiune Bucovina",
+    blurb:
+      "Site premium, cinematic, pentru o pensiune boutique: camere, experiențe și rezervare rapidă, optimizat pe mobil.",
+    metric: "Cel mai premium proiect",
+    badges: ["Rezervare rapidă", "Galerie de camere", "Design cinematic"],
+    url: "https://pensiune.website/",
+    image: "/projects/pensiune.webp",
+  },
+  {
     category: "Site firmă — publicat",
     name: "DISCIF — Vidanjare Suceava",
     blurb: "Site pentru o firmă reală de vidanjare din Suceava. Clienții cer ofertă direct de pe site.",
@@ -24,15 +34,6 @@ const projects: Proof[] = [
     badges: ["Cerere de ofertă", "Telefon la un click", "Merge bine pe telefon"],
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
-  },
-  {
-    category: "Site tractări auto",
-    name: "DAR Assist — Tractări auto",
-    blurb: "Site pentru tractări auto non-stop, unde numărul de telefon se vede din prima secundă.",
-    metric: "Disponibil 24/7",
-    badges: ["Apel rapid 24/7", "Zone de intervenție", "Merge bine pe telefon"],
-    url: "https://demotractari.netlify.app/",
-    image: "/projects/tractari.webp",
   },
   {
     category: "Site stomatologic",
