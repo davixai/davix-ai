@@ -75,22 +75,6 @@ const projects: Project[] = [
     liveLabel: "Vezi site-ul",
   },
   {
-    businessType: "Firmă de acoperișuri",
-    name: "NGU Construction · Calculator acoperiș",
-    highlights: [
-      "Calculator de ofertă în 9 pași",
-      "Estimare live: suprafață, greutate, cost",
-      "Alegere producător, sistem și accesorii",
-      "Lead-uri calificate direct din site",
-    ],
-    status: "tool",
-    icon: Calculator,
-    url: "https://ngu-calculator.netlify.app/",
-    image: "/projects/ngu-calculator.webp",
-    waMessage: "Salut! Vreau un calculator de ofertă pe site, ca modelul NGU Construction.",
-    liveLabel: "Vezi calculatorul",
-  },
-  {
     businessType: "Firmă de curățenie",
     name: "General Fresh Cleaning · Târgu Mureș",
     highlights: [
@@ -105,6 +89,22 @@ const projects: Project[] = [
     image: "/projects/curatenie.webp",
     waMessage: "Salut! Vreau un site pentru firma mea de curățenie, ca acest model.",
     liveLabel: "Vezi site-ul",
+  },
+  {
+    businessType: "Firmă de acoperișuri",
+    name: "NGU Construction · Calculator acoperiș",
+    highlights: [
+      "Calculator de ofertă în 9 pași",
+      "Estimare live: suprafață, greutate, cost",
+      "Alegere producător, sistem și accesorii",
+      "Lead-uri calificate direct din site",
+    ],
+    status: "tool",
+    icon: Calculator,
+    url: "https://ngu-calculator.netlify.app/",
+    image: "/projects/ngu-calculator.webp",
+    waMessage: "Salut! Vreau un calculator de ofertă pe site, ca modelul NGU Construction.",
+    liveLabel: "Vezi calculatorul",
   },
   {
     businessType: "Restaurant & bar",
