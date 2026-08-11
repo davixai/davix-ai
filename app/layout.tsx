@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Manrope, Inter } from "next/font/google"
+import { Manrope, Inter, Sora, JetBrains_Mono } from "next/font/google"
 
 import { Analytics } from "@vercel/analytics/next"
 import { Chatbot } from "@/components/chatbot"
@@ -17,6 +17,20 @@ const manrope = Manrope({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+})
+
+// Fonturi folosite de calculatorul de estimare: display pentru titluri,
+// mono pentru cifre, unități și etichete tehnice.
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-sora",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
@@ -69,7 +83,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro" data-theme="cosmic">
-      <body className={`${manrope.variable} ${inter.variable} font-sans antialiased bg-transparent text-zinc-900`}>
+      <body
+        className={`${manrope.variable} ${inter.variable} ${sora.variable} ${jetbrainsMono.variable} font-sans antialiased bg-transparent text-zinc-900`}
+      >
         <SiteBackground />
         <div className="noise-overlay" aria-hidden="true" />
         <DavixDentalToast />
