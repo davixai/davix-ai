@@ -12,6 +12,7 @@ import {
   Droplets,
   Hotel,
   LayoutDashboard,
+  SprayCan,
   Star,
   Stethoscope,
   Trophy,
@@ -88,6 +89,22 @@ const projects: Project[] = [
     image: "/projects/ngu-calculator.webp",
     waMessage: "Salut! Vreau un calculator de ofertă pe site, ca modelul NGU Construction.",
     liveLabel: "Vezi calculatorul",
+  },
+  {
+    businessType: "Firmă de curățenie",
+    name: "General Fresh Cleaning · Târgu Mureș",
+    highlights: [
+      "Formular de ofertă direct în prima secțiune",
+      "Servicii pentru locuințe și spații de lucru",
+      "Recenzii Google și zone deservite",
+      "Apel rapid de pe telefon",
+    ],
+    status: "demo",
+    icon: SprayCan,
+    url: "https://demo-general-cleaning.vercel.app/",
+    image: "/projects/curatenie.webp",
+    waMessage: "Salut! Vreau un site pentru firma mea de curățenie, ca acest model.",
+    liveLabel: "Vezi site-ul",
   },
   {
     businessType: "Restaurant & bar",
@@ -174,6 +191,7 @@ const ownProduct = {
 const industries: { label: string; icon: LucideIcon }[] = [
   { label: "Vidanjare & utilaje", icon: Droplets },
   { label: "Pensiuni", icon: Hotel },
+  { label: "Firme de curățenie", icon: SprayCan },
   { label: "Restaurante", icon: UtensilsCrossed },
   { label: "Clinici dentare", icon: Stethoscope },
   { label: "Electricieni", icon: Zap },
@@ -248,7 +266,7 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real, o aplicație de calcul ofertă și cinci modele gata de personalizat —
+                Un client real, o aplicație de calcul ofertă și șase modele gata de personalizat —
                 toate live.
               </p>
 
