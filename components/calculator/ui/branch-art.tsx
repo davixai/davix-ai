@@ -6,9 +6,9 @@
 
 import type { Branch } from "@/lib/pricing"
 
-const STROKE = "rgba(150, 175, 225, 0.55)"
-const ACCENT = "#4d8bff"
-const ACCENT_2 = "#34dcff"
+const STROKE = "rgba(228, 228, 231, 0.5)"
+const ACCENT = "#10b981"
+const ACCENT_2 = "#34d399"
 
 /** Ramura SITE — o fereastră de browser care își desenează conținutul. */
 function SiteArt() {
@@ -30,7 +30,7 @@ function SiteArt() {
           rx="7"
           stroke={STROKE}
           strokeWidth="1.2"
-          fill="rgba(77,139,255,0.05)"
+          fill="rgba(16,185,129,0.05)"
         />
         <path d="M30 32 H170" stroke={STROKE} strokeWidth="1.2" />
         <circle cx="39" cy="25" r="2" fill={ACCENT} className="dvx-art-blink" />
@@ -75,7 +75,7 @@ function AutomationArt() {
           width="32"
           height="32"
           rx="9"
-          fill="rgba(77,139,255,0.18)"
+          fill="rgba(16,185,129,0.18)"
           stroke={ACCENT}
           strokeWidth="1.4"
         />
@@ -89,10 +89,10 @@ function AutomationArt() {
         />
 
         {/* Noduri satelit */}
-        <circle cx="42" cy="52" r="6" fill="rgba(150,175,225,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink" />
-        <circle cx="158" cy="52" r="6" fill="rgba(52,220,255,0.16)" stroke={ACCENT_2} strokeWidth="1.2" className="dvx-art-blink dvx-art-blink--b" />
-        <circle cx="100" cy="22" r="6" fill="rgba(150,175,225,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink dvx-art-blink--c" />
-        <circle cx="100" cy="82" r="6" fill="rgba(150,175,225,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink" />
+        <circle cx="42" cy="52" r="6" fill="rgba(255,255,255,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink" />
+        <circle cx="158" cy="52" r="6" fill="rgba(52,211,153,0.16)" stroke={ACCENT_2} strokeWidth="1.2" className="dvx-art-blink dvx-art-blink--b" />
+        <circle cx="100" cy="22" r="6" fill="rgba(255,255,255,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink dvx-art-blink--c" />
+        <circle cx="100" cy="82" r="6" fill="rgba(255,255,255,0.14)" stroke={STROKE} strokeWidth="1.2" className="dvx-art-blink" />
       </g>
     </svg>
   )
@@ -118,7 +118,7 @@ function AppArt() {
           rx="10"
           stroke={STROKE}
           strokeWidth="1.3"
-          fill="rgba(77,139,255,0.06)"
+          fill="rgba(16,185,129,0.06)"
         />
         <rect x="92" y="19" width="16" height="2.5" rx="1.25" fill={STROKE} />
         <rect x="84" y="28" width="32" height="20" rx="4" fill="url(#dvx-app-g)" />
@@ -129,11 +129,11 @@ function AppArt() {
 
       {/* Carduri laterale, plutind decalat */}
       <g className="dvx-art-float dvx-art-float--slow">
-        <rect x="30" y="34" width="38" height="26" rx="6" stroke={STROKE} strokeWidth="1.2" fill="rgba(150,175,225,0.07)" />
+        <rect x="30" y="34" width="38" height="26" rx="6" stroke={STROKE} strokeWidth="1.2" fill="rgba(255,255,255,0.07)" />
         <path d="M38 44 H60" stroke={STROKE} strokeWidth="2" strokeLinecap="round" />
         <path d="M38 51 H52" stroke={STROKE} strokeWidth="2" strokeLinecap="round" />
 
-        <rect x="132" y="46" width="38" height="26" rx="6" stroke={ACCENT_2} strokeOpacity="0.5" strokeWidth="1.2" fill="rgba(52,220,255,0.07)" />
+        <rect x="132" y="46" width="38" height="26" rx="6" stroke={ACCENT_2} strokeOpacity="0.5" strokeWidth="1.2" fill="rgba(52,211,153,0.07)" />
         <path d="M140 56 H162" stroke={ACCENT_2} strokeOpacity="0.7" strokeWidth="2" strokeLinecap="round" />
         <path d="M140 63 H154" stroke={STROKE} strokeWidth="2" strokeLinecap="round" />
       </g>

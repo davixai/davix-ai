@@ -8,7 +8,7 @@
 
 import { useEffect, useRef } from "react"
 
-const COLORS = ["#4d8bff", "#34dcff", "#f1f5ff", "#8fb4ff", "#35d39a"]
+const COLORS = ["#10b981", "#34d399", "#fafafa", "#6ee7b7", "#a7f3d0"]
 const DURATION = 2400
 const COUNT = 90
 

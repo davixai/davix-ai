@@ -3,12 +3,12 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import {
-  ArrowRight,
   ArrowUpRight,
   BadgeCheck,
   Boxes,
   Calculator,
   Check,
+  ChefHat,
   Droplets,
   Hotel,
   LayoutDashboard,
@@ -37,41 +37,23 @@ type Project = {
   icon: LucideIcon
   url: string
   image: string
-  waMessage: string
   liveLabel: string
 }
 
 const projects: Project[] = [
   {
-    businessType: "Vidanjare autorizată",
-    name: "DISCIF S.R.L. · Suceava",
+    businessType: "Restaurant fine dining",
+    name: "NOIRÉ · București",
     highlights: [
-      "Site publicat și folosit zilnic",
-      "Formular de ofertă cu detaliile intervenției",
-      "Telefon vizibil pe tot site-ul",
-      "Zone deservite din județ, clar afișate",
-    ],
-    status: "client",
-    icon: Droplets,
-    url: "https://discifsuceava.ro/",
-    image: "/projects/discif.webp",
-    waMessage: "Salut! Vreau un site pentru firma mea, ca cel construit pentru DISCIF Suceava.",
-    liveLabel: "Vezi site-ul",
-  },
-  {
-    businessType: "Pensiune boutique",
-    name: "ARBORÉA · Bucovina",
-    highlights: [
-      "Imagine premium, tip boutique",
-      "Camere și experiențe prezentate clar",
-      "Rezervare și disponibilitate rapidă",
-      "Design cinematic, optimizat pe mobil",
+      "Rezervare de masă în câțiva pași",
+      "Meniu complet și galerie cu atmosferă",
+      "Evenimente private și comenzi la pachet",
+      "Bilingv RO / EN, design cinematic",
     ],
     status: "premium",
-    icon: Hotel,
-    url: "https://pensiune.website/",
-    image: "/projects/pensiune.webp",
-    waMessage: "Salut! Vreau un site premium pentru pensiunea mea, ca modelul ARBORÉA.",
+    icon: ChefHat,
+    url: "https://www.noire.website/",
+    image: "/projects/noire.webp",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -87,7 +69,36 @@ const projects: Project[] = [
     icon: SprayCan,
     url: "https://demo-general-cleaning.vercel.app/",
     image: "/projects/curatenie.webp",
-    waMessage: "Salut! Vreau un site pentru firma mea de curățenie, ca acest model.",
+    liveLabel: "Vezi site-ul",
+  },
+  {
+    businessType: "Vidanjare autorizată",
+    name: "DISCIF S.R.L. · Suceava",
+    highlights: [
+      "Site publicat și folosit zilnic",
+      "Formular de ofertă cu detaliile intervenției",
+      "Telefon vizibil pe tot site-ul",
+      "Zone deservite din județ, clar afișate",
+    ],
+    status: "client",
+    icon: Droplets,
+    url: "https://discifsuceava.ro/",
+    image: "/projects/discif.webp",
+    liveLabel: "Vezi site-ul",
+  },
+  {
+    businessType: "Pensiune boutique",
+    name: "ARBORÉA · Bucovina",
+    highlights: [
+      "Imagine premium, tip boutique",
+      "Camere și experiențe prezentate clar",
+      "Rezervare și disponibilitate rapidă",
+      "Design cinematic, optimizat pe mobil",
+    ],
+    status: "premium",
+    icon: Hotel,
+    url: "https://pensiune.website/",
+    image: "/projects/pensiune.webp",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -103,7 +114,6 @@ const projects: Project[] = [
     icon: Calculator,
     url: "https://ngu-calculator.netlify.app/",
     image: "/projects/ngu-calculator.webp",
-    waMessage: "Salut! Vreau un calculator de ofertă pe site, ca modelul NGU Construction.",
     liveLabel: "Vezi calculatorul",
   },
   {
@@ -119,7 +129,6 @@ const projects: Project[] = [
     icon: UtensilsCrossed,
     url: "https://restaurant-demo-10.netlify.app/",
     image: "/projects/restaurant.webp",
-    waMessage: "Salut! Vreau un site pentru restaurantul meu, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -135,7 +144,6 @@ const projects: Project[] = [
     icon: Stethoscope,
     url: "https://democlinicastomatologica.netlify.app/",
     image: "/projects/lumident.webp",
-    waMessage: "Salut! Vreau un site pentru cabinetul meu stomatologic, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -151,7 +159,6 @@ const projects: Project[] = [
     icon: Zap,
     url: "https://electroivi-website-design.vercel.app/",
     image: "/projects/electroivi.webp",
-    waMessage: "Salut! Vreau un site pentru firma mea de servicii electrice, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -167,7 +174,6 @@ const projects: Project[] = [
     icon: Truck,
     url: "https://demotractari.netlify.app/",
     image: "/projects/tractari.webp",
-    waMessage: "Salut! Vreau un site pentru serviciul meu de tractări auto, ca acest model.",
     liveLabel: "Vezi site-ul",
   },
 ]
@@ -185,7 +191,6 @@ const ownProduct = {
   icon: LayoutDashboard,
   url: "https://davixdental.online/",
   image: "/projects/davix-dental.webp",
-  waMessage: "Salut! Sunt interesat de aplicația Davix Dental pentru clinica mea.",
 }
 
 const industries: { label: string; icon: LucideIcon }[] = [
@@ -266,34 +271,9 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real, o aplicație de calcul ofertă și șase modele gata de personalizat —
+                Un client real, o aplicație de calcul ofertă și șapte modele gata de personalizat —
                 toate live.
               </p>
-
-              <div className="mt-8">
-                <p className="text-sm font-medium text-zinc-600 mb-3">
-                  Vezi ce putem construi pentru afacerea ta:
-                </p>
-                <div className="flex flex-wrap justify-center gap-2.5">
-                  {industries.map((industry) => {
-                    const IndustryIcon = industry.icon
-
-                    return (
-                      <span
-                        key={industry.label}
-                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-sm font-medium text-zinc-700 card-elevated"
-                      >
-                        <IndustryIcon
-                          className="w-4 h-4 text-emerald-400"
-                          strokeWidth={1.9}
-                          aria-hidden="true"
-                        />
-                        {industry.label}
-                      </span>
-                    )
-                  })}
-                </div>
-              </div>
             </motion.div>
 
             <motion.div
@@ -390,9 +370,14 @@ export default function ProiectePage() {
                         </div>
                       </div>
 
+                      {/* Pe telefon arătăm doar primele două beneficii: cardul scade
+                          de la ~500px la ~390px, iar pagina rămâne parcurgibilă. */}
                       <ul className="mt-5 flex-1 space-y-2.5" aria-label={`Beneficii ${project.businessType}`}>
-                        {project.highlights.map((highlight) => (
-                          <li key={highlight} className="flex items-start gap-2.5 text-sm text-zinc-600">
+                        {project.highlights.map((highlight, highlightIndex) => (
+                          <li
+                            key={highlight}
+                            className={`${highlightIndex > 1 ? "hidden sm:flex" : "flex"} items-start gap-2.5 text-sm text-zinc-600`}
+                          >
                             <Check
                               className={`mt-0.5 w-4 h-4 shrink-0 ${
                                 isClient
@@ -409,35 +394,23 @@ export default function ProiectePage() {
                         ))}
                       </ul>
 
-                      <div className="mt-6 flex flex-wrap items-center gap-3">
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full text-sm font-medium text-zinc-700 hover:text-emerald-700
-                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 transition-colors"
-                        >
-                          {project.liveLabel}
-                          <ArrowUpRight
-                            className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            strokeWidth={2}
-                          />
-                        </a>
-                        <a
-                          href={`https://wa.me/40729369094?text=${encodeURIComponent(project.waMessage)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`ml-auto inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold
-                                     active:scale-95 transition-[transform,background-color,box-shadow] duration-200 ${
-                                       isPremiumDemo
-                                         ? "bg-[#f2c46d] text-zinc-950 hover:bg-[#f7d89b] shadow-[0_8px_24px_-12px_rgba(242,196,109,0.8)]"
-                                         : "bg-emerald-600 text-white hover:bg-emerald-700"
-                                     }`}
-                        >
-                          Vreau ceva similar
-                          <ArrowRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
-                        </a>
-                      </div>
+                      {/* O singură acțiune pe card: deschide site-ul. Restul
+                          conversiei stă o singură dată, în banda de jos. */}
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full
+                                   bg-emerald-600 px-5 h-11 text-sm font-semibold text-white
+                                   shadow-[0_10px_28px_-14px_rgba(16,185,129,0.9)]
+                                   hover:bg-emerald-700 hover:-translate-y-0.5
+                                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2
+                                   active:translate-y-0 active:scale-[0.98]
+                                   transition-[transform,background-color,box-shadow] duration-200"
+                      >
+                        {project.liveLabel}
+                        <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2.2} />
+                      </a>
                     </div>
                   </motion.article>
                 )
@@ -514,40 +487,62 @@ export default function ProiectePage() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <a
-                    href={ownProduct.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full text-sm font-medium text-zinc-700 hover:text-sky-700
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 transition-colors"
-                  >
-                    Vezi aplicația
-                    <ArrowUpRight
-                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      strokeWidth={2}
-                    />
-                  </a>
-                  <a
-                    href={`https://wa.me/40729369094?text=${encodeURIComponent(ownProduct.waMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold
-                               bg-sky-500 text-white hover:bg-sky-600 active:scale-95
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2
-                               transition-[transform,background-color,box-shadow] duration-200"
-                  >
-                    Vreau demo pentru clinica mea
-                    <ArrowRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
-                  </a>
-                </div>
+                <a
+                  href={ownProduct.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full sm:w-auto sm:self-start items-center justify-center gap-2 rounded-full
+                             bg-sky-500 px-6 h-11 text-sm font-semibold text-white
+                             shadow-[0_10px_28px_-14px_rgba(56,189,248,0.9)]
+                             hover:bg-sky-600 hover:-translate-y-0.5
+                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2
+                             active:translate-y-0 active:scale-[0.98]
+                             transition-[transform,background-color,box-shadow] duration-200"
+                >
+                  Vezi aplicația
+                  <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2.2} />
+                </a>
+              </div>
+            </motion.section>
+
+            {/* Domeniile stau DUPĂ proiecte: cine deschide linkul vede întâi
+                munca, nu o listă de categorii. Economisește ~500px pe telefon. */}
+            <motion.section
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              aria-labelledby="domenii"
+              className="mt-14 text-center"
+            >
+              <h2 id="domenii" className="text-sm font-medium text-zinc-600 mb-4">
+                Construim și pentru alte domenii:
+              </h2>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5">
+                {industries.map((industry) => {
+                  const IndustryIcon = industry.icon
+
+                  return (
+                    <span
+                      key={industry.label}
+                      className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white
+                                 px-3 py-1.5 sm:px-3.5 sm:py-2 text-[13px] sm:text-sm font-medium text-zinc-700 card-elevated"
+                    >
+                      <IndustryIcon
+                        className="w-4 h-4 text-emerald-400"
+                        strokeWidth={1.9}
+                        aria-hidden="true"
+                      />
+                      {industry.label}
+                    </span>
+                  )
+                })}
               </div>
             </motion.section>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
               className="mt-14 p-8 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-white text-center"
             >
               <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ letterSpacing: "-0.02em" }}>

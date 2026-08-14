@@ -4,7 +4,7 @@ import { Manrope, Inter, Sora, JetBrains_Mono } from "next/font/google"
 
 import { Analytics } from "@vercel/analytics/next"
 import { Chatbot } from "@/components/chatbot"
-import { FloatingCta } from "@/components/floating-cta"
+import { CalculatorFab } from "@/components/calculator-fab"
 import { DavixDentalToast } from "@/components/davix-dental-toast"
 import { SiteBackground } from "@/components/ui/background-shader"
 import "./globals.css"
@@ -89,7 +89,7 @@ export default function RootLayout({
         <SiteBackground />
         <div className="noise-overlay" aria-hidden="true" />
         <DavixDentalToast />
-        <FloatingCta />
+        <CalculatorFab />
         {children}
         <Chatbot />
         <Analytics />

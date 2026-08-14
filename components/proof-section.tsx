@@ -17,14 +17,24 @@ type Proof = {
 
 const projects: Proof[] = [
   {
-    category: "Pensiune boutique",
-    name: "ARBORÉA — Pensiune Bucovina",
+    category: "Restaurant fine dining",
+    name: "NOIRÉ — Restaurant București",
     blurb:
-      "Site premium, cinematic, pentru o pensiune boutique: camere, experiențe și rezervare rapidă, optimizat pe mobil.",
-    metric: "Cel mai premium proiect",
-    badges: ["Rezervare rapidă", "Galerie de camere", "Design cinematic"],
-    url: "https://pensiune.website/",
-    image: "/projects/pensiune.webp",
+      "Site cinematic pentru un restaurant de fine dining: meniu, galerie, evenimente private și rezervare de masă în câțiva pași.",
+    metric: "Cel mai nou proiect",
+    badges: ["Rezervare de masă", "Meniu și galerie", "Bilingv RO / EN"],
+    url: "https://www.noire.website/",
+    image: "/projects/noire.webp",
+  },
+  {
+    category: "Firmă de curățenie",
+    name: "General Fresh Cleaning — Târgu Mureș",
+    blurb:
+      "Site pentru o firmă de curățenie, cu formularul de ofertă chiar în prima secțiune, ca vizitatorul să ceară preț imediat.",
+    metric: "Construit pentru cereri de ofertă",
+    badges: ["Ofertă în prima secțiune", "Recenzii Google", "Apel rapid de pe telefon"],
+    url: "https://demo-general-cleaning.vercel.app/",
+    image: "/projects/curatenie.webp",
   },
   {
     category: "Site firmă — publicat",
@@ -34,15 +44,6 @@ const projects: Proof[] = [
     badges: ["Cerere de ofertă", "Telefon la un click", "Merge bine pe telefon"],
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
-  },
-  {
-    category: "Site stomatologic",
-    name: "Lumident — Clinică stomatologică",
-    blurb: "Site pentru o clinică dentară, gândit să transforme vizitatorii în pacienți noi.",
-    metric: "Construit pentru conversie",
-    badges: ["Programări online", "Găsit ușor pe Google", "Design premium"],
-    url: "https://democlinicastomatologica.netlify.app/",
-    image: "/projects/lumident.webp",
   },
 ]
 
@@ -101,8 +102,9 @@ export function ProofSection() {
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group flex flex-col rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 backdrop-blur-sm hover:border-emerald-400/40 hover:-translate-y-1 transition-[transform,border-color] duration-300"
             >
-              {/* Real screenshot */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+              {/* Real screenshot — 16/10, exact raportul capturilor, ca să nu
+                  taie marginile paginii (logo, titlu). */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-zinc-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={p.image}
