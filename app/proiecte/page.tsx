@@ -27,12 +27,11 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
 
-type ProjectStatus = "client" | "premium" | "demo" | "tool"
+type ProjectStatus = "disponibil" | "exclusiv" | "live"
 
 type Project = {
   businessType: string
   name: string
-  highlights: string[]
   status: ProjectStatus
   icon: LucideIcon
   url: string
@@ -44,13 +43,7 @@ const projects: Project[] = [
   {
     businessType: "Restaurant fine dining",
     name: "NOIRÉ · București",
-    highlights: [
-      "Rezervare de masă în câțiva pași",
-      "Meniu complet și galerie cu atmosferă",
-      "Evenimente private și comenzi la pachet",
-      "Bilingv RO / EN, design cinematic",
-    ],
-    status: "premium",
+    status: "exclusiv",
     icon: ChefHat,
     url: "https://www.noire.website/",
     image: "/projects/noire.webp",
@@ -59,13 +52,7 @@ const projects: Project[] = [
   {
     businessType: "Firmă de curățenie",
     name: "General Fresh Cleaning · Târgu Mureș",
-    highlights: [
-      "Formular de ofertă direct în prima secțiune",
-      "Servicii pentru locuințe și spații de lucru",
-      "Recenzii Google și zone deservite",
-      "Apel rapid de pe telefon",
-    ],
-    status: "demo",
+    status: "disponibil",
     icon: SprayCan,
     url: "https://demo-general-cleaning.vercel.app/",
     image: "/projects/curatenie.webp",
@@ -74,13 +61,7 @@ const projects: Project[] = [
   {
     businessType: "Pensiune boutique",
     name: "ARBORÉA · Bucovina",
-    highlights: [
-      "Imagine premium, tip boutique",
-      "Camere și experiențe prezentate clar",
-      "Rezervare și disponibilitate rapidă",
-      "Design cinematic, optimizat pe mobil",
-    ],
-    status: "premium",
+    status: "exclusiv",
     icon: Hotel,
     url: "https://pensiune.website/",
     image: "/projects/pensiune.webp",
@@ -89,13 +70,7 @@ const projects: Project[] = [
   {
     businessType: "Vidanjare autorizată",
     name: "DISCIF S.R.L. · Suceava",
-    highlights: [
-      "Site publicat și folosit zilnic",
-      "Formular de ofertă cu detaliile intervenției",
-      "Telefon vizibil pe tot site-ul",
-      "Zone deservite din județ, clar afișate",
-    ],
-    status: "client",
+    status: "disponibil",
     icon: Droplets,
     url: "https://discifsuceava.ro/",
     image: "/projects/discif.webp",
@@ -104,13 +79,7 @@ const projects: Project[] = [
   {
     businessType: "Firmă de acoperișuri",
     name: "NGU Construction · Calculator acoperiș",
-    highlights: [
-      "Calculator de ofertă în 9 pași",
-      "Estimare live: suprafață, greutate, cost",
-      "Alegere producător, sistem și accesorii",
-      "Lead-uri calificate direct din site",
-    ],
-    status: "tool",
+    status: "live",
     icon: Calculator,
     url: "https://ngu-calculator.netlify.app/",
     image: "/projects/ngu-calculator.webp",
@@ -119,13 +88,7 @@ const projects: Project[] = [
   {
     businessType: "Clinică stomatologică",
     name: "Lumident",
-    highlights: [
-      "Servicii dentare clare",
-      "Recenzii și rezultate",
-      "Programare în câțiva pași",
-      "Design premium, responsive",
-    ],
-    status: "demo",
+    status: "disponibil",
     icon: Stethoscope,
     url: "https://democlinicastomatologica.netlify.app/",
     image: "/projects/lumident.webp",
@@ -144,7 +107,7 @@ const ownProduct = {
     "Mesaje automate către pacienți",
   ],
   icon: LayoutDashboard,
-  url: "https://davixdental.online/",
+  url: "/davix-dental",
   image: "/projects/davix-dental.webp",
 }
 
@@ -161,23 +124,19 @@ const industries: { label: string; icon: LucideIcon }[] = [
 ]
 
 const statusBadges: Record<ProjectStatus, { label: string; className: string }> = {
-  client: {
-    label: "Client real · Suceava",
+  live: {
+    label: "Live",
     className:
       "bg-emerald-500 border-emerald-300 text-zinc-950 shadow-[0_8px_28px_-12px_rgba(16,185,129,0.9)]",
   },
-  premium: {
-    label: "Model premium · exclusiv",
+  exclusiv: {
+    label: "Exclusiv",
     className:
       "bg-[#f2c46d] border-[#f7d89b] text-zinc-950 shadow-[0_8px_28px_-12px_rgba(242,196,109,0.85)]",
   },
-  demo: {
-    label: "Model · se personalizează",
+  disponibil: {
+    label: "Disponibil",
     className: "bg-zinc-950/70 border-white/15 text-zinc-200 backdrop-blur-md",
-  },
-  tool: {
-    label: "Aplicație web · live",
-    className: "bg-zinc-950/70 border-emerald-300/30 text-emerald-200 backdrop-blur-md",
   },
 }
 
@@ -226,8 +185,8 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real, o aplicație de calcul ofertă și patru modele gata de personalizat —
-                toate live.
+                Un calculator de ofertă live și modele gata de personalizat pentru afacerea ta —
+                toate funcționale, nu doar machete.
               </p>
             </motion.div>
 
@@ -241,9 +200,9 @@ export default function ProiectePage() {
               {projects.map((project) => {
                 const ProjectIcon = project.icon
                 const badge = statusBadges[project.status]
-                const isClient = project.status === "client"
-                const isPremiumDemo = project.status === "premium"
-                const isFeatured = isClient || isPremiumDemo
+                const isLive = project.status === "live"
+                const isExclusiv = project.status === "exclusiv"
+                const isFeatured = isLive || isExclusiv
 
                 return (
                   <motion.article
@@ -252,9 +211,9 @@ export default function ProiectePage() {
                     className={`group flex flex-col rounded-2xl bg-white border overflow-hidden
                                hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-300 card-elevated
                                ${
-                                 isClient
+                                 isLive
                                    ? "border-emerald-400/70 hover:border-emerald-500 shadow-[0_0_0_1px_rgba(16,185,129,0.1),0_22px_60px_-32px_rgba(16,185,129,0.55)]"
-                                   : isPremiumDemo
+                                   : isExclusiv
                                      ? "border-[#f2c46d]/55 hover:border-[#f7d89b] shadow-[0_0_0_1px_rgba(242,196,109,0.08),0_22px_60px_-32px_rgba(242,196,109,0.5)]"
                                      : "border-zinc-200 hover:border-emerald-300"
                                }`}
@@ -286,10 +245,10 @@ export default function ProiectePage() {
                                        : "px-2.5 py-1 text-[10px] font-semibold"
                                    } ${badge.className}`}
                       >
-                        {isClient && (
+                        {isLive && (
                           <BadgeCheck className="w-4 h-4 shrink-0" strokeWidth={2.2} aria-hidden="true" />
                         )}
-                        {isPremiumDemo && (
+                        {isExclusiv && (
                           <Star className="w-4 h-4 fill-current shrink-0" strokeWidth={1.8} aria-hidden="true" />
                         )}
                         {badge.label}
@@ -305,9 +264,9 @@ export default function ProiectePage() {
                       <div className="flex items-start gap-3">
                         <span
                           className={`mt-0.5 flex w-10 h-10 shrink-0 items-center justify-center rounded-xl border ${
-                            isClient
+                            isLive
                               ? "border-emerald-200 bg-emerald-50 text-emerald-400"
-                              : isPremiumDemo
+                              : isExclusiv
                                 ? "border-[#f2c46d]/35 bg-[#f2c46d]/10 text-[#f7d89b]"
                                 : "border-zinc-200 bg-zinc-50 text-zinc-600"
                           }`}
@@ -325,29 +284,7 @@ export default function ProiectePage() {
                         </div>
                       </div>
 
-                      {/* Pe telefon arăt doar primele două beneficii: cardul scade
-                          de la ~500px la ~390px, iar pagina rămâne parcurgibilă. */}
-                      <ul className="mt-5 flex-1 space-y-2.5" aria-label={`Beneficii ${project.businessType}`}>
-                        {project.highlights.map((highlight, highlightIndex) => (
-                          <li
-                            key={highlight}
-                            className={`${highlightIndex > 1 ? "hidden sm:flex" : "flex"} items-start gap-2.5 text-sm text-zinc-600`}
-                          >
-                            <Check
-                              className={`mt-0.5 w-4 h-4 shrink-0 ${
-                                isClient
-                                  ? "text-emerald-400"
-                                  : isPremiumDemo
-                                    ? "text-[#f2c46d]"
-                                    : "text-emerald-500"
-                              }`}
-                              strokeWidth={2.2}
-                              aria-hidden="true"
-                            />
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="flex-1" />
 
                       {/* O singură acțiune pe card: deschide site-ul. Restul
                           conversiei stă o singură dată, în banda de jos. */}
