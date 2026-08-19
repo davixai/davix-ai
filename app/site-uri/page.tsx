@@ -10,7 +10,7 @@ import SiteUriCta from "@/components/site-uri/cta"
 
 export const metadata = {
   title: "Site-uri de prezentare care aduc clienți | DaviX AI",
-  description: "Design modern, livrare rapidă, optimizat pentru business-uri locale. Site de prezentare 700–1.000 lei, site complex 1.000–2.000 lei, magazin online de la 2.000 lei. Hosting inclus, fără costuri ascunse.",
+  description: "Design modern, livrare rapidă, optimizat pentru business-uri locale. Landing page 500–700 lei, site de prezentare 800–1.200 lei, site cu mai multe pagini 1.200–1.800 lei, magazin online 1.800–2.200 lei. Hosting inclus, fără costuri ascunse.",
 }
 
 export default function SiteUriPage() {

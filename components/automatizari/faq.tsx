@@ -7,23 +7,23 @@ import { Plus, Minus } from "lucide-react"
 const faqs = [
   {
     q: "Trebuie să schimb aplicațiile pe care le folosesc deja?",
-    a: "Nu. Ne conectăm direct la ce folosești deja — Excel, Gmail, WhatsApp, programul de facturare — fără să fie nevoie să schimbi nimic.",
+    a: "Nu. Mă conectez direct la ce folosești deja — Excel, Gmail, WhatsApp, programul de facturare — fără să fie nevoie să schimbi nimic.",
   },
   {
     q: "Cât durează implementarea?",
-    a: "Un chatbot sau automatizare simplă: 3–5 zile. Sisteme mai complexe cu mai multe integrări: 1–2 săptămâni. Lucrăm rapid și îți livrăm testat.",
+    a: "Un chatbot sau automatizare simplă: 3–5 zile. Sisteme mai complexe cu mai multe integrări: 1–2 săptămâni. Lucrez rapid și îți livrez totul testat.",
   },
   {
     q: "Cum funcționează robotul de WhatsApp?",
-    a: "Conectăm un agent AI la numărul tău de WhatsApp Business. El citește mesajele clienților, înțelege contextul și răspunde automat conform regulilor pe care i le definim. Tu primești notificare doar când e ceva ce necesită intervenția ta.",
+    a: "Conectez un agent AI la numărul tău de WhatsApp Business. El citește mesajele clienților, înțelege contextul și răspunde automat conform regulilor pe care i le definesc. Tu primești notificare doar când e ceva ce necesită intervenția ta.",
   },
   {
     q: "Se recuperează investiția?",
-    a: "Absolut. Un patron care economisește 2 ore pe zi câștigă echivalentul unui angajat part-time. Clienții noștri recuperează investiția în primele 30–60 de zile.",
+    a: "Absolut. Un patron care economisește 2 ore pe zi câștigă echivalentul unui angajat part-time. Clienții mei recuperează investiția în primele 30–60 de zile.",
   },
   {
     q: "Există costuri lunare după implementare?",
-    a: "Depinde de soluție. Unele automatizări simple nu au costuri lunare. Roboții AI activi necesită un abonament mic de mentenanță (de la 20–50€/lună) care acoperă serverul și actualizările.",
+    a: "Da, dar variază mult. Abonamentul pornește de la 150 lei/lună pentru o automatizare simplă și urcă spre 700–800 lei/lună pentru sisteme cu mai multe fluxuri și mai mulți oameni care le folosesc. Acoperă serverul, monitorizarea, corecțiile și actualizările — cu cât ceri mai multe, cu atât crește partea lunară, nu implementarea.",
   },
 ]
 

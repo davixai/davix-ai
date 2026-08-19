@@ -51,7 +51,7 @@ export function AutomatizariHero() {
           style={{ lineHeight: "1.7" }}
         >
           De la chatbot WhatsApp și SMS reminder/review la automatizări email și fluxuri interne —
-          conectăm uneltele tale și le facem să lucreze singure.
+          conectez uneltele tale și le fac să lucreze singure.
         </motion.p>
 
         <motion.div

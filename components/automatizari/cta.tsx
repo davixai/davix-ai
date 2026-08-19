@@ -26,7 +26,7 @@ export function AutomatizariCta() {
               className="text-zinc-600 mb-8 max-w-xl mx-auto"
               style={{ lineHeight: "1.7" }}
             >
-              15 minute de discuție și știm exact ce automatizăm pentru tine. Fără obligații, fără pitch agresiv.
+              15 minute de discuție și știu exact ce automatizez pentru tine. Fără obligații, fără pitch agresiv.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button

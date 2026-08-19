@@ -82,6 +82,7 @@ export function SummaryStep({
             </>
           )}
         </p>
+        {estimate.note ? <p className="dvx-summary__pending">{estimate.note}</p> : null}
       </div>
 
       {/* Cifrele-cheie */}

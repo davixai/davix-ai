@@ -29,7 +29,7 @@ const servicii = [
     badge: "WhatsApp",
     title: "Suport Clienți pe WhatsApp",
     subtitle: "Răspuns în 2 secunde, non-stop",
-    description: "Clienții tăi primesc răspuns instant pe WhatsApp la orice oră. Automatizăm preluarea cererilor de ofertă, confirmările de programări și întrebările frecvente — fără să ridici un deget.",
+    description: "Clienții tăi primesc răspuns instant pe WhatsApp la orice oră. Automatizez preluarea cererilor de ofertă, confirmările de programări și întrebările frecvente — fără să ridici un deget.",
     features: [
       "Răspuns automat în 2 secunde",
       "Preia cereri de ofertă automat",
@@ -97,7 +97,7 @@ export function AutomatizariServicii() {
             style={{ letterSpacing: "-0.025em" }}
             className="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4"
           >
-            Ce automatizăm pentru tine
+            Ce automatizez pentru tine
           </h2>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
             Soluții implementate rapid care îți returnează ore întregi de muncă manuală în fiecare săptămână.

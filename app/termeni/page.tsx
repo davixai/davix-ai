@@ -35,10 +35,10 @@ export default function TermeniPage() {
 
             <div className="space-y-8 text-zinc-700" style={{ lineHeight: "1.75" }}>
               <section>
-                <h2 className="text-xl font-semibold text-zinc-900 mb-3">1. Cine suntem</h2>
+                <h2 className="text-xl font-semibold text-zinc-900 mb-3">1. Cine sunt</h2>
                 <p>
                   DaviX AI este un brand de servicii digitale operat de Balta David, cu sediul în
-                  Suceava, România. Oferim site-uri web, aplicații personalizate (inclusiv produsul
+                  Suceava, România. Ofer site-uri web, aplicații personalizate (inclusiv produsul
                   Davix Dental) și chatboți AI pentru afaceri locale.
                 </p>
                 <p className="mt-3">
@@ -59,8 +59,8 @@ export default function TermeniPage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">3. Plăți și facturare</h2>
                 <p>
-                  Lucrăm cu factură fiscală și contract. Plățile se efectuează conform termenelor
-                  agreate (în general, avans + tranșe + livrare finală). Suportăm e-Factură pentru
+                  Lucrez cu factură fiscală și contract. Plățile se efectuează conform termenelor
+                  agreate (în general, avans + tranșe + livrare finală). Suport e-Factură pentru
                   clienții persoane juridice din România.
                 </p>
               </section>

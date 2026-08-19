@@ -14,8 +14,8 @@
 
 export const CURRENCY = "lei"
 
-/** Lățimea intervalului afișat față de calculul intern (0.15 = ±15%). */
-export const RANGE_SPREAD = 0.15
+/** Lățimea intervalului afișat față de calculul intern (0.20 = ±20%). */
+export const RANGE_SPREAD = 0.2
 
 /** Sumele afișate se rotunjesc la multiplu de 50 lei, ca să arate „de ofertă". */
 const ROUNDING_STEP = 50
@@ -23,13 +23,19 @@ const ROUNDING_STEP = 50
 // ----------------------------------------------------------------------------
 // SITE — preț unic (one-time)
 // ----------------------------------------------------------------------------
+
+/** Cele patru pachete de site, în ordinea prețului. */
+export type SiteBase = "landing" | "presentation" | "multipage" | "shop"
+
 export const SITE_PRICES = {
-  /** Landing page — o singură pagină, focus pe conversie. */
-  landing: 800,
-  /** Site de prezentare — 2-5 pagini. */
-  presentation: 1400,
-  /** Site multi-pagină — 6-10 pagini. */
-  multipage: 2200,
+  /** Landing page — o singură pagină, focus pe conversie. Public: 500–700 lei. */
+  landing: 600,
+  /** Site de prezentare — 2-5 pagini. Public: 800–1.200 lei. */
+  presentation: 1000,
+  /** Site multi-pagină — 6-10 pagini. Public: 1.200–1.800 lei. */
+  multipage: 1500,
+  /** Magazin online cu comenzi și plăți. Public: 1.800–2.200 lei. */
+  shop: 2000,
   /** Fiecare pagină peste 10. */
   extraPage: 150,
   /** Câte pagini presupunem peste prag când clientul spune „peste 10" (ipoteză). */
@@ -45,6 +51,23 @@ export const SITE_PRICES = {
   /** Supliment dacă are materialele doar parțial (ipoteză: jumătate din taxă). */
   partialAssetsFee: 125,
 } as const
+
+/**
+ * Intervalele publicate pe pagina de pachete. Sursa de adevăr pentru textele
+ * de marketing; calculul intern pornește de la mijlocul fiecărui interval.
+ */
+export const SITE_PRICE_RANGES: Record<SiteBase, [number, number]> = {
+  landing: [500, 700],
+  presentation: [800, 1200],
+  multipage: [1200, 1800],
+  shop: [1800, 2200],
+}
+
+/** „500 – 700 lei", direct din intervalul publicat. */
+export function siteRangeLabel(base: SiteBase): string {
+  const [min, max] = SITE_PRICE_RANGES[base]
+  return formatRange(min, max)
+}
 
 /** Funcționalitățile din pasul A3. Cele cu 0 sunt incluse în pachetul de bază. */
 export const SITE_FEATURE_PRICES: Record<string, number> = {
@@ -76,11 +99,15 @@ export const MAINTENANCE_PRICES = {
 // ----------------------------------------------------------------------------
 export const AUTOMATION_PRICES = {
   /** Implementare, per proces automatizat. */
-  perProcess: 900,
+  perProcess: 650,
   /** Abonament lunar, punctul de plecare. */
-  monthlyBase: 120,
+  monthlyBase: 150,
   /** Cât crește abonamentul pentru fiecare proces peste primul (ipoteză). */
-  monthlyPerExtraProcess: 40,
+  monthlyPerExtraProcess: 90,
+  /** Abonamentul nu coboară sub atât, oricât de simplă ar fi automatizarea. */
+  monthlyMin: 150,
+  /** Plafonul de listă: peste el, prețul se discută separat. */
+  monthlyMax: 800,
   /** Tariful orar folosit pentru calculul economiei. */
   hourlyRate: 60,
   /**
@@ -113,12 +140,12 @@ export const AUTOMATION_TEAM_MULTIPLIER: Record<string, number> = {
  * setup-ul inițial cere mai mult timp (ipoteză).
  */
 export const AUTOMATION_TOOLS_SETUP: Record<string, number> = {
-  whatsapp: 100,
-  email: 100,
+  whatsapp: 80,
+  email: 80,
   sheets: 0,
-  paper: 250,
-  software: 150,
-  nothing: 250,
+  paper: 200,
+  software: 120,
+  nothing: 200,
 }
 
 // ----------------------------------------------------------------------------
@@ -126,16 +153,19 @@ export const AUTOMATION_TOOLS_SETUP: Record<string, number> = {
 // ----------------------------------------------------------------------------
 export const APP_PRICES = {
   dental: {
-    /** DaviX Dental — soluție gata, funcțională. */
-    setup: 1500,
-    monthly: 150,
+    /**
+     * DaviX Dental — prețurile sunt exact cele publicate pe pagina produsului.
+     * Implementarea, importul datelor și instruirea intră în abonament.
+     */
+    setup: 0,
+    /** Abonament lunar, pe plan. */
+    plans: { starter: 400, pro: 600, max: 800 },
+    /** Peste admin + 5 utilizatori de echipă incluși. */
+    extraUserMonthly: 50,
   },
   cafe: {
-    /** DaviX Cafe — meniu digital QR + fidelizare. */
-    setup: 1200,
-    monthly: 120,
-    /** Module peste primul, în pachetul Cafe (ipoteză). */
-    perExtraModule: 400,
+    /** DaviX Cafe — încă în dezvoltare, prețul nu este stabilit. */
+    pending: true,
   },
   custom: {
     /** Aplicație personalizată, de la. */
@@ -149,19 +179,24 @@ export const APP_PRICES = {
     /** Abonament lunar de pornire pentru aplicații personalizate (ipoteză). */
     monthlyFrom: 150,
   },
-  /** Supliment pentru fiecare locație / punct de lucru peste primul (ipoteză). */
-  perExtraLocation: 300,
 } as const
 
-/** Supliment în funcție de câți utilizatori are aplicația (ipoteză). */
-export const APP_USERS_FEE: Record<string, number> = {
-  "1-3": 0,
-  "4-10": 300,
-  "10+": 700,
+/** Numele planurilor Davix Dental, așa cum apar pe pagina produsului. */
+export const DENTAL_PLAN_LABELS: Record<"starter" | "pro" | "max", string> = {
+  starter: "Starter",
+  pro: "Pro",
+  max: "Max",
 }
 
-/** Câte locații suplimentare presupunem când clientul alege „4+" (ipoteză). */
-export const ASSUMED_EXTRA_LOCATIONS = 3
+/**
+ * Câți utilizatori peste cei 6 incluși (admin + 5) presupune fiecare interval.
+ * Se taxează lunar, ca pe pagina Davix Dental.
+ */
+export const DENTAL_EXTRA_USERS: Record<string, number> = {
+  "1-6": 0,
+  "7-10": 4,
+  "10+": 7,
+}
 
 // ----------------------------------------------------------------------------
 // TERMENE DE LIVRARE (zile lucrătoare)
@@ -170,6 +205,7 @@ export const TIMELINES: Record<string, [number, number]> = {
   landing: [5, 5],
   presentation: [10, 10],
   multipage: [15, 15],
+  shop: [15, 25],
   automation: [7, 21],
   app: [20, 45],
 }
@@ -194,7 +230,7 @@ export interface Answers {
   branch?: Branch
 
   // — RAMURA A: SITE —
-  siteType?: "landing" | "presentation" | "multipage" | "unsure"
+  siteType?: SiteBase | "unsure"
   sitePages?: "1" | "2-5" | "6-10" | "10+" | "unknown"
   siteFeatures?: string[]
   siteChatbot?: "yes" | "no"
@@ -213,9 +249,8 @@ export interface Answers {
 
   // — RAMURA C: APLICAȚIE —
   appType?: "dental" | "cafe" | "custom"
-  appDentalLocations?: "1" | "2-3" | "4+"
-  appDentalUsers?: "1-3" | "4-10" | "10+"
-  appCafeLocations?: "1" | "2-3" | "4+"
+  appDentalPlan?: "starter" | "pro" | "max"
+  appDentalUsers?: "1-6" | "7-10" | "10+"
   appCafeModules?: string[]
   appCustomIndustry?: string
   appCustomModules?: string[]
@@ -247,6 +282,8 @@ export interface Estimate {
   savings?: { hoursPerMonth: number; moneyPerMonth: number }
   /** Ce include livrarea, listat concret în sumar. */
   deliverables: string[]
+  /** Mesaj afișat în locul prețului, când produsul încă nu are unul. */
+  note?: string
   /** true când avem destule răspunsuri cât să afișăm un preț credibil. */
   ready: boolean
 }
@@ -342,14 +379,10 @@ function estimateSite(answers: Answers): Estimate {
 
   // Prețul de bază vine din tipul de site; dacă utilizatorul nu e sigur,
   // îl deducem din numărul de pagini estimat.
-  let baseKey: "landing" | "presentation" | "multipage" = "presentation"
+  let baseKey: SiteBase = "presentation"
 
-  if (answers.siteType === "landing") {
-    baseKey = "landing"
-  } else if (answers.siteType === "presentation") {
-    baseKey = "presentation"
-  } else if (answers.siteType === "multipage") {
-    baseKey = "multipage"
+  if (answers.siteType && answers.siteType !== "unsure") {
+    baseKey = answers.siteType
   } else {
     // „Nu sunt sigur" → deducem din pagini
     if (answers.sitePages === "1") baseKey = "landing"
@@ -357,10 +390,11 @@ function estimateSite(answers: Answers): Estimate {
     else baseKey = "presentation"
   }
 
-  const baseLabels = {
+  const baseLabels: Record<SiteBase, string> = {
     landing: "Landing page (o pagină)",
     presentation: "Site de prezentare (2-5 pagini)",
     multipage: "Site multi-pagină (6-10 pagini)",
+    shop: "Magazin online (comenzi și plăți)",
   }
 
   oneTime.push({ label: baseLabels[baseKey], amount: SITE_PRICES[baseKey] })
@@ -368,7 +402,7 @@ function estimateSite(answers: Answers): Estimate {
   deliverables.push("Configurare Google (indexare, Search Console, viteză)")
 
   // Pagini peste 10
-  if (answers.sitePages === "10+" && baseKey === "multipage") {
+  if (answers.sitePages === "10+" && (baseKey === "multipage" || baseKey === "shop")) {
     oneTime.push({
       label: `Pagini suplimentare (estimat ${SITE_PRICES.assumedExtraPages})`,
       amount: SITE_PRICES.extraPage * SITE_PRICES.assumedExtraPages,
@@ -379,12 +413,14 @@ function estimateSite(answers: Answers): Estimate {
   // Funcționalități
   const features = answers.siteFeatures ?? []
   for (const feature of features) {
-    const price = SITE_FEATURE_PRICES[feature]
-    if (price === undefined) continue
+    const listed = SITE_FEATURE_PRICES[feature]
+    if (listed === undefined) continue
+    // Pachetul „magazin online" conține deja partea de comenzi — nu o taxez de două ori.
+    const included = listed === 0 || (baseKey === "shop" && feature === "shop")
     oneTime.push({
       label: SITE_FEATURE_LABELS[feature] ?? feature,
-      amount: price,
-      note: price === 0 ? "inclus" : undefined,
+      amount: included ? 0 : listed,
+      note: included ? "inclus" : undefined,
     })
     deliverables.push(SITE_FEATURE_LABELS[feature] ?? feature)
   }
@@ -420,7 +456,7 @@ function estimateSite(answers: Answers): Estimate {
       label: "Realizare materiale (logo, poze, texte)",
       amount: SITE_PRICES.noAssetsFee,
     })
-    deliverables.push("Texte scrise de noi și selecție de imagini")
+    deliverables.push("Texte scrise de mine și selecție de imagini")
   } else if (answers.siteAssets === "partial") {
     oneTime.push({
       label: "Completare materiale lipsă",
@@ -444,7 +480,9 @@ function estimateSite(answers: Answers): Estimate {
 
   // Termen
   let [minDays, maxDays] = TIMELINES[baseKey]
-  const heavyCount = features.filter((f) => HEAVY_SITE_FEATURES.includes(f)).length
+  const heavyCount = features.filter(
+    (f) => HEAVY_SITE_FEATURES.includes(f) && !(baseKey === "shop" && f === "shop"),
+  ).length
   minDays += heavyCount * DAYS_PER_HEAVY_FEATURE
   maxDays += heavyCount * DAYS_PER_HEAVY_FEATURE + (heavyCount > 0 ? 3 : 0)
 
@@ -487,16 +525,24 @@ function estimateAutomation(answers: Answers): Estimate {
     oneTime.push({ label: "Migrare și organizare date existente", amount: toolsFee })
   }
 
-  // Abonament lunar
-  const monthlyTotal = Math.round(
+  // Abonament lunar — crește cu numărul de fluxuri și cu mărimea echipei,
+  // dar rămâne între minimul și plafonul de listă.
+  const monthlyRaw = Math.round(
     (AUTOMATION_PRICES.monthlyBase +
       AUTOMATION_PRICES.monthlyPerExtraProcess * (processCount - 1)) *
       teamMultiplier,
   )
+  const monthlyTotal = Math.min(
+    AUTOMATION_PRICES.monthlyMax,
+    Math.max(AUTOMATION_PRICES.monthlyMin, monthlyRaw),
+  )
   monthly.push({
     label: "Abonament: rulare, monitorizare, suport",
     amount: monthlyTotal,
-    note: `de la ${formatLei(AUTOMATION_PRICES.monthlyBase)}`,
+    note:
+      monthlyRaw > AUTOMATION_PRICES.monthlyMax
+        ? `plafonul de listă — peste ${formatLei(AUTOMATION_PRICES.monthlyMax)}/lună stabilim prețul la discuție`
+        : `între ${formatLei(AUTOMATION_PRICES.monthlyMin)} și ${formatLei(AUTOMATION_PRICES.monthlyMax)}/lună, după complexitate`,
   })
 
   for (const task of tasks) {
@@ -536,59 +582,52 @@ function estimateAutomation(answers: Answers): Estimate {
 // CALCUL — RAMURA C: APLICAȚIE
 // ============================================================================
 
-/** Câte locații suplimentare implică fiecare interval ales. */
-function extraLocations(value?: string): number {
-  if (value === "2-3") return 2
-  if (value === "4+") return ASSUMED_EXTRA_LOCATIONS
-  return 0
-}
-
 function estimateApp(answers: Answers): Estimate {
   const oneTime: EstimateLine[] = []
   const monthly: EstimateLine[] = []
   const deliverables: string[] = []
   let extraDays = 0
 
+  let note: string | undefined
+
   if (answers.appType === "dental") {
-    oneTime.push({ label: "DaviX Dental — implementare", amount: APP_PRICES.dental.setup })
-    monthly.push({ label: "DaviX Dental — abonament", amount: APP_PRICES.dental.monthly })
+    const plan = answers.appDentalPlan ?? "starter"
+    monthly.push({
+      label: `DaviX Dental — plan ${DENTAL_PLAN_LABELS[plan]}`,
+      amount: APP_PRICES.dental.plans[plan],
+      note: "implementare, import date și instruire incluse",
+    })
 
-    const locations = extraLocations(answers.appDentalLocations)
-    if (locations > 0) {
-      oneTime.push({
-        label: `Locații suplimentare (${locations})`,
-        amount: APP_PRICES.perExtraLocation * locations,
+    const extraUsers = DENTAL_EXTRA_USERS[answers.appDentalUsers ?? "1-6"] ?? 0
+    if (extraUsers > 0) {
+      monthly.push({
+        label: `Utilizatori peste cei 6 incluși (${extraUsers})`,
+        amount: APP_PRICES.dental.extraUserMonthly * extraUsers,
+        note: `${formatLei(APP_PRICES.dental.extraUserMonthly)} / utilizator / lună`,
       })
     }
-    const usersFee = APP_USERS_FEE[answers.appDentalUsers ?? "1-3"] ?? 0
-    if (usersFee > 0) {
-      oneTime.push({ label: "Configurare pentru echipă extinsă", amount: usersFee })
-    }
 
-    deliverables.push("Fișe pacienți, istoric tratamente și documente")
-    deliverables.push("Programări cu confirmare automată prin SMS/WhatsApp")
-    deliverables.push("Rapoarte de încasări și ocupare pe medic")
-    deliverables.push("Instalare, import date existente și instruire")
+    note =
+      "Davix Dental nu are cost de implementare: instalarea, importul datelor și instruirea intră în abonamentul lunar."
+
+    deliverables.push("Calendar, programări pe medic și rechemări la control")
+    deliverables.push("Fișe pacienți, odontogramă, tratamente și planuri de tratament")
+    deliverables.push("Fișiere medicale, galerie before/after și consimțăminte")
+    deliverables.push("Financiar: plăți, încasări, cheltuieli și metode de plată")
+    deliverables.push("Laborator: lucrări, furnizori, statusuri și costuri")
+    deliverables.push("Admin + 5 utilizatori de echipă și 100GB stocare medicală")
+    if (plan !== "starter") {
+      deliverables.push("Reminder programare și cerere automată de review Google")
+    }
+    if (plan === "max") {
+      deliverables.push("450 SMS/lună incluse, gestionate de mine")
+    }
   } else if (answers.appType === "cafe") {
-    oneTime.push({ label: "DaviX Cafe — implementare", amount: APP_PRICES.cafe.setup })
-    monthly.push({ label: "DaviX Cafe — abonament", amount: APP_PRICES.cafe.monthly })
+    // Aplicația e încă în dezvoltare — nu dau un preț pe care nu îl pot susține.
+    note =
+      "DaviX Cafe e încă în lucru, așa că nu are un preț stabilit. Îți spun exact cât costă în momentul lansării — până atunci pot să te anunț primul."
 
-    const modules = answers.appCafeModules ?? []
-    if (modules.length > 1) {
-      oneTime.push({
-        label: `Module suplimentare (${modules.length - 1})`,
-        amount: APP_PRICES.cafe.perExtraModule * (modules.length - 1),
-      })
-    }
-    const locations = extraLocations(answers.appCafeLocations)
-    if (locations > 0) {
-      oneTime.push({
-        label: `Locații suplimentare (${locations})`,
-        amount: APP_PRICES.perExtraLocation * locations,
-      })
-    }
-
-    for (const module of modules) {
+    for (const module of answers.appCafeModules ?? []) {
       deliverables.push(CAFE_MODULE_LABELS[module] ?? module)
     }
     deliverables.push("Coduri QR tipăribile pentru fiecare masă")
@@ -628,7 +667,7 @@ function estimateApp(answers: Answers): Estimate {
     deliverables.push("Livrare pe etape, cu demo la fiecare etapă")
   }
 
-  deliverables.push("Cod și date care rămân ale tale")
+  if (answers.appType !== "cafe") deliverables.push("Cod și date care rămân ale tale")
 
   const [minDays, maxDays] = TIMELINES.app
 
@@ -639,10 +678,11 @@ function estimateApp(answers: Answers): Estimate {
     timeline: {
       min: minDays + extraDays,
       max: maxDays + extraDays,
-      label: formatDays(minDays + extraDays, maxDays + extraDays),
+      label: answers.appType === "cafe" ? "în lucru" : formatDays(minDays + extraDays, maxDays + extraDays),
     },
     deliverables,
-    ready: Boolean(answers.appType),
+    note,
+    ready: Boolean(answers.appType) && answers.appType !== "cafe",
   }
 }
 

@@ -36,7 +36,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "DaviX AI — Site-uri web, aplicații personalizate și chatboți AI",
   description:
-    "Construim site-uri web premium, aplicații personalizate și chatboți AI pentru afaceri locale care vor să economisească timp și să primească mai multe cereri. Audit gratuit 15 minute.",
+    "Construiesc site-uri web premium, aplicații personalizate și chatboți AI pentru afaceri locale care vor să economisească timp și să primească mai multe cereri. Audit gratuit 15 minute.",
   keywords: [
     "site-uri web",
     "aplicații personalizate",

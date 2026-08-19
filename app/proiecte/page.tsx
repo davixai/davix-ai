@@ -72,21 +72,6 @@ const projects: Project[] = [
     liveLabel: "Vezi site-ul",
   },
   {
-    businessType: "Vidanjare autorizată",
-    name: "DISCIF S.R.L. · Suceava",
-    highlights: [
-      "Site publicat și folosit zilnic",
-      "Formular de ofertă cu detaliile intervenției",
-      "Telefon vizibil pe tot site-ul",
-      "Zone deservite din județ, clar afișate",
-    ],
-    status: "client",
-    icon: Droplets,
-    url: "https://discifsuceava.ro/",
-    image: "/projects/discif.webp",
-    liveLabel: "Vezi site-ul",
-  },
-  {
     businessType: "Pensiune boutique",
     name: "ARBORÉA · Bucovina",
     highlights: [
@@ -99,6 +84,21 @@ const projects: Project[] = [
     icon: Hotel,
     url: "https://pensiune.website/",
     image: "/projects/pensiune.webp",
+    liveLabel: "Vezi site-ul",
+  },
+  {
+    businessType: "Vidanjare autorizată",
+    name: "DISCIF S.R.L. · Suceava",
+    highlights: [
+      "Site publicat și folosit zilnic",
+      "Formular de ofertă cu detaliile intervenției",
+      "Telefon vizibil pe tot site-ul",
+      "Zone deservite din județ, clar afișate",
+    ],
+    status: "client",
+    icon: Droplets,
+    url: "https://discifsuceava.ro/",
+    image: "/projects/discif.webp",
     liveLabel: "Vezi site-ul",
   },
   {
@@ -117,21 +117,6 @@ const projects: Project[] = [
     liveLabel: "Vezi calculatorul",
   },
   {
-    businessType: "Restaurant & bar",
-    name: "AMBRA",
-    highlights: [
-      "Meniu prezentat elegant",
-      "Galerie cu atmosferă",
-      "Rezervare rapidă",
-      "Contact prin WhatsApp",
-    ],
-    status: "demo",
-    icon: UtensilsCrossed,
-    url: "https://restaurant-demo-10.netlify.app/",
-    image: "/projects/restaurant.webp",
-    liveLabel: "Vezi site-ul",
-  },
-  {
     businessType: "Clinică stomatologică",
     name: "Lumident",
     highlights: [
@@ -144,36 +129,6 @@ const projects: Project[] = [
     icon: Stethoscope,
     url: "https://democlinicastomatologica.netlify.app/",
     image: "/projects/lumident.webp",
-    liveLabel: "Vezi site-ul",
-  },
-  {
-    businessType: "Electrician autorizat",
-    name: "Electric Pro",
-    highlights: [
-      "Servicii și tarife orientative",
-      "Galerie de lucrări",
-      "Formular rapid de ofertă",
-      "Contact pentru urgențe 24/7",
-    ],
-    status: "demo",
-    icon: Zap,
-    url: "https://electroivi-website-design.vercel.app/",
-    image: "/projects/electroivi.webp",
-    liveLabel: "Vezi site-ul",
-  },
-  {
-    businessType: "Tractări auto 24/7",
-    name: "DAR Assist · Bucovina",
-    highlights: [
-      "Apel rapid, disponibil 24/7",
-      "Servicii și prețuri clare",
-      "Zone de intervenție vizibile",
-      "Asistență rutieră imediată",
-    ],
-    status: "demo",
-    icon: Truck,
-    url: "https://demotractari.netlify.app/",
-    image: "/projects/tractari.webp",
     liveLabel: "Vezi site-ul",
   },
 ]
@@ -271,7 +226,7 @@ export default function ProiectePage() {
                 className="text-zinc-600 max-w-2xl mx-auto"
                 style={{ lineHeight: "1.7" }}
               >
-                Un client real, o aplicație de calcul ofertă și șapte modele gata de personalizat —
+                Un client real, o aplicație de calcul ofertă și patru modele gata de personalizat —
                 toate live.
               </p>
             </motion.div>
@@ -370,7 +325,7 @@ export default function ProiectePage() {
                         </div>
                       </div>
 
-                      {/* Pe telefon arătăm doar primele două beneficii: cardul scade
+                      {/* Pe telefon arăt doar primele două beneficii: cardul scade
                           de la ~500px la ~390px, iar pagina rămâne parcurgibilă. */}
                       <ul className="mt-5 flex-1 space-y-2.5" aria-label={`Beneficii ${project.businessType}`}>
                         {project.highlights.map((highlight, highlightIndex) => (
@@ -471,7 +426,7 @@ export default function ProiectePage() {
                 </div>
 
                 <p className="mt-4 text-sm text-zinc-600" style={{ lineHeight: "1.7" }}>
-                  Aplicația pe care o construim și o întreținem noi — nu un site de prezentare, ci
+                  Aplicația pe care o construiesc și o întrețin eu — nu un site de prezentare, ci
                   software folosit zilnic într-o clinică.
                 </p>
 
@@ -515,7 +470,7 @@ export default function ProiectePage() {
               className="mt-14 text-center"
             >
               <h2 id="domenii" className="text-sm font-medium text-zinc-600 mb-4">
-                Construim și pentru alte domenii:
+                Construiesc și pentru alte domenii:
               </h2>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5">
                 {industries.map((industry) => {
@@ -549,7 +504,7 @@ export default function ProiectePage() {
                 Ai un proiect în minte?
               </h3>
               <p className="text-emerald-50 mb-6 max-w-xl mx-auto" style={{ lineHeight: "1.6" }}>
-                Programează un audit gratuit de 15 minute și discutăm cum putem să-l construim.
+                Programează un audit gratuit de 15 minute și discutăm cum îl pot construi.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button

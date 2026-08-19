@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 const EASE = [0.22, 1, 0.36, 1] as const
 
 /** Titlul intră cuvânt cu cuvânt — efectul premium stă în stagger, nu în viteză. */
-const line1 = ["Noi", "construim", "sistemele."]
+const line1 = ["Eu", "construiesc", "sistemele."]
 const line2 = ["Tu", "construiești", "afacerea."]
 
 export function HeroHome() {

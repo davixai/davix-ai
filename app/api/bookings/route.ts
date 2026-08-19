@@ -202,16 +202,16 @@ export async function POST(request: Request) {
           to: normalizedEmail,
           subject: "Confirmare programare - DaviX AI",
           html: `
-            <h2>Mulțumim pentru programare!</h2>
+            <h2>Mulțumesc pentru programare!</h2>
             <p>Bună ${safeName},</p>
-            <p>Am primit cererea ta de programare și o vom confirma în curând.</p>
+            <p>Am primit cererea ta de programare și o voi confirma în curând.</p>
             <h3>Detalii programare:</h3>
             <p><strong>Data:</strong> ${formattedDate}</p>
             <p><strong>Ora:</strong> ${safeBookingTime}</p>
             ${normalizedMessage ? `<p><strong>Mesajul tău:</strong> ${safeMessage}</p>` : ""}
             <hr>
-            <p>Te vom contacta pentru confirmare.</p>
-            <p>Cu stimă,<br>Echipa DaviX AI</p>
+            <p>Te contactez pentru confirmare.</p>
+            <p>Cu stimă,<br>Balta David · DaviX AI</p>
             <p><a href="https://wa.me/40729369094">WhatsApp: 0729 369 094</a></p>
           `,
         },

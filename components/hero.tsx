@@ -34,7 +34,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-glow" />
-          <span className="text-sm text-zinc-400">Lansăm Aprilie 2026 - Primele 3 site-uri GRATUITE</span>
+          <span className="text-sm text-zinc-400">Lansez Aprilie 2026 - Primele 3 site-uri GRATUITE</span>
         </motion.div>
 
         {/* Headline */}

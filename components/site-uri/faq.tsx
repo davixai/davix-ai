@@ -7,7 +7,7 @@ import { Plus, Minus } from "lucide-react"
 const faqs = [
   {
     q: "Trebuie sa stiu programare?",
-    a: "Nu. Noi ne ocupam de tot — design, dezvoltare, publicare. Tu primesti site-ul gata de utilizat.",
+    a: "Nu. Ma ocup eu de tot — design, dezvoltare, publicare. Tu primesti site-ul gata de utilizat.",
   },
   {
     q: "Site-ul este 100% al meu?",
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "De ce pretul e un interval si nu unul fix?",
-    a: "Pentru ca fiecare site e diferit. Un site de prezentare costa intre 700 si 1.000 lei, unul complex intre 1.000 si 2.000 lei, iar un magazin online cu comenzi si plati porneste de la 2.000 lei. Pretul exact depinde de numarul de pagini, functii si integrari — il stabilim impreuna la auditul gratuit.",
+    a: "Pentru ca fiecare site e diferit. Un landing page costa intre 500 si 700 lei, un site de prezentare intre 800 si 1.200 lei, unul cu mai multe pagini intre 1.200 si 1.800 lei, iar un magazin online cu comenzi si plati intre 1.800 si 2.200 lei. Pretul exact depinde de numarul de pagini, functii si integrari — il stabilim impreuna la auditul gratuit.",
   },
   {
     q: "Cat dureaza livrarea?",
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Pot modifica continutul dupa livrare?",
-    a: "Da. Poti modifica singur sau noi gestionam modificarile pentru tine, in functie de pachetul ales.",
+    a: "Da. Poti modifica singur sau gestionez eu modificarile pentru tine, in functie de pachetul ales.",
   },
   {
     q: "Ma ajutati cu domeniul (.ro / .com)?",

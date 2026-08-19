@@ -2035,3 +2035,13 @@ body[data-dvx-visible="1"] .fixed.bottom-24.left-4 {
     stroke-dashoffset: 0;
   }
 }
+
+/* Nota pentru produsele fără preț stabilit încă (ex. DaviX Cafe în dezvoltare):
+   apare sub cifra „—", ca să fie clar de ce nu e un număr acolo. */
+.dvx-summary__pending {
+  max-width: 46ch;
+  margin: var(--dvx-s3) auto 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--dvx-steel);
+}

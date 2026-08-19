@@ -110,7 +110,7 @@ const plans: Plan[] = [
     description:
       "Pentru clinici care vor automatizări SMS fără administrarea contului Calisero.",
     includes: [
-      "Tot din Pro + gestionăm noi primele 450 SMS/lună",
+      "Tot din Pro + gestionez eu primele 450 SMS/lună",
       "450 SMS incluse lunar, gestionate de Davix",
       "Reminder programare + review Google automat",
       "Configurare template-uri și link review scurt",

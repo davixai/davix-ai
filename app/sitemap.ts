@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/aplicatii`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/davix-dental`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
     { url: `${BASE}/proiecte`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/despre-noi`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/despre-mine`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/testimoniale`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/intrebari-frecvente`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/termeni`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },

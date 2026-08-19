@@ -37,13 +37,14 @@ const projects: Proof[] = [
     image: "/projects/curatenie.webp",
   },
   {
-    category: "Site firmă — publicat",
-    name: "DISCIF — Vidanjare Suceava",
-    blurb: "Site pentru o firmă reală de vidanjare din Suceava. Clienții cer ofertă direct de pe site.",
-    metric: "Site publicat",
-    badges: ["Cerere de ofertă", "Telefon la un click", "Merge bine pe telefon"],
-    url: "https://discifsuceava.ro/",
-    image: "/projects/discif.webp",
+    category: "Pensiune boutique",
+    name: "ARBORÉA — Pensiune Bucovina",
+    blurb:
+      "Site premium pentru o pensiune boutique din Bucovina: imagine cinematică, camere și experiențe prezentate clar, rezervare rapidă.",
+    metric: "Model premium · exclusiv",
+    badges: ["Imagine premium, boutique", "Camere și experiențe", "Rezervare rapidă"],
+    url: "https://pensiune.website/",
+    image: "/projects/pensiune.webp",
   },
 ]
 

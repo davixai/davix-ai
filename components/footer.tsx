@@ -13,7 +13,7 @@ const footerLinks = {
     { label: "Proiecte", href: "/proiecte" },
   ],
   Companie: [
-    { label: "Despre noi", href: "/despre-noi" },
+    { label: "Despre mine", href: "/despre-mine" },
     { label: "Studii de caz", href: "/testimoniale" },
     { label: "Întrebări frecvente", href: "/intrebari-frecvente" },
     { label: "Contact", href: "/#contact" },

@@ -44,7 +44,7 @@ export default function ConfidentialitatePage() {
 
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">2. Date colectate</h2>
-                <p>Colectăm date strict necesare pentru livrarea serviciilor:</p>
+                <p>Colectez date strict necesare pentru livrarea serviciilor:</p>
                 <ul className="list-disc pl-6 mt-3 space-y-1">
                   <li>Nume, email, telefon — pentru contact și ofertă</li>
                   <li>Mesaje și detalii proiect — pentru estimarea soluției</li>
@@ -56,7 +56,7 @@ export default function ConfidentialitatePage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">3. Scopuri și temeiuri</h2>
                 <p>
-                  Procesăm datele pentru: răspuns la cereri, programări, livrarea serviciilor,
+                  Procesez datele pentru: răspuns la cereri, programări, livrarea serviciilor,
                   facturare și obligații legale. Temeiul este executarea contractului, obligațiile
                   legale sau consimțământul tău explicit.
                 </p>
@@ -66,7 +66,7 @@ export default function ConfidentialitatePage() {
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">4. Stocare și securitate</h2>
                 <p>
                   Datele sunt stocate pe servicii securizate (ex. Supabase pentru programări, Vercel
-                  pentru hosting). Păstrăm datele atât cât e necesar pentru scopurile menționate sau
+                  pentru hosting). Păstrez datele atât cât e necesar pentru scopurile menționate sau
                   pentru cerințele fiscale și legale aplicabile.
                 </p>
               </section>
@@ -74,7 +74,7 @@ export default function ConfidentialitatePage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">5. Servicii terțe</h2>
                 <p>
-                  Pentru a livra serviciile, folosim furnizori precum: Vercel (hosting), Supabase
+                  Pentru a livra serviciile, folosesc furnizori precum: Vercel (hosting), Supabase
                   (bază de date), Calisero/alte gateway-uri SMS (mesaje către pacienți/clienți, în
                   cadrul Davix Dental), WhatsApp Business și provideri de email. Fiecare furnizor are
                   propria politică de confidențialitate.
@@ -85,7 +85,7 @@ export default function ConfidentialitatePage() {
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">6. Drepturile tale (GDPR)</h2>
                 <p>
                   Ai dreptul la acces, rectificare, ștergere, restricționare, portabilitate și
-                  opoziție privind prelucrarea datelor tale. Pentru orice solicitare, scrie-ne la{" "}
+                  opoziție privind prelucrarea datelor tale. Pentru orice solicitare, scrie-mi la{" "}
                   <a href="mailto:contact@davixai.website" className="text-emerald-700 hover:underline">
                     contact@davixai.website
                   </a>
@@ -96,8 +96,8 @@ export default function ConfidentialitatePage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">7. Cookie-uri</h2>
                 <p>
-                  Folosim cookie-uri minime, necesare funcționării site-ului și pentru analytics
-                  agregat (Vercel Analytics). Nu folosim cookie-uri de tracking pentru reclame
+                  Folosesc cookie-uri minime, necesare funcționării site-ului și pentru analytics
+                  agregat (Vercel Analytics). Nu folosesc cookie-uri de tracking pentru reclame
                   externe.
                 </p>
               </section>
@@ -105,7 +105,7 @@ export default function ConfidentialitatePage() {
               <section>
                 <h2 className="text-xl font-semibold text-zinc-900 mb-3">8. Modificări</h2>
                 <p>
-                  Putem actualiza această politică. Versiunea curentă este afișată mereu pe această
+                  Pot actualiza această politică. Versiunea curentă este afișată mereu pe această
                   pagină.
                 </p>
               </section>

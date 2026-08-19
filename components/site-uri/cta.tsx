@@ -35,7 +35,7 @@ export default function SiteUriCta() {
             className="text-emerald-50 mb-8 max-w-lg mx-auto"
             style={{ lineHeight: "1.7" }}
           >
-            Programează auditul gratuit de 15 minute. Îți explicăm exact ce ai nevoie și primești un plan clar.
+            Programează auditul gratuit de 15 minute. Îți explic exact ce ai nevoie și primești un plan clar.
           </motion.p>
 
           <motion.div
@@ -65,7 +65,7 @@ export default function SiteUriCta() {
               </a>
             </Button>
           </motion.div>
-          <p className="text-xs text-emerald-100 mt-4 relative">Răspundem în maxim 2 ore (L–V)</p>
+          <p className="text-xs text-emerald-100 mt-4 relative">Răspund în maxim 2 ore (L–V)</p>
         </motion.div>
       </div>
     </section>

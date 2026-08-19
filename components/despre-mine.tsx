@@ -87,7 +87,7 @@ const promisiuni = [
   },
 ]
 
-export default function DespreNoi() {
+export default function DespreMine() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
@@ -177,7 +177,7 @@ export default function DespreNoi() {
               De la telefon la site live
             </h2>
             <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-              Cinci pași, fiecare cu termenul lui. Știi tot timpul unde suntem.
+              Cinci pași, fiecare cu termenul lui. Știi tot timpul unde sunt cu proiectul.
             </p>
           </motion.div>
 

@@ -40,8 +40,8 @@ const FOCUSABLE =
 
 function validate(values: FormValues): Partial<Record<keyof FormValues, string>> {
   const errors: Partial<Record<keyof FormValues, string>> = {}
-  if (!values.name.trim()) errors.name = "Spune-ne cum te cheamă."
-  if (!values.phone.trim()) errors.phone = "Avem nevoie de un număr ca să te sunăm."
+  if (!values.name.trim()) errors.name = "Spune-mi cum te cheamă."
+  if (!values.phone.trim()) errors.phone = "Am nevoie de un număr ca să te sun."
   else if (values.phone.replace(/\D/g, "").length < 9) errors.phone = "Numărul pare incomplet."
   if (!values.email.trim()) errors.email = "Adaugă o adresă de email."
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
@@ -227,8 +227,8 @@ export function LeadModal({ open, onClose, answers, estimate }: LeadModalProps) 
                 </div>
                 <h3 className="dvx-success__title">Am primit cererea ta</h3>
                 <p className="dvx-success__text">
-                  Îți răspundem în <strong>maximum 24 de ore lucrătoare</strong>, pe telefon sau
-                  email. Dacă e urgent, scrie-ne direct pe WhatsApp la 0729 369 094.
+                  Îți răspund în <strong>maximum 24 de ore lucrătoare</strong>, pe telefon sau
+                  email. Dacă e urgent, scrie-mi direct pe WhatsApp la 0729 369 094.
                 </p>
               </div>
               <button type="button" className="dvx-btn dvx-btn--ghost dvx-btn--lg" onClick={onClose}>

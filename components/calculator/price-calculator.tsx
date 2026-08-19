@@ -200,7 +200,7 @@ export function PriceCalculator() {
               Estimare în sub un minut
             </span>
             <h2 className="dvx__title" id="dvx-heading">
-              Ce vrei să construim?
+              Ce vrei să construiesc?
             </h2>
             <p className="dvx__subtitle">
               Răspunde la câteva întrebări și primești o estimare de preț în mai puțin de un minut.

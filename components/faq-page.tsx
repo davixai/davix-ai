@@ -10,7 +10,7 @@ const categories = [
     faqs: [
       {
         q: "Cât costă un chatbot AI?",
-        a: "Depinde de cât de multe trebuie să facă. Un chatbot care răspunde la întrebările frecvente și preia cereri pornește de la câteva sute de euro. Prețul exact ți-l spunem în auditul gratuit.",
+        a: "Depinde de cât de multe trebuie să facă. Un chatbot care răspunde la întrebările frecvente și preia cereri pornește de la câteva sute de lei. Prețul exact ți-l spun în auditul gratuit.",
       },
       {
         q: "Cât costă o aplicație personalizată?",
@@ -18,15 +18,15 @@ const categories = [
       },
       {
         q: "Pot începe doar cu un site?",
-        a: "Da. Mulți clienți pornesc cu un site de prezentare și adaugă mai târziu un chatbot sau alte lucruri. Construim pe etape, fără să te blocăm într-un pachet mare.",
+        a: "Da. Mulți clienți pornesc cu un site de prezentare și adaugă mai târziu un chatbot sau alte lucruri. Construiesc pe etape, fără să te blochez într-un pachet mare.",
       },
       {
         q: "Există abonament lunar?",
-        a: "Pentru aplicații (de exemplu Davix Dental) lucrăm cu abonament lunar, care include actualizări, suport și găzduire. La site-uri, abonamentul e opțional și acoperă întreținerea.",
+        a: "Pentru aplicații (de exemplu Davix Dental) lucrez cu abonament lunar, care include actualizări, suport și găzduire. La site-uri, abonamentul e opțional și acoperă întreținerea.",
       },
       {
         q: "Primesc factură și contract?",
-        a: "Da. Contract de prestări servicii și factură la fiecare proiect. Termenii sunt clari înainte să începem.",
+        a: "Da. Contract de prestări servicii și factură la fiecare proiect. Termenii sunt clari înainte să începem lucrul.",
       },
     ],
   },
@@ -35,7 +35,7 @@ const categories = [
     faqs: [
       {
         q: "Chatbotul merge pe WhatsApp?",
-        a: "Da. Îl putem pune pe WhatsApp Business, ca să răspundă singur clienților și să-ți trimită cererile mai departe, pe email sau pe telefon.",
+        a: "Da. Îl pot pune pe WhatsApp Business, ca să răspundă singur clienților și să-ți trimită cererile mai departe, pe email sau pe telefon.",
       },
       {
         q: "Poate trimite singur mesaje clienților?",
@@ -43,11 +43,11 @@ const categories = [
       },
       {
         q: "Merge cu emailul meu?",
-        a: "Da. Îl conectăm cu Gmail sau Outlook, pentru mesaje trimise automat: bun venit, revenire la o ofertă, facturi sau anunțuri.",
+        a: "Da. Îl conectez cu Gmail sau Outlook, pentru mesaje trimise automat: bun venit, revenire la o ofertă, facturi sau anunțuri.",
       },
       {
         q: "Merge cu site-ul pe care îl am deja?",
-        a: "În cele mai multe cazuri, da. Ne spui ce ai acum și verificăm gratuit, în cadrul auditului.",
+        a: "În cele mai multe cazuri, da. Îmi spui ce ai acum și verific gratuit, în cadrul auditului.",
       },
     ],
   },
@@ -56,7 +56,7 @@ const categories = [
     faqs: [
       {
         q: "Ce se întâmplă după auditul gratuit?",
-        a: "Primești o ofertă cu ce construim, cât costă și în cât timp e gata. Dacă mergem mai departe, semnăm contractul și pornim.",
+        a: "Primești o ofertă cu ce construiesc, cât costă și în cât timp e gata. Dacă mergem mai departe, semnăm contractul și pornesc la treabă.",
       },
       {
         q: "Cât durează?",
@@ -64,11 +64,11 @@ const categories = [
       },
       {
         q: "Trebuie să știu programare?",
-        a: "Nu. Ne ocupăm noi de tot: design, construcție și publicare. Tu rămâi concentrat pe afacerea ta.",
+        a: "Nu. Mă ocup eu de tot: design, construcție și publicare. Tu rămâi concentrat pe afacerea ta.",
       },
       {
         q: "Pot să modific singur textele după?",
-        a: "Da. La site-uri îți arătăm cum să schimbi texte și poze. La aplicații, fiecare om din echipă vede doar ecranele de care are nevoie — nu trebuie să fii tehnic.",
+        a: "Da. La site-uri îți arăt cum să schimbi texte și poze. La aplicații, fiecare om din echipă vede doar ecranele de care are nevoie — nu trebuie să fii tehnic.",
       },
     ],
   },
@@ -85,7 +85,7 @@ const categories = [
       },
       {
         q: "Care e diferența dintre planul Pro și Max?",
-        a: "În Pro, cabinetul plătește direct mesajele trimise. În Max, ne ocupăm noi și sunt incluse 450 de mesaje pe lună; peste ele, se facturează separat.",
+        a: "În Pro, cabinetul plătește direct mesajele trimise. În Max, mă ocup eu și sunt incluse 450 de mesaje pe lună; peste ele, se facturează separat.",
       },
     ],
   },
@@ -181,7 +181,7 @@ export default function FaqPage() {
             Întrebări frecvente
           </h1>
           <p className="text-zinc-600 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
-            Nu găsești răspunsul? Scrie-ne pe{" "}
+            Nu găsești răspunsul? Scrie-mi pe{" "}
             <a
               href="https://wa.me/40729369094"
               target="_blank"
@@ -190,7 +190,7 @@ export default function FaqPage() {
             >
               WhatsApp
             </a>{" "}
-            și răspundem în maxim 2 ore (L–V).
+            și îți răspund în maxim 2 ore (L–V).
           </p>
         </motion.div>
 

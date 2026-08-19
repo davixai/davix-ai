@@ -84,7 +84,7 @@ export function Aplicatii() {
             Aplicații construite pe afacerea ta
           </h1>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Nu adaptăm afacerea ta la un program de-a gata. Construim programul după cum lucrezi tu.
+            Nu adaptez afacerea ta la un program de-a gata. Construiesc programul după cum lucrezi tu.
           </p>
         </motion.div>
 
@@ -250,7 +250,7 @@ export function Aplicatii() {
             Ai nevoie de o aplicație a ta?
           </h2>
           <p className="text-emerald-50 mb-6 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Spune-ne cum lucrezi acum și îți spunem ce se poate construi, cât costă și în cât timp.
+            Spune-mi cum lucrezi acum și îți spun ce se poate construi, cât costă și în cât timp.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button

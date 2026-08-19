@@ -7,7 +7,7 @@
 
 import { ArrowRight } from "lucide-react"
 import type { Branch } from "@/lib/pricing"
-import { APP_PRICES, AUTOMATION_PRICES, SITE_PRICES, formatLei } from "@/lib/pricing"
+import { APP_PRICES, AUTOMATION_PRICES, SITE_PRICE_RANGES, formatLei } from "@/lib/pricing"
 import { BranchArt } from "../ui/branch-art"
 
 interface BranchOption {
@@ -21,20 +21,20 @@ const BRANCHES: BranchOption[] = [
   {
     value: "site",
     name: "Site",
-    desc: "Landing page, site de prezentare sau site cu mai multe pagini — construit ca să aducă cereri, nu doar ca să existe.",
-    meta: `de la ${formatLei(SITE_PRICES.landing)}`,
+    desc: "Landing page, site de prezentare, site cu mai multe pagini sau magazin online — construit ca să aducă cereri, nu doar ca să existe.",
+    meta: `de la ${formatLei(SITE_PRICE_RANGES.landing[0])}`,
   },
   {
     value: "automation",
     name: "Automatizare",
-    desc: "Preluăm munca repetitivă: mesaje, programări, facturi, follow-up. Tu rămâi cu partea care chiar cere om.",
+    desc: "Preiau munca repetitivă: mesaje, programări, facturi, follow-up. Tu rămâi cu partea care chiar cere om.",
     meta: `de la ${formatLei(AUTOMATION_PRICES.perProcess)} / proces`,
   },
   {
     value: "app",
     name: "Aplicație",
     desc: "DaviX Dental, DaviX Cafe sau o aplicație construită de la zero, exact pe procesul afacerii tale.",
-    meta: `de la ${formatLei(APP_PRICES.cafe.setup)}`,
+    meta: `de la ${formatLei(APP_PRICES.dental.plans.starter)} / lună`,
   },
 ]
 

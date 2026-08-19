@@ -55,9 +55,9 @@ export function TestimonialsSection() {
             className="text-zinc-600 max-w-2xl mx-auto"
             style={{ lineHeight: "1.7" }}
           >
-            Adunăm aici proiectele unde am putut măsura impactul real. Mai jos găsești exemple
+            Adun aici proiectele unde am putut măsura impactul real. Mai jos găsești exemple
             concrete, urmate de testimoniale reale pe măsură ce clienții și business-urile cu care
-            lucrăm acceptă să le publicăm.
+            lucrez acceptă să le public.
           </p>
         </motion.div>
 

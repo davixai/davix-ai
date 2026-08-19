@@ -6,7 +6,7 @@
 // ============================================================================
 
 import { Clock, Sparkles, TrendingUp } from "lucide-react"
-import { CURRENCY, type Estimate, formatLei } from "@/lib/pricing"
+import { CURRENCY, RANGE_SPREAD, type Estimate, formatLei } from "@/lib/pricing"
 import type { DescribedAnswer } from "../describe"
 import { AnimatedNumber } from "./animated-number"
 
@@ -55,6 +55,9 @@ export function LivePanel({ estimate, selections, version, hiddenOnMobile }: Liv
             </>
           )}
         </p>
+
+        {/* Produs fără preț încă (DaviX Cafe) — spun asta, nu inventez o cifră. */}
+        {estimate.note ? <p className="dvx-live__empty">{estimate.note}</p> : null}
 
         {/* Cost lunar recurent, separat */}
         {monthly.max > 0 ? (
@@ -122,7 +125,9 @@ export function LivePanel({ estimate, selections, version, hiddenOnMobile }: Liv
               height={11}
               style={{ display: "inline", verticalAlign: "-1px", marginRight: 4 }}
             />
-            {hasPrice ? `±15% · ${formatLei(oneTime.total)} calculat` : "orientativ"}
+            {hasPrice
+              ? `±${Math.round(RANGE_SPREAD * 100)}% · ${formatLei(oneTime.total)} calculat`
+              : "orientativ"}
           </span>
         </div>
       </div>

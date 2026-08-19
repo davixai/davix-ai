@@ -2,33 +2,51 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Check, ArrowRight, Globe, Layers, ShoppingBag } from "lucide-react"
+import { Check, ArrowRight, Globe, Layers, ShoppingBag, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const pachete = [
   {
+    id: "landing",
+    name: "LANDING PAGE",
+    icon: Target,
+    price: "500 – 700",
+    currency: "lei",
+    tagline: "O singură pagină, construită să convertească",
+    idealPentru: "Campanii, un singur serviciu, lansări de produs",
+    popular: false,
+    features: [
+      "O pagină, structurată pe un singur obiectiv",
+      "Design modern, responsive (mobil + desktop)",
+      "Formular de contact + buton WhatsApp",
+      "SEO de bază + Google Maps",
+      "Hosting și SSL incluse (perioadă inițială)",
+      "Livrare în 3–5 zile",
+    ],
+  },
+  {
     id: "prezentare",
     name: "PREZENTARE",
     icon: Globe,
-    price: "700 – 1.000",
+    price: "800 – 1.200",
     currency: "lei",
     tagline: "Site de prezentare, modern și rapid",
     idealPentru: "Firme mici, cabinete, saloane, service-uri",
     popular: false,
     features: [
+      "Tot ce include pachetul Landing Page",
       "3–5 pagini",
-      "Design modern, responsive (mobil + desktop)",
-      "Formular de contact + buton WhatsApp",
-      "SEO de bază + Google Maps",
-      "Hosting și SSL incluse (perioadă inițială)",
+      "Servicii, despre și contact, structurate clar",
+      "Galerie sau portofoliu de lucrări",
+      "SEO de bază pe fiecare pagină",
       "Livrare în 5–7 zile",
     ],
   },
   {
     id: "complex",
-    name: "COMPLEX",
+    name: "MAI MULTE PAGINI",
     icon: Layers,
-    price: "1.000 – 2.000",
+    price: "1.200 – 1.800",
     currency: "lei",
     tagline: "Site complex, cu funcții și automatizări",
     idealPentru: "Business-uri care vor mai mult decât o prezentare",
@@ -48,13 +66,13 @@ const pachete = [
     id: "magazin",
     name: "MAGAZIN ONLINE",
     icon: ShoppingBag,
-    price: "de la 2.000",
+    price: "1.800 – 2.200",
     currency: "lei",
     tagline: "Site cu comenzi online și plăți",
     idealPentru: "Magazine, producători, servicii cu comandă online",
     popular: false,
     features: [
-      "Tot ce include pachetul Complex",
+      "Tot ce include pachetul Mai multe pagini",
       "Catalog de produse cu variante și stoc",
       "Coș de cumpărături și checkout optimizat",
       "Plată online (card) + ramburs",
@@ -90,12 +108,12 @@ export default function SiteUriPachete() {
             Alege pachetul potrivit
           </h2>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Trei niveluri clare, în funcție de cât de complex e site-ul tău. Plătești o dată, site-ul
-            e al tău.
+            Patru niveluri clare, în funcție de cât de complex e site-ul tău. Plătești o dată,
+            site-ul e al tău.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {pachete.map((pachet, index) => (
             <motion.div
               key={pachet.id}
@@ -104,7 +122,7 @@ export default function SiteUriPachete() {
               transition={{ duration: 0.5, delay: index * 0.12 }}
               className={`relative flex flex-col p-7 rounded-2xl border card-elevated ${
                 pachet.popular
-                  ? "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white border-emerald-500 md:-mt-4 md:mb-4 ring-1 ring-emerald-400/40"
+                  ? "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white border-emerald-500 lg:-mt-4 lg:mb-4 ring-1 ring-emerald-400/40"
                   : "bg-white border-zinc-200 hover:border-emerald-300 transition-colors duration-300"
               }`}
             >
@@ -139,7 +157,7 @@ export default function SiteUriPachete() {
                 </span>
                 <div className="flex items-baseline gap-1.5 mt-2 mb-1.5">
                   <span
-                    className={`text-3xl sm:text-4xl font-bold ${
+                    className={`text-3xl font-bold ${
                       pachet.popular ? "text-white" : "text-zinc-900"
                     }`}
                     style={{ letterSpacing: "-0.03em" }}

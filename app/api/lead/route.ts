@@ -117,13 +117,13 @@ async function sendEmails(lead: Lead, referenceId: string) {
         to: lead.email,
         subject: "Am primit cererea ta — DaviX AI",
         html: `
-          <h2>Mulțumim, ${escapeHtml(lead.name)}!</h2>
-          <p>Am primit cererea ta de ofertă. Îți răspundem în maximum 24 de ore lucrătoare.</p>
+          <h2>Mulțumesc, ${escapeHtml(lead.name)}!</h2>
+          <p>Am primit cererea ta de ofertă. Îți răspund în maximum 24 de ore lucrătoare.</p>
           <h3>Estimarea ta</h3>
           <pre style="font-family:ui-monospace,monospace;font-size:13px;white-space:pre-wrap">${summaryHtml}</pre>
           <p><em>Estimare orientativă. Prețul final se stabilește după o discuție de 15 minute.</em></p>
           <hr>
-          <p>Echipa DaviX AI · <a href="https://wa.me/40729369094">0729 369 094</a></p>
+          <p>Balta David · DaviX AI · <a href="https://wa.me/40729369094">0729 369 094</a></p>
         `,
       },
       `lead-${referenceId}-client`,
@@ -207,7 +207,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Am înregistrat cererea, dar notificarea nu a plecat. Sună-ne la 0729 369 094 ca să fim siguri.",
+          "Am înregistrat cererea, dar notificarea nu a plecat. Sună-mă la 0729 369 094 ca să fim siguri.",
         referenceId,
       },
       { status: 502 },

@@ -21,7 +21,7 @@ const servicii: Serviciu[] = [
   {
     icon: Globe,
     title: "Site-uri Web",
-    desc: "Construim site-uri moderne, rapide și optimizate pentru afacerea ta.",
+    desc: "Construiesc site-uri moderne, rapide și optimizate pentru afacerea ta.",
     items: [
       "Site de prezentare — restaurante, pensiuni, cabinete, saloane, service auto",
       "Magazin online — pentru orice tip de afacere",
@@ -34,7 +34,7 @@ const servicii: Serviciu[] = [
   {
     icon: Blocks,
     title: "Aplicații personalizate",
-    desc: "Dezvoltăm aplicații create special pentru afacerea ta, exact după modul în care funcționează.",
+    desc: "Dezvolt aplicații create special pentru afacerea ta, exact după modul în care funcționează.",
     apps: [
       { name: "DaviX Dental", note: "Pentru cabinete stomatologice", status: "live" },
       { name: "Fidelizare cafenea", note: "Card de puncte pe telefon", status: "wip" },
@@ -75,7 +75,7 @@ export function ServicesGrid() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-emerald-700 text-sm font-medium">Ce construim</span>
+            <span className="text-emerald-700 text-sm font-medium">Ce construiesc</span>
           </div>
           <h2
             style={{ letterSpacing: "-0.025em" }}
@@ -84,7 +84,7 @@ export function ServicesGrid() {
             Trei direcții. Atât.
           </h2>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Alegi ce ți se potrivește, noi construim, tu te ocupi mai departe de afacere.
+            Alegi ce ți se potrivește, eu construiesc, tu te ocupi mai departe de afacere.
           </p>
         </motion.div>
 

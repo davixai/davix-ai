@@ -7,23 +7,23 @@ import { ChevronDown } from "lucide-react"
 const faqs = [
   {
     question: "Trebuie să am domeniu și hosting?",
-    answer: "Nu. Noi ne ocupăm de tot. Poți folosi domeniul tău existent sau îți ajutăm să cumperi unul nou. Hosting-ul este inclus în pachet primele 3-6 luni (depinde de pachetul ales).",
+    answer: "Nu. Mă ocup eu de tot. Poți folosi domeniul tău existent sau te ajut să cumperi unul nou. Hosting-ul este inclus în pachet primele 3-6 luni (depinde de pachetul ales).",
   },
   {
     question: "Cât durează să fac un site?",
-    answer: "7-10 zile de la semnarea contractului. Primești preview-ul inițial după 3 zile pentru feedback. Lucrăm rapid, dar fără compromisuri la calitate.",
+    answer: "7-10 zile de la semnarea contractului. Primești preview-ul inițial după 3 zile pentru feedback. Lucrez rapid, dar fără compromisuri la calitate.",
   },
   {
     question: "Pot să modific conținutul singur după?",
-    answer: "Da, absolut. Te învățăm cum să editezi texte și imagini simplu. Dacă preferi, ne ocupăm noi de actualizări (serviciu opțional cu abonament lunar).",
+    answer: "Da, absolut. Te învăț cum să editezi texte și imagini simplu. Dacă preferi, mă ocup eu de actualizări (serviciu opțional cu abonament lunar).",
   },
   {
     question: "Ce se întâmplă după ce site-ul e gata?",
     answer: "Hosting gratuit primele 3-6 luni (depinde de pachet). După expirare: €10/lună sau îl poți muta unde dorești - site-ul e 100% al tău.",
   },
   {
-    question: "Oferiți garanție?",
-    answer: "Da. Dacă ceva nu funcționează corect în primele 30 zile după livrare, reparăm GRATUIT. Vrem să fii 100% mulțumit de rezultat.",
+    question: "Oferi garanție?",
+    answer: "Da. Dacă ceva nu funcționează corect în primele 30 zile după livrare, repar GRATUIT. Vreau să fii 100% mulțumit de rezultat.",
   },
 ]
 

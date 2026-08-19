@@ -30,7 +30,7 @@ const serviciiDropdown = [
 
 const navItems = [
   { label: "Proiecte", href: "/proiecte" },
-  { label: "Despre noi", href: "/despre-noi" },
+  { label: "Despre mine", href: "/despre-mine" },
   { label: "Davix Dental", href: "/davix-dental" },
   { label: "FAQ", href: "/intrebari-frecvente" },
   { label: "Contact", anchor: "contact" },

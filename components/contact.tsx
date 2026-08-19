@@ -34,8 +34,8 @@ const getLocalDateKey = (date: Date) => {
 }
 
 const auditBullets = [
-  "Ne spui ce face afacerea ta",
-  "Îți spunem dacă ai nevoie de site, aplicație sau chatbot",
+  "Îmi spui ce face afacerea ta",
+  "Îți spun dacă ai nevoie de site, aplicație sau chatbot",
   "Vedem ce se poate face automat, fără să stai tu",
   "Primești un preț și un termen clar",
 ]
@@ -116,7 +116,7 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!selectedDate || !selectedTime) {
-      alert("Te rugăm să selectezi o dată și o oră pentru programare.")
+      alert("Te rog să selectezi o dată și o oră pentru programare.")
       return
     }
     setIsSubmitting(true)
@@ -152,12 +152,12 @@ export function Contact() {
         setSelectedTime(null)
       } else {
         setSubmitStatus("error")
-        setSubmitMessage(data.error || "A apărut o eroare. Te rugăm să încerci din nou.")
+        setSubmitMessage(data.error || "A apărut o eroare. Te rog să încerci din nou.")
         console.error("Booking error:", data.error)
       }
     } catch (error) {
       setSubmitStatus("error")
-      setSubmitMessage("Nu am putut contacta serverul. Te rugăm să încerci din nou.")
+      setSubmitMessage("Nu am putut contacta serverul. Te rog să încerci din nou.")
       console.error("Submit error:", error)
     } finally {
       setIsSubmitting(false)

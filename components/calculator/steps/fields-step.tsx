@@ -28,10 +28,10 @@ export function FieldsStep({ step, answers, onChange, showErrors, onReset }: Fie
         <div className="dvx-success__ring" style={{ borderColor: "var(--dvx-line-2)", background: "var(--dvx-surface-2)", color: "var(--dvx-steel)" }}>
           <Compass aria-hidden="true" width={24} height={24} />
         </div>
-        <h3 className="dvx-fallback__title">Nu avem întrebări pentru varianta asta</h3>
+        <h3 className="dvx-fallback__title">Nu am întrebări pentru varianta asta</h3>
         <p className="dvx-fallback__text">
           Cazul tău iese din tiparele pe care le acoperă calculatorul. Ia-o de la capăt cu altă
-          direcție sau scrie-ne direct — răspundem cu o estimare făcută de om.
+          direcție sau scrie-mi direct — îți dau o estimare făcută de om.
         </p>
         <div className="dvx-fallback__actions">
           <button type="button" className="dvx-btn dvx-btn--primary dvx-btn--sm" onClick={onReset}>

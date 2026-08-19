@@ -46,7 +46,7 @@ export default function SiteUriHero() {
               style={{ lineHeight: "1.7" }}
             >
               Design modern, livrare rapidă, optimizat pentru business-uri locale.{" "}
-              <span className="text-zinc-900 font-medium">De la 700 lei.</span>
+              <span className="text-zinc-900 font-medium">De la 500 lei.</span>
             </motion.p>
 
             <motion.div

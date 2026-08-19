@@ -12,12 +12,15 @@
 import type { Answers } from "@/lib/pricing"
 import {
   APP_MODULE_LABELS,
+  APP_PRICES,
+  AUTOMATION_PRICES,
   AUTOMATION_TASK_LABELS,
   CAFE_MODULE_LABELS,
   MAINTENANCE_PRICES,
   SITE_FEATURE_LABELS,
   SITE_FEATURE_PRICES,
   formatLei,
+  siteRangeLabel,
 } from "@/lib/pricing"
 import type { Field, Option, Step } from "./types"
 
@@ -74,21 +77,30 @@ const siteTypeField: Field = {
       value: "landing",
       label: "Landing page",
       desc: "O singură pagină, construită în jurul unei conversii.",
+      price: siteRangeLabel("landing"),
     },
     {
       value: "presentation",
       label: "Site de prezentare",
       desc: "Firma, serviciile și datele de contact, structurate clar.",
+      price: siteRangeLabel("presentation"),
     },
     {
       value: "multipage",
       label: "Site cu mai multe pagini",
       desc: "Servicii separate, blog, portofoliu — fiecare cu pagina lui.",
+      price: siteRangeLabel("multipage"),
+    },
+    {
+      value: "shop",
+      label: "Magazin online",
+      desc: "Catalog, coș, comenzi și plată online — un site nou, construit pentru vânzare.",
+      price: siteRangeLabel("shop"),
     },
     {
       value: "unsure",
       label: "Nu sunt sigur, ajută-mă să aleg",
-      desc: "Pornim de la o variantă medie și o ajustăm la discuție.",
+      desc: "Pornesc de la o variantă medie și o ajustez la discuție.",
     },
   ],
 }
@@ -126,12 +138,12 @@ const siteChatbotField: Field = {
       desc: "Preia întrebările frecvente și cererile de ofertă, non-stop.",
       price: `+${formatLei(500)}`,
     },
-    { value: "no", label: "Nu", desc: "Rămânem la formularul clasic de contact." },
+    { value: "no", label: "Nu", desc: "Rămâi la formularul clasic de contact." },
     {
       value: "info",
       label: "Explică-mi ce face, apoi decid",
       info:
-        "Chatbot-ul stă pe site și răspunde în locul tău. Îl antrenăm pe serviciile, prețurile și programul tău, ca să dea răspunsuri corecte, nu generice. Preia întrebările repetitive, cere datele de contact ale celor interesați și ți le trimite pe WhatsApp sau email. Când întrebarea îl depășește, predă discuția către tine, fără să piardă clientul. Practic, prinde cererile care ar veni noaptea sau când ești ocupat.",
+        "Chatbot-ul stă pe site și răspunde în locul tău. Îl antrenez pe serviciile, prețurile și programul tău, ca să dea răspunsuri corecte, nu generice. Preia întrebările repetitive, cere datele de contact ale celor interesați și ți le trimite pe WhatsApp sau email. Când întrebarea îl depășește, predă discuția către tine, fără să piardă clientul. Practic, prinde cererile care ar veni noaptea sau când ești ocupat.",
     },
   ],
 }
@@ -241,7 +253,7 @@ function siteFlow(answers: Answers): Step[] {
       id: "site-setup",
       eyebrow: "Site",
       title: "Ce ai deja pregătit?",
-      subtitle: "Ne ajută să știm de unde pornim.",
+      subtitle: "Mă ajută să știu de unde pornesc.",
       fields: [siteDomainField, siteAssetsField],
     },
     {
@@ -279,7 +291,7 @@ const autoTasksField: Field = {
   kind: "multi",
   id: "autoTasks",
   label: "Ce îți mănâncă cel mai mult timp?",
-  hint: "Fiecare bifă este un proces pe care îl putem prelua.",
+  hint: `Fiecare bifă e un proces pe care îl pot prelua — ${formatLei(AUTOMATION_PRICES.perProcess)} implementarea unui proces.`,
   options: optionsFromLabels(AUTOMATION_TASK_LABELS),
 }
 
@@ -357,7 +369,7 @@ function automationFlow(): Step[] {
       id: "auto-volume",
       eyebrow: "Automatizare",
       title: "Cât de mare e pierderea?",
-      subtitle: "De aici calculăm cât economisești lunar.",
+      subtitle: "De aici calculez cât economisești lunar.",
       fields: [autoHoursField, autoUsersField],
     },
     {
@@ -371,7 +383,8 @@ function automationFlow(): Step[] {
       kind: "fields",
       id: "auto-notes",
       eyebrow: "Automatizare",
-      title: "Spune-ne în cuvintele tale",
+      title: "Spune-mi în cuvintele tale",
+      subtitle: `Abonamentul lunar pornește de la ${formatLei(AUTOMATION_PRICES.monthlyMin)} și urcă spre ${formatLei(AUTOMATION_PRICES.monthlyMax)}, după cât de complex e sistemul.`,
       fields: [autoNotesField],
     },
   ]
@@ -390,18 +403,18 @@ const appTypeField: Field = {
     {
       value: "dental",
       label: "DaviX Dental",
-      desc: "Soluție gata, funcțională, pentru cabinete stomatologice.",
+      desc: "Soluție gata, funcțională, pentru cabinete stomatologice. Implementarea e inclusă în abonament.",
       badge: "Disponibil",
       badgeTone: "live",
-      price: `de la ${formatLei(1500)}`,
+      price: `de la ${formatLei(APP_PRICES.dental.plans.starter)}/lună`,
     },
     {
       value: "cafe",
       label: "DaviX Cafe",
-      desc: "Meniu digital prin cod QR și program de fidelizare pentru cafenele și restaurante.",
+      desc: "Meniu digital prin cod QR și program de fidelizare pentru cafenele. Încă în dezvoltare — prețul se stabilește la lansare.",
       badge: "În lucru",
       badgeTone: "wip",
-      price: `de la ${formatLei(1200)}`,
+      price: "preț la lansare",
     },
     {
       value: "custom",
@@ -409,16 +422,64 @@ const appTypeField: Field = {
       desc: "Construită de la zero, exact pe procesul tău.",
       badge: "La comandă",
       badgeTone: "accent",
-      price: `de la ${formatLei(2500)}`,
+      price: `de la ${formatLei(APP_PRICES.custom.setupFrom)}`,
     },
   ],
 }
 
-const locationOptions: Option[] = [
-  { value: "1", label: "O locație" },
-  { value: "2-3", label: "2 – 3 locații" },
-  { value: "4+", label: "4 sau mai multe" },
-]
+const dentalPlanField: Field = {
+  kind: "single",
+  id: "appDentalPlan",
+  label: "Ce plan alegi?",
+  columns: 1,
+  options: [
+    {
+      value: "starter",
+      label: "Starter",
+      desc: "Aplicația completă, fără mesaje automate.",
+      price: `${formatLei(APP_PRICES.dental.plans.starter)}/lună`,
+      includes: [
+        "Calendar, programări pe medic și rechemări",
+        "Fișe pacienți, odontogramă și planuri de tratament",
+        "Financiar, laborator și fișiere medicale",
+      ],
+    },
+    {
+      value: "pro",
+      label: "Pro",
+      desc: "Automatizări SMS active, cu mesajele plătite direct de clinică.",
+      price: `${formatLei(APP_PRICES.dental.plans.pro)}/lună`,
+      includes: [
+        "Tot din Starter",
+        "Reminder programare automat",
+        "Cerere automată de review Google",
+      ],
+    },
+    {
+      value: "max",
+      label: "Max",
+      desc: "La fel ca Pro, dar mă ocup eu de SMS-uri.",
+      price: `${formatLei(APP_PRICES.dental.plans.max)}/lună`,
+      includes: [
+        "Tot din Pro",
+        "450 SMS/lună incluse și gestionate de mine",
+        "Monitorizare consum și raportare lunară",
+      ],
+    },
+  ],
+}
+
+const dentalUsersField: Field = {
+  kind: "single",
+  id: "appDentalUsers",
+  label: "Câți oameni vor avea cont?",
+  hint: `Admin + 5 utilizatori sunt incluși. Peste ei, ${formatLei(APP_PRICES.dental.extraUserMonthly)}/lună de utilizator.`,
+  options: [
+    { value: "1-6", label: "Până în 6", price: "inclus" },
+    { value: "7-10", label: "7 – 10" },
+    { value: "10+", label: "Peste 10" },
+  ],
+}
 
 function appFlow(answers: Answers): Step[] {
   const steps: Step[] = [
@@ -436,25 +497,9 @@ function appFlow(answers: Answers): Step[] {
       kind: "fields",
       id: "app-dental",
       eyebrow: "DaviX Dental",
-      title: "Cât de mare e cabinetul?",
-      fields: [
-        {
-          kind: "single",
-          id: "appDentalLocations",
-          label: "Câte cabinete / puncte de lucru?",
-          options: locationOptions,
-        },
-        {
-          kind: "single",
-          id: "appDentalUsers",
-          label: "Câți utilizatori vor avea cont?",
-          options: [
-            { value: "1-3", label: "1 – 3 utilizatori" },
-            { value: "4-10", label: "4 – 10 utilizatori" },
-            { value: "10+", label: "Peste 10 utilizatori" },
-          ],
-        },
-      ],
+      title: "Ce plan ți se potrivește?",
+      subtitle: "Aceleași planuri ca pe pagina Davix Dental. Implementarea, importul datelor și instruirea sunt incluse.",
+      fields: [dentalPlanField, dentalUsersField],
     })
   }
 
@@ -463,14 +508,10 @@ function appFlow(answers: Answers): Step[] {
       kind: "fields",
       id: "app-cafe",
       eyebrow: "DaviX Cafe",
-      title: "Cum arată localul tău?",
+      title: "Ce ai vrea să conțină?",
+      subtitle:
+        "Aplicația e încă în lucru, așa că nu are un preț stabilit. Notez ce îți trebuie și te anunț primul la lansare.",
       fields: [
-        {
-          kind: "single",
-          id: "appCafeLocations",
-          label: "Câte locații?",
-          options: locationOptions,
-        },
         {
           kind: "multi",
           id: "appCafeModules",
@@ -487,7 +528,7 @@ function appFlow(answers: Answers): Step[] {
       id: "app-custom",
       eyebrow: "Aplicație personalizată",
       title: "Cum arată aplicația ta?",
-      subtitle: "Trei întrebări și avem o imagine destul de clară.",
+      subtitle: "Trei întrebări și am o imagine destul de clară.",
       fields: [
         {
           kind: "text",
