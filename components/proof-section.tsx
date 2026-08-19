@@ -159,27 +159,6 @@ export function ProofSection() {
           ))}
         </div>
 
-        {/* Testimonial strip */}
-        <motion.figure
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-14 max-w-3xl mx-auto text-center rounded-2xl border border-white/10 bg-white/[0.03] p-8"
-        >
-          <div className="flex justify-center gap-1 mb-4">
-            {[0, 1, 2, 3, 4].map((s) => (
-              <Star key={s} className="w-4 h-4 text-emerald-400 fill-emerald-400" />
-            ))}
-          </div>
-          <blockquote className="text-lg sm:text-xl text-zinc-100 font-medium" style={{ lineHeight: "1.6" }}>
-            „Am primit un site care chiar aduce programări, nu doar arată bine. Comunicarea a fost
-            rapidă și totul a fost livrat la timp.”
-          </blockquote>
-          <figcaption className="mt-4 text-sm text-zinc-400">
-            Client DaviX AI · Cabinet stomatologic
-          </figcaption>
-        </motion.figure>
-
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
