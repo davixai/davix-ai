@@ -32,26 +32,31 @@ type ProjectStatus = "disponibil" | "exclusiv" | "live"
 type Project = {
   businessType: string
   name: string
+  tagline?: string
   status: ProjectStatus
   icon: LucideIcon
   url: string
   image: string
   liveLabel: string
+  secondaryLink?: { label: string; url: string }
 }
 
 const projects: Project[] = [
   {
     businessType: "Restaurant fine dining",
     name: "NOIRÉ · București",
+    tagline: "Site de restaurant cu meniu digital interactiv",
     status: "exclusiv",
     icon: ChefHat,
     url: "https://www.noire.website/",
     image: "/projects/noire.webp",
     liveLabel: "Vezi site-ul",
+    secondaryLink: { label: "Vezi meniul", url: "https://www.noire.website/#menu" },
   },
   {
     businessType: "Firmă de curățenie",
     name: "General Fresh Cleaning · Târgu Mureș",
+    tagline: "Formular de ofertă funcțional",
     status: "disponibil",
     icon: SprayCan,
     url: "https://demo-general-cleaning.vercel.app/",
@@ -61,6 +66,7 @@ const projects: Project[] = [
   {
     businessType: "Pensiune boutique",
     name: "ARBORÉA · Bucovina",
+    tagline: "Chatbot live, asistent 24/7",
     status: "exclusiv",
     icon: Hotel,
     url: "https://pensiune.website/",
@@ -70,6 +76,7 @@ const projects: Project[] = [
   {
     businessType: "Vidanjare autorizată",
     name: "DISCIF S.R.L. · Suceava",
+    tagline: "Formular de ofertă funcțional",
     status: "disponibil",
     icon: Droplets,
     url: "https://discifsuceava.ro/",
@@ -284,6 +291,12 @@ export default function ProiectePage() {
                         </div>
                       </div>
 
+                      {project.tagline ? (
+                        <p className="mt-3 text-sm text-zinc-600" style={{ lineHeight: "1.6" }}>
+                          {project.tagline}
+                        </p>
+                      ) : null}
+
                       <div className="flex-1" />
 
                       {/* O singură acțiune pe card: deschide site-ul. Restul
@@ -303,6 +316,18 @@ export default function ProiectePage() {
                         {project.liveLabel}
                         <ArrowUpRight className="w-4 h-4 shrink-0" strokeWidth={2.2} />
                       </a>
+
+                      {project.secondaryLink ? (
+                        <a
+                          href={project.secondaryLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2.5 inline-flex w-full items-center justify-center gap-1 text-xs font-medium text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                        >
+                          {project.secondaryLink.label}
+                          <ArrowUpRight className="w-3.5 h-3.5 shrink-0" strokeWidth={2.2} />
+                        </a>
+                      ) : null}
                     </div>
                   </motion.article>
                 )
