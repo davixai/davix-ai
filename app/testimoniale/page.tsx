@@ -4,9 +4,9 @@ import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 
 export const metadata = {
-  title: "Studii de caz — DaviX AI",
+  title: "Modele construite de mine — DaviX AI",
   description:
-    "Studii de caz și rezultate concrete: site-uri, aplicații personalizate și chatboți AI livrate de DaviX AI pentru afaceri locale.",
+    "Site-uri și aplicații construite de la zero de DaviX AI: modele complete și funcționale pentru afaceri locale, gata de adaptat pe afacerea ta.",
 }
 
 export default function TestimonialePage() {

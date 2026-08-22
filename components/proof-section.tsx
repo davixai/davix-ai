@@ -77,17 +77,18 @@ export function ProofSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 mb-5">
             <Trophy className="w-3.5 h-3.5 text-emerald-400" strokeWidth={1.8} />
-            <span className="text-emerald-300 text-sm font-medium">Proiecte reale, livrate</span>
+            <span className="text-emerald-300 text-sm font-medium">Modele construite de mine</span>
           </div>
           <h2
             style={{ letterSpacing: "-0.025em" }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 text-balance"
           >
-            Muncă reală, nu promisiuni
+            Site-uri complete, nu machete
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto" style={{ lineHeight: "1.7" }}>
-            Câteva dintre site-urile și aplicațiile pe care le-am construit pentru clienți. Apasă pe
-            oricare ca să-l vezi live.
+            Site-uri pe care le-am construit de la zero, ca să vezi exact ce pot face. Sunt online și
+            funcționale — apasă pe oricare ca să-l deschizi. Oricare dintre ele poate fi adaptat pe
+            afacerea ta.
           </p>
         </motion.div>
 

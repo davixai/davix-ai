@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Se recuperează investiția?",
-    a: "Absolut. Un patron care economisește 2 ore pe zi câștigă echivalentul unui angajat part-time. Clienții mei recuperează investiția în primele 30–60 de zile.",
+    a: "Fă calculul pe cazul tău: dacă economisești 2 ore pe zi, câștigi echivalentul unui angajat part-time. Îți arăt la telefon exact ce se poate automatiza la tine și în cât timp se acoperă investiția.",
   },
   {
     q: "Există costuri lunare după implementare?",

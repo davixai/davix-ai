@@ -4,30 +4,31 @@ import { motion } from "framer-motion"
 import { ArrowRight, ExternalLink, Sparkles } from "lucide-react"
 import Link from "next/link"
 
+/**
+ * Modele construite de mine, nu lucrări comandate de clienți.
+ *
+ * Textele de aici NU au voie să conțină rezultate măsurate („mai puține
+ * apeluri", „mai mulți pacienți") și nici formulări de tip „am livrat pentru
+ * X": nu există încă un client care să le confirme, iar o cifră inventată
+ * care se dovedește falsă costă mai mult decât aduce. Descriu ce am construit
+ * și ce face fiecare model — atât.
+ */
 const cases = [
   {
     industry: "Stomatologie",
-    title: "Model site pentru cabinet stomatologic",
+    title: "Model de site pentru cabinet stomatologic",
     summary:
-      "Site de prezentare profesional pentru o clinică dentară, construit să transforme vizitatorii în pacienți noi: servicii explicate clar, dovezi de încredere și programare rapidă în câțiva pași.",
-    metric: "Design premium, optimizat pentru conversie",
+      "Site de prezentare pentru o clinică dentară: servicii explicate clar, secțiune de încredere și programare în câțiva pași. Construit ca model, gata de adaptat pe un cabinet real.",
+    metric: "Model complet, funcțional",
     url: "https://democlinicastomatologica.netlify.app/",
   },
   {
     industry: "Aplicație pentru cabinete dentare",
     title: "Davix Dental — aplicație pentru cabinete stomatologice",
     summary:
-      "Cabinete care țineau pacienții, programările și încasările în Excel. Am construit o aplicație cu pacienți, programări, fișe medicale, încasări, acces pe roluri și mesaje automate.",
-    metric: "Toate datele clinicii într-un singur loc",
+      "Aplicația pe care o construiesc și o dezvolt eu, pentru cabinete care țin acum pacienții, programările și încasările în Excel: pacienți, programări, fișe medicale, încasări, acces pe roluri și mesaje automate.",
+    metric: "Produs propriu, în dezvoltare",
     url: "https://davixdental.online/",
-  },
-  {
-    industry: "Stomatologie",
-    title: "Cabinet Dr. Domnar Gabriel — site profesional",
-    summary:
-      "Cabinet stomatologic care primea multe apeluri pentru detalii și programări. Am livrat un site cu pagini de servicii, echipă și programare online, care inspiră încredere și aduce programări direct din site.",
-    metric: "Mai puține apeluri, mai mulți pacienți noi",
-    url: "https://cabinet-domnargabriel.netlify.app/",
   },
 ]
 
@@ -43,21 +44,21 @@ export function TestimonialsSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.8} />
-            <span className="text-emerald-700 text-sm font-medium">Rezultate concrete</span>
+            <span className="text-emerald-700 text-sm font-medium">Ce am construit</span>
           </div>
           <h1
             style={{ letterSpacing: "-0.025em" }}
             className="text-4xl sm:text-5xl font-bold text-zinc-900 mb-4 text-balance"
           >
-            Studii de caz
+            Modele construite de mine
           </h1>
           <p
             className="text-zinc-600 max-w-2xl mx-auto"
             style={{ lineHeight: "1.7" }}
           >
-            Adun aici proiectele unde am putut măsura impactul real. Mai jos găsești exemple
-            concrete, urmate de testimoniale reale pe măsură ce clienții și business-urile cu care
-            lucrez acceptă să le public.
+            Site-uri și aplicații construite de la zero, ca să pot arăta ce fac înainte să te decizi.
+            Sunt complete și funcționale — le poți deschide și plimba prin ele. Pe măsură ce lucrez
+            cu afaceri care acceptă să apară aici, adaug și rezultatele lor.
           </p>
         </motion.div>
 
@@ -106,7 +107,7 @@ export function TestimonialsSection() {
           className="text-center mt-16"
         >
           <p className="text-zinc-600 mb-6">
-            Vrei să fii următorul caz care apare aici?
+            Vrei ca afacerea ta să fie prima care apare aici?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

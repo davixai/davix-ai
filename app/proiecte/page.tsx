@@ -388,8 +388,8 @@ export default function ProiectePage() {
                 </div>
 
                 <p className="mt-4 text-sm text-zinc-600" style={{ lineHeight: "1.7" }}>
-                  Aplicația pe care o construiesc și o întrețin eu — nu un site de prezentare, ci
-                  software folosit zilnic într-o clinică.
+                  Aplicația pe care o construiesc și o dezvolt eu — nu un site de prezentare, ci
+                  software complet pentru munca de zi cu zi dintr-un cabinet.
                 </p>
 
                 <ul
