@@ -20,11 +20,12 @@ const lei = (value: number) => new Intl.NumberFormat("ro-RO").format(value)
 
 const includes = [
   "Categorii și produse, organizate cum vrei tu",
-  "Poze, prețuri și descrieri",
-  "Ingrediente, alergeni și informații suplimentare",
+  "Poze, prețuri și descrieri scurte",
+  "Valori nutriționale: caloriile afișate la fiecare produs",
+  "Alergeni și marcaje: vegan, vegetarian, fără gluten, picant",
   "Design făcut pentru telefon, se deschide instant",
   "Cod QR generat și pregătit de tipărit",
-  "Actualizări nelimitate — îmi scrii, eu schimb",
+  "Actualizări periodice — îmi scrii, eu schimb",
 ]
 
 const beneficii = [
@@ -72,7 +73,7 @@ export default function SiteUriMeniuDigital() {
           </h2>
           <p className="text-zinc-600 max-w-xl mx-auto" style={{ lineHeight: "1.7" }}>
             Clientul scanează codul de pe masă și vede meniul pe telefonul lui: poze, prețuri,
-            ingrediente, alergeni.
+            ingrediente, alergeni și calorii.
           </p>
         </motion.div>
 
@@ -153,7 +154,7 @@ export default function SiteUriMeniuDigital() {
                   <span className="text-sm font-medium text-zinc-500">lei/lună</span>
                 </p>
                 <p className="mt-1.5 text-xs text-zinc-600" style={{ lineHeight: "1.5" }}>
-                  Administrare completă, actualizări nelimitate.
+                  Administrare completă, actualizări periodice.
                 </p>
               </div>
             </div>

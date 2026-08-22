@@ -34,9 +34,9 @@
   --ofr-s2: 0.875rem;
   --ofr-s3: 1.25rem;
   --ofr-s4: 1.75rem;
-  --ofr-s5: 2.5rem;
-  --ofr-s6: 3.5rem;
-  --ofr-s7: 5rem;
+  --ofr-s5: 2.125rem;
+  --ofr-s6: 2.875rem;
+  --ofr-s7: 4rem;
 
   --ofr-r: 1.125rem;
   --ofr-r-lg: 1.5rem;
@@ -61,6 +61,16 @@
    scoatem aici). Fără asta, bounce-scroll-ul de pe iOS arată fundalul gazdei. */
 body:has(.ofr-root) {
   background: #060f0d;
+}
+
+/* Butoanele din hero sar la secțiuni: derularea trebuie să fie lină, iar
+   titlul să nu aterizeze lipit de marginea de sus a ecranului. */
+html:has(.ofr-root) {
+  scroll-behavior: smooth;
+}
+
+.ofr-root section[id] {
+  scroll-margin-top: 0.75rem;
 }
 
 .ofr-root *,
@@ -136,23 +146,23 @@ body:has(.ofr-root) {
 }
 
 .ofr-h1 {
-  font-size: clamp(2.1rem, 8.5vw, 3.1rem);
+  font-size: clamp(1.85rem, 7.6vw, 2.7rem);
 }
 
 .ofr-h2 {
-  font-size: clamp(1.65rem, 6.4vw, 2.25rem);
+  font-size: clamp(1.4rem, 5.6vw, 1.9rem);
   line-height: 1.14;
 }
 
 .ofr-h3 {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.018em;
   line-height: 1.3;
 }
 
 .ofr-lead {
-  font-size: 1.0625rem;
+  font-size: 0.9688rem;
   color: var(--ofr-muted);
   margin: var(--ofr-s2) 0 0;
   line-height: 1.65;
@@ -160,7 +170,7 @@ body:has(.ofr-root) {
 }
 
 .ofr-p {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--ofr-muted);
   margin: 0;
   line-height: 1.7;
@@ -185,10 +195,10 @@ body:has(.ofr-root) {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 3.25rem; /* ≥48px, deget mare, o mână */
+  min-height: 3rem; /* ≥48px, deget mare, o mână */
   padding: 0 1.5rem;
   border-radius: var(--ofr-r-full);
-  font-size: 0.9688rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -450,7 +460,7 @@ body:has(.ofr-root) {
 
 .ofr-project-name {
   font-family: var(--font-sora), sans-serif;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.022em;
   line-height: 1.25;
@@ -458,7 +468,7 @@ body:has(.ofr-root) {
 
 .ofr-project-desc {
   margin-top: 0.375rem;
-  font-size: 0.875rem;
+  font-size: 0.8438rem;
   color: var(--ofr-muted);
   line-height: 1.55;
 }
@@ -541,7 +551,7 @@ body:has(.ofr-root) {
 
 .ofr-price-name {
   font-family: var(--font-sora), sans-serif;
-  font-size: 1.1875rem;
+  font-size: 1.0938rem;
   font-weight: 700;
   letter-spacing: -0.024em;
   line-height: 1.2;
@@ -571,7 +581,7 @@ body:has(.ofr-root) {
 
 .ofr-price-num {
   font-family: var(--font-sora), sans-serif;
-  font-size: 2.125rem;
+  font-size: 1.9375rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -596,7 +606,7 @@ body:has(.ofr-root) {
   display: flex;
   align-items: flex-start;
   gap: 0.5625rem;
-  font-size: 0.875rem;
+  font-size: 0.8438rem;
   line-height: 1.55;
   color: var(--ofr-text);
 }
@@ -613,11 +623,11 @@ body:has(.ofr-root) {
 
 .ofr-note {
   margin-top: var(--ofr-s3);
-  padding: 0.875rem var(--ofr-s3);
+  padding: 0.8125rem var(--ofr-s3);
   border-radius: var(--ofr-r);
   background: var(--ofr-surface);
   border: 1px solid var(--ofr-border);
-  font-size: 0.8438rem;
+  font-size: 0.8125rem;
   color: var(--ofr-muted);
   line-height: 1.6;
 }
@@ -880,7 +890,7 @@ body:has(.ofr-root) {
   min-height: 3.25rem;
   cursor: pointer;
   list-style: none;
-  font-size: 0.9375rem;
+  font-size: 0.9062rem;
   font-weight: 600;
   letter-spacing: -0.012em;
   line-height: 1.4;
@@ -924,7 +934,7 @@ body:has(.ofr-root) {
 
 .ofr-q-body {
   padding: 0 var(--ofr-s3) var(--ofr-s3);
-  font-size: 0.9062rem;
+  font-size: 0.875rem;
   color: var(--ofr-muted);
   line-height: 1.7;
 }
@@ -1043,21 +1053,374 @@ body:has(.ofr-root) {
   padding: 0;
 }
 
+/* ----------------------------------------------- navigare rapidă (hero) --- */
+
+/* Trei uși, una sub alta pe telefon. Nu e un meniu de site — e „ce anume
+   te interesează?", pus înainte ca omul să înceapă să deruleze. */
+.ofr-jump {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: var(--ofr-s3);
+}
+
+.ofr-jump-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6875rem 0.875rem;
+  border-radius: var(--ofr-r);
+  background: var(--ofr-surface);
+  border: 1px solid var(--ofr-border);
+  color: var(--ofr-text);
+  text-decoration: none;
+  min-height: 3.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+/* Fâșia de lumină care trece peste card la hover — un singur strat, compus
+   pe GPU, fără repaint. */
+.ofr-jump-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(52, 211, 153, 0.12) 50%, transparent 80%);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.ofr-jump-item:hover {
+  background: var(--ofr-surface-2);
+  border-color: var(--ofr-accent-line);
+  transform: translateY(-1px);
+}
+
+.ofr-jump-item:hover::before {
+  transform: translateX(100%);
+}
+
+.ofr-jump-item:active {
+  transform: scale(0.99);
+}
+
+.ofr-jump-item:focus-visible {
+  outline: 2px solid var(--ofr-accent);
+  outline-offset: 2px;
+}
+
+.ofr-jump-ico {
+  flex: none;
+  width: 2.125rem;
+  height: 2.125rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.625rem;
+  background: var(--ofr-accent-soft);
+  border: 1px solid var(--ofr-accent-line);
+  color: var(--ofr-accent);
+}
+
+.ofr-jump-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.ofr-jump-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.ofr-jump-sub {
+  font-size: 0.75rem;
+  color: var(--ofr-dim);
+  line-height: 1.35;
+}
+
+.ofr-jump-item > svg {
+  flex: none;
+  color: var(--ofr-dim);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), color 0.22s ease;
+}
+
+.ofr-jump-item:hover > svg {
+  color: var(--ofr-accent);
+  transform: translateY(2px);
+}
+
+/* Meniul digital are culoarea lui peste tot în pagină — și aici. */
+.ofr-jump-item--gold .ofr-jump-ico {
+  background: rgba(242, 196, 109, 0.12);
+  border-color: rgba(242, 196, 109, 0.28);
+  color: var(--ofr-gold);
+}
+
+.ofr-jump-item--gold::before {
+  background: linear-gradient(100deg, transparent 20%, rgba(242, 196, 109, 0.12) 50%, transparent 80%);
+}
+
+.ofr-jump-item--gold:hover {
+  border-color: rgba(242, 196, 109, 0.32);
+}
+
+.ofr-jump-item--gold:hover > svg {
+  color: var(--ofr-gold);
+}
+
+/* ------------------------------------------------------ indiciu derulare --- */
+
+.ofr-scrollhint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5625rem;
+  margin-top: var(--ofr-s3);
+  font-size: 0.75rem;
+  color: var(--ofr-dim);
+  line-height: 1.5;
+}
+
+/* Săgeata jos, desenată din borduri: zero kB, animație doar pe transform. */
+.ofr-scrollhint-arrow {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.1875rem;
+  border-right: 1.5px solid var(--ofr-accent);
+  border-bottom: 1.5px solid var(--ofr-accent);
+  transform: rotate(45deg);
+  animation: ofr-nudge 1.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ofr-nudge {
+  0%,
+  62%,
+  100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 0.55;
+  }
+  30% {
+    transform: rotate(45deg) translate(2px, 2px);
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------- punte între două secțiuni --- */
+
+/* „Și după lansare, cine se ocupă?" — întrebarea apare la preț, așa că
+   răspunsul trebuie să fie la un deget distanță, nu peste patru secțiuni. */
+.ofr-bridge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--ofr-s3);
+  padding: 0.8125rem var(--ofr-s3);
+  border-radius: var(--ofr-r);
+  background: var(--ofr-surface);
+  border: 1px dashed var(--ofr-border-strong);
+  color: var(--ofr-text);
+  text-decoration: none;
+  min-height: 3.25rem;
+  transition: background-color 0.22s ease, border-color 0.22s ease, transform 0.22s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ofr-bridge:hover {
+  background: var(--ofr-surface-2);
+  border-color: var(--ofr-accent-line);
+  border-style: solid;
+  transform: translateY(-1px);
+}
+
+.ofr-bridge:active {
+  transform: scale(0.99);
+}
+
+.ofr-bridge:focus-visible {
+  outline: 2px solid var(--ofr-accent);
+  outline-offset: 2px;
+}
+
+.ofr-bridge-ico {
+  flex: none;
+  width: 2.125rem;
+  height: 2.125rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.625rem;
+  background: var(--ofr-accent-soft);
+  border: 1px solid var(--ofr-accent-line);
+  color: var(--ofr-accent);
+}
+
+.ofr-bridge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ofr-bridge-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.ofr-bridge-sub {
+  font-size: 0.75rem;
+  color: var(--ofr-dim);
+  line-height: 1.35;
+}
+
+.ofr-bridge > svg {
+  flex: none;
+  color: var(--ofr-dim);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), color 0.22s ease;
+}
+
+.ofr-bridge:hover > svg {
+  color: var(--ofr-accent);
+  transform: translateY(2px);
+}
+
+/* Nota care deschide scara de prețuri — stă DEASUPRA cardurilor, nu sub. */
+.ofr-note--step {
+  margin-top: 0;
+  margin-bottom: var(--ofr-s3);
+}
+
+/* ------------------------------------------------- valori nutriționale ---- */
+
+.ofr-nutri {
+  padding: 0.8125rem 0.875rem;
+  border-radius: var(--ofr-r);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(242, 196, 109, 0.2);
+  margin-bottom: var(--ofr-s3);
+}
+
+.ofr-nutri-lead {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ofr-muted);
+  line-height: 1.55;
+}
+
+.ofr-nutri-lead strong {
+  color: var(--ofr-text);
+  font-weight: 600;
+}
+
+.ofr-nutri-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.625rem;
+}
+
+.ofr-nutri-chip {
+  padding: 0.3125rem 0.5625rem;
+  border-radius: var(--ofr-r-full);
+  background: rgba(242, 196, 109, 0.1);
+  border: 1px solid rgba(242, 196, 109, 0.22);
+  color: var(--ofr-gold);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Captura de meniu nu e un hero, e o DOVADĂ: trebuie să se citească „940 KCAL"
+   sub preț, altfel toată secțiunea despre valori nutriționale e pe cuvânt.
+   De aceea imaginea e decupată pe două coloane și curge la înălțimea ei
+   naturală — orice aspect-ratio impus ar micșora-o până la ilizibil pe un
+   ecran de 390px. */
+.ofr-menu-card .ofr-shot {
+  aspect-ratio: auto;
+}
+
+.ofr-menu-card .ofr-shot img {
+  height: auto;
+  object-fit: contain;
+}
+
+/* Fără voal peste ea: aici umbra ar mânca exact textul mic care contează. */
+.ofr-menu-card .ofr-shot::after {
+  background: none;
+}
+
 /* ------------------------------------------------------------- animații --- */
 
-/* O singură animație, la intrare. Doar transform + opacity. */
+/* O singură animație, la intrare. Doar transform + opacity — nimic care să
+   forțeze layout. Curba e „decelerare lungă": pornește repede și se așază
+   moale, ca să pară fluid pe un Android mediu, nu ca un slide care se oprește
+   brusc. Scale-ul e minuscul (0.985) — se simte, nu se vede. */
 .ofr-reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(16px) scale(0.985);
+  transition: opacity 0.62s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .ofr-reveal[data-in="1"] {
   opacity: 1;
   transform: none;
+  /* Eliberăm stratul de compoziție după ce animația s-a terminat: altfel
+     zeci de elemente rămân promovate pe GPU degeaba, pe un telefon slab. */
   will-change: auto;
+}
+
+/* Cardurile respiră la atingere — feedback imediat, nu decor. */
+.ofr-price-card {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+
+.ofr-price-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ofr-accent-line);
+}
+
+.ofr-svc {
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.ofr-svc:hover {
+  transform: translateY(-1px);
+  background: var(--ofr-surface-2);
+  border-color: var(--ofr-accent-line);
+}
+
+/* Poza din card urcă un pic sub deget/cursor, nu sare. */
+.ofr-shot img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ofr-project:hover .ofr-shot img {
+  transform: scale(1.03);
+}
+
+@media (hover: none) {
+  .ofr-price-card:hover,
+  .ofr-svc:hover,
+  .ofr-jump-item:hover,
+  .ofr-bridge:hover {
+    transform: none;
+  }
+
+  .ofr-project:hover .ofr-shot img {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1071,5 +1434,14 @@ body:has(.ofr-root) {
   .ofr-reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .ofr-scrollhint-arrow {
+    animation: none;
+    opacity: 0.8;
+  }
+
+  html:has(.ofr-root) {
+    scroll-behavior: auto;
   }
 }

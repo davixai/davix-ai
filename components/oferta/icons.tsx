@@ -68,6 +68,19 @@ export function ArrowIcon({ size = 15, className }: IconProps) {
   )
 }
 
+/**
+ * Săgeata pentru sărituri ÎN pagină. ArrowIcon-ul diagonal (↗) e convenția
+ * pentru „se deschide altundeva" — pe un link care doar derulează mai jos
+ * promite o fereastră nouă care nu vine niciodată.
+ */
+export function ArrowDownIcon({ size = 15, className }: IconProps) {
+  return (
+    <svg {...base(size)} strokeWidth={2.4} className={className}>
+      <path d="M12 5v14M6 13l6 6 6-6" />
+    </svg>
+  )
+}
+
 export function GlobeIcon({ size = 20, className }: IconProps) {
   return (
     <svg {...base(size)} strokeWidth={1.8} className={className}>

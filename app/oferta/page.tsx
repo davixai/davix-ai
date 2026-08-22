@@ -22,12 +22,16 @@ import Link from "next/link"
 import { Reveal } from "@/components/oferta/reveal"
 import { StickyBar } from "@/components/oferta/sticky-bar"
 import {
+  ArrowDownIcon,
   ArrowIcon,
   CheckIcon,
+  GlobeIcon,
   PhoneIcon,
+  QrIcon,
   SERVICE_ICONS,
   ShieldIcon,
   WhatsAppIcon,
+  WrenchIcon,
   XIcon,
 } from "@/components/oferta/icons"
 import {
@@ -39,6 +43,7 @@ import {
   LEGAL_NAME,
   MAINTENANCE,
   MENU_INCLUDES,
+  MENU_NUTRITION,
   PACKAGES,
   PHONE_DISPLAY,
   PHONE_TEL,
@@ -160,6 +165,55 @@ export default function OfertaPage() {
             </div>
             <p className="ofr-legalname">{LEGAL_NAME}</p>
           </Reveal>
+
+          {/* Trei uși, nu un meniu. Omul care deschide linkul vrea una din
+              trei lucruri: să vadă cât costă un site, să vadă meniul digital,
+              sau să înțeleagă de ce nu îl face singur. Fiecare buton îl duce
+              exact acolo — nu îl las să caute derulând. */}
+          <Reveal delay={300}>
+            <nav className="ofr-jump" aria-label="Sari direct la ce te interesează">
+              <a className="ofr-jump-item" href="#preturi">
+                <span className="ofr-jump-ico">
+                  <GlobeIcon size={18} />
+                </span>
+                <span className="ofr-jump-text">
+                  <span className="ofr-jump-title">Vreau un site</span>
+                  <span className="ofr-jump-sub">Pachete și prețuri</span>
+                </span>
+                <ArrowDownIcon size={14} />
+              </a>
+
+              <a className="ofr-jump-item ofr-jump-item--gold" href="#meniu">
+                <span className="ofr-jump-ico">
+                  <QrIcon size={18} />
+                </span>
+                <span className="ofr-jump-text">
+                  <span className="ofr-jump-title">Vreau meniu digital</span>
+                  <span className="ofr-jump-sub">Cod QR pentru local</span>
+                </span>
+                <ArrowDownIcon size={14} />
+              </a>
+
+              <a className="ofr-jump-item" href="#singur">
+                <span className="ofr-jump-ico">
+                  <ShieldIcon size={18} />
+                </span>
+                <span className="ofr-jump-text">
+                  <span className="ofr-jump-title">De ce să lucrezi cu mine</span>
+                  <span className="ofr-jump-sub">Față în față cu „îl fac singur”</span>
+                </span>
+                <ArrowDownIcon size={14} />
+              </a>
+            </nav>
+          </Reveal>
+
+          <Reveal delay={360}>
+            <p className="ofr-scrollhint">
+              <span className="ofr-scrollhint-arrow" aria-hidden="true" />
+              Derulează — mai jos ai modele reale pe care le poți deschide, prețurile scrise pe
+              față și tot ce mă întreabă lumea la telefon.
+            </p>
+          </Reveal>
         </div>
       </header>
 
@@ -277,19 +331,26 @@ export default function OfertaPage() {
       </section>
 
       {/* --------------------------------------------------------- PREȚURI -- */}
-      <section className="ofr-section ofr-band" aria-labelledby="preturi">
+      <section className="ofr-section ofr-band" id="preturi" aria-labelledby="preturi-t">
         <div className="ofr-wrap">
           <Reveal className="ofr-head">
             <span className="ofr-eyebrow">
               <span className="ofr-dot" />
               Prețuri
             </span>
-            <h2 className="ofr-h2" id="preturi">
+            <h2 className="ofr-h2" id="preturi-t">
               Cât costă.
             </h2>
             <p className="ofr-lead">
               Prețul final depinde de câte pagini are și ce trebuie să facă. Îl stabilim la telefon,
               în 10 minute, și rămâne acolo.
+            </p>
+          </Reveal>
+
+          <Reveal delay={40}>
+            <p className="ofr-note ofr-note--step">
+              Începe de jos: ai nevoie doar de <strong>o singură pagină</strong>, pentru o campanie
+              sau un singur serviciu? Landing page, {siteFromLabel("landing")}. De aici în sus:
             </p>
           </Reveal>
 
@@ -338,13 +399,6 @@ export default function OfertaPage() {
             ))}
           </div>
 
-          <Reveal delay={80}>
-            <p className="ofr-note">
-              Ai nevoie doar de <strong>o singură pagină</strong> — pentru o campanie sau un singur
-              serviciu? Landing page, {siteFromLabel("landing")}.
-            </p>
-          </Reveal>
-
           <Reveal delay={120}>
             <div className="ofr-included">
               <div className="ofr-included-title">Inclus în orice pachet</div>
@@ -368,104 +422,33 @@ export default function OfertaPage() {
               Atât. Nu apare nimic în plus pe parcurs.
             </p>
           </Reveal>
-        </div>
-      </section>
 
-      {/* ---------------------------------------------------- MENIU DIGITAL -- */}
-      {/* Bloc propriu, culoare proprie: e alt cumpărător (restaurant, cafenea),
-          alt preț și altă decizie decât un site. */}
-      <section className="ofr-section" aria-labelledby="meniu">
-        <div className="ofr-wrap">
-          <Reveal className="ofr-head">
-            <span className="ofr-eyebrow" style={{ color: "#f2c46d", background: "rgba(242,196,109,0.12)", borderColor: "rgba(242,196,109,0.28)" }}>
-              <span className="ofr-dot" style={{ background: "#f2c46d" }} />
-              Pentru restaurante și cafenele
-            </span>
-            <h2 className="ofr-h2" id="meniu">
-              Meniu digital cu cod QR.
-            </h2>
-            <p className="ofr-lead">
-              Clientul scanează codul de pe masă și vede meniul pe telefonul lui: poze, prețuri,
-              ingrediente, alergeni. Fără meniu fizic, fără retipărire la fiecare schimbare de preț.
-            </p>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <div className="ofr-menu-card">
-              <div className="ofr-shot">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/projects/noire.webp"
-                  alt="Meniu digital realizat pentru restaurantul NOIRÉ"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
-              <div className="ofr-menu-body">
-                <div className="ofr-price-name">Ce primești</div>
-                <ul className="ofr-list">
-                  {MENU_INCLUDES.map((item) => (
-                    <li key={item}>
-                      <CheckIcon />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="ofr-menu-price">
-                  <div className="ofr-menu-price-item">
-                    <div className="ofr-menu-price-label">La început</div>
-                    <div className="ofr-menu-price-value">
-                      {amount(MENU_PRICES.setup)} <span>lei</span>
-                    </div>
-                    <div className="ofr-menu-price-note">
-                      Construiesc meniul complet și generez codul QR.
-                    </div>
-                  </div>
-                  <div className="ofr-menu-price-item">
-                    <div className="ofr-menu-price-label">Apoi</div>
-                    <div className="ofr-menu-price-value">
-                      {amount(MENU_PRICES.monthly)} <span>lei/lună</span>
-                    </div>
-                    <div className="ofr-menu-price-note">
-                      Administrare completă, actualizări nelimitate.
-                    </div>
-                  </div>
-                </div>
-
-                <p className="ofr-note">
-                  <strong>Tu nu faci nimic.</strong> Îmi trimiți pozele, prețurile și informațiile
-                  despre produse. Eu construiesc meniul, îl aranjez și îl actualizez de fiecare dată
-                  când schimbi un preț sau scoți un produs. Nu intri în niciun panou și nu ai nimic
-                  de învățat.
-                </p>
-
-                <a
-                  className="ofr-btn ofr-btn--wa ofr-btn--block"
-                  style={{ marginTop: "1.25rem" }}
-                  href={WA_MENU}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <WhatsAppIcon />
-                  Vreau meniu digital
-                </a>
-              </div>
-            </div>
+          <Reveal delay={200}>
+            <a className="ofr-bridge" href="#dupa">
+              <span className="ofr-bridge-ico">
+                <WrenchIcon size={18} />
+              </span>
+              <span className="ofr-bridge-text">
+                <span className="ofr-bridge-title">Vrei și administrare după lansare?</span>
+                <span className="ofr-bridge-sub">
+                  Opțional. Îmi scrii ce schimbi, schimb eu — vezi cât costă
+                </span>
+              </span>
+              <ArrowDownIcon size={14} />
+            </a>
           </Reveal>
         </div>
       </section>
 
       {/* ----------------------------------------------------- DUPĂ LANSARE -- */}
-      <section className="ofr-section ofr-band" aria-labelledby="dupa">
+      <section className="ofr-section" id="dupa" aria-labelledby="dupa-t">
         <div className="ofr-wrap">
           <Reveal className="ofr-head">
             <span className="ofr-eyebrow">
               <span className="ofr-dot" />
               Opțional
             </span>
-            <h2 className="ofr-h2" id="dupa">
+            <h2 className="ofr-h2" id="dupa-t">
               După lansare.
             </h2>
             <p className="ofr-lead">
@@ -512,15 +495,118 @@ export default function OfertaPage() {
         </div>
       </section>
 
+      {/* ---------------------------------------------------- MENIU DIGITAL -- */}
+      {/* Bloc propriu, culoare proprie: e alt cumpărător (restaurant, cafenea),
+          alt preț și altă decizie decât un site. */}
+      <section className="ofr-section ofr-band ofr-section--menu" id="meniu" aria-labelledby="meniu-t">
+        <div className="ofr-wrap">
+          <Reveal className="ofr-head">
+            <span className="ofr-eyebrow" style={{ color: "#f2c46d", background: "rgba(242,196,109,0.12)", borderColor: "rgba(242,196,109,0.28)" }}>
+              <span className="ofr-dot" style={{ background: "#f2c46d" }} />
+              Pentru restaurante și cafenele
+            </span>
+            <h2 className="ofr-h2" id="meniu-t">
+              Meniu digital cu cod QR.
+            </h2>
+            <p className="ofr-lead">
+              Clientul scanează codul de pe masă și vede meniul pe telefonul lui: poze, prețuri,
+              ingrediente, alergeni. Fără meniu fizic, fără retipărire la fiecare schimbare de preț.
+            </p>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="ofr-menu-card">
+              <div className="ofr-shot">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/projects/meniu-digital.webp"
+                  alt="Meniu digital: carduri de produs cu poză, preț, descriere, calorii și marcaje de alergeni"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="ofr-menu-body">
+                {/* Valorile nutriționale sunt argumentul care închide discuția
+                    cu localurile serioase: e informație pe care meniul tipărit
+                    nu o poate ține la zi. Stă lipită de poză, unde se vede. */}
+                <div className="ofr-nutri">
+                  <p className="ofr-nutri-lead">
+                    <strong>Fiecare produs are și valori nutriționale.</strong> Calorii, alergeni
+                    și marcaje — scrise mic, sub preț, exact ca în poză.
+                  </p>
+                  <div className="ofr-nutri-chips">
+                    {MENU_NUTRITION.map((chip) => (
+                      <span key={chip} className="ofr-nutri-chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="ofr-price-name">Ce primești</div>
+                <ul className="ofr-list">
+                  {MENU_INCLUDES.map((item) => (
+                    <li key={item}>
+                      <CheckIcon />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="ofr-menu-price">
+                  <div className="ofr-menu-price-item">
+                    <div className="ofr-menu-price-label">La început</div>
+                    <div className="ofr-menu-price-value">
+                      {amount(MENU_PRICES.setup)} <span>lei</span>
+                    </div>
+                    <div className="ofr-menu-price-note">
+                      Construiesc meniul complet și generez codul QR.
+                    </div>
+                  </div>
+                  <div className="ofr-menu-price-item">
+                    <div className="ofr-menu-price-label">Apoi</div>
+                    <div className="ofr-menu-price-value">
+                      {amount(MENU_PRICES.monthly)} <span>lei/lună</span>
+                    </div>
+                    <div className="ofr-menu-price-note">
+                      Administrare completă, actualizări periodice.
+                    </div>
+                  </div>
+                </div>
+
+                <p className="ofr-note">
+                  <strong>Tu nu faci nimic.</strong> Îmi trimiți pozele, prețurile și informațiile
+                  despre produse. Eu construiesc meniul, îl aranjez și îl actualizez de fiecare dată
+                  când schimbi un preț sau scoți un produs. Nu intri în niciun panou și nu ai nimic
+                  de învățat.
+                </p>
+
+                <a
+                  className="ofr-btn ofr-btn--wa ofr-btn--block"
+                  style={{ marginTop: "1.25rem" }}
+                  href={WA_MENU}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <WhatsAppIcon />
+                  Vreau meniu digital
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* --------------------------------------------- SINGUR VS. CU MINE --- */}
-      <section className="ofr-section" aria-labelledby="singur">
+      <section className="ofr-section" id="singur" aria-labelledby="singur-t">
         <div className="ofr-wrap">
           <Reveal className="ofr-head">
             <span className="ofr-eyebrow">
               <span className="ofr-dot" />
               De ce nu singur
             </span>
-            <h2 className="ofr-h2" id="singur">
+            <h2 className="ofr-h2" id="singur-t">
               „Îl fac singur pe o platformă."
             </h2>
             <p className="ofr-lead">

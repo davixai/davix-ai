@@ -72,7 +72,19 @@ export const PROJECTS = [
 
 // ---------------------------------------------------------------- servicii --
 
+/**
+ * Ordinea NU e decorativă: e scara de decizie a clientului, de la cel mai mic
+ * angajament la cel mai mare — o pagină, un site, un site cu funcții, un
+ * magazin. Abia după ce scara e completă vin lucrurile care nu sunt „un site":
+ * administrarea de după lansare și meniul digital.
+ */
 export const SERVICES = [
+  {
+    icon: "target" as const,
+    title: "Landing page",
+    desc: "O singură pagină, construită pentru un singur obiectiv: o campanie, un serviciu, o promoție.",
+    price: siteFromLabel("landing"),
+  },
   {
     icon: "globe" as const,
     title: "Site de prezentare",
@@ -92,22 +104,16 @@ export const SERVICES = [
     price: siteFromLabel("shop"),
   },
   {
-    icon: "qr" as const,
-    title: "Meniu digital cu cod QR",
-    desc: "Clientul scanează codul de pe masă și vede meniul pe telefonul lui. Eu îl construiesc și îl actualizez.",
-    price: `${formatLei(MENU_PRICES.setup)} + ${formatLei(MENU_PRICES.monthly)}/lună`,
-  },
-  {
-    icon: "target" as const,
-    title: "Landing page",
-    desc: "O singură pagină, construită pentru un singur obiectiv: o campanie, un serviciu, o promoție.",
-    price: siteFromLabel("landing"),
-  },
-  {
     icon: "wrench" as const,
     title: "Administrare lunară",
     desc: "Opțional, după lansare. Îmi scrii pe WhatsApp ce vrei schimbat și schimb.",
     price: `de la ${formatLei(MAINTENANCE_PRICES.essential)}/lună`,
+  },
+  {
+    icon: "qr" as const,
+    title: "Meniu digital cu cod QR",
+    desc: "Clientul scanează codul de pe masă și vede meniul pe telefonul lui. Eu îl construiesc și îl actualizez.",
+    price: `${formatLei(MENU_PRICES.setup)} + ${formatLei(MENU_PRICES.monthly)}/lună`,
   },
 ] as const
 
@@ -205,11 +211,20 @@ export const MAINTENANCE = [
 
 export const MENU_INCLUDES = [
   "Categorii și produse, organizate cum vrei tu",
-  "Poze, prețuri și descrieri",
-  "Ingrediente, alergeni și informații suplimentare",
+  "Poze, prețuri și descrieri scurte",
+  "Valori nutriționale: caloriile afișate la fiecare produs",
+  "Alergeni și marcaje: vegan, vegetarian, fără gluten, picant",
   "Design făcut pentru telefon, se deschide instant",
   "Cod QR generat și pregătit de tipărit",
-  "Actualizări nelimitate — îmi scrii, eu schimb",
+  "Actualizări periodice — îmi scrii, eu schimb",
+] as const
+
+/** Chip-urile de sub captura de meniu. Scurte, citite dintr-o privire. */
+export const MENU_NUTRITION = [
+  "kcal pe produs",
+  "Alergeni marcați",
+  "Vegan · fără gluten",
+  "Picant · porții",
 ] as const
 
 // ------------------------------------------------------- singur vs cu mine --

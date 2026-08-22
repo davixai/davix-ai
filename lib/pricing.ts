@@ -138,7 +138,7 @@ export const MAINTENANCE_PRICES = {
 export const MENU_PRICES = {
   /** Avans la începerea meniului: construcție completă + generare cod QR. */
   setup: 250,
-  /** Administrare lunară: actualizări nelimitate de produse, prețuri și poze. */
+  /** Administrare lunară: actualizări periodice de produse, prețuri și poze. */
   monthly: 150,
 } as const
 
