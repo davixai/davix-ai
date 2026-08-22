@@ -3,10 +3,7 @@ import type { Metadata } from "next"
 import { Manrope, Inter, Sora, JetBrains_Mono } from "next/font/google"
 
 import { Analytics } from "@vercel/analytics/next"
-import { Chatbot } from "@/components/chatbot"
-import { CalculatorFab } from "@/components/calculator-fab"
-import { DavixDentalToast } from "@/components/davix-dental-toast"
-import { SiteBackground } from "@/components/ui/background-shader"
+import { SiteChrome } from "@/components/site-chrome"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -86,12 +83,8 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${inter.variable} ${sora.variable} ${jetbrainsMono.variable} font-sans antialiased bg-transparent text-zinc-900`}
       >
-        <SiteBackground />
-        <div className="noise-overlay" aria-hidden="true" />
-        <DavixDentalToast />
-        <CalculatorFab />
+        <SiteChrome />
         {children}
-        <Chatbot />
         <Analytics />
       </body>
     </html>

@@ -176,37 +176,35 @@ const siteMaintenanceField: Field = {
   label: "Mentenanță lunară",
   hint: "Poți renunța sau schimba pachetul oricând, fără penalizare.",
   columns: 1,
+  // Două trepte, nu trei: între 80 și 100 de lei nimeni nu simte diferența,
+  // doar adaugi o decizie. Aceleași cifre și aceleași nume ca pe /oferta.
   options: [
     {
       value: "essential",
-      label: "Esențial",
+      label: "Administrare",
       price: `${formatLei(MAINTENANCE_PRICES.essential)}/lună`,
-      includes: ["Găzduire și domeniu", "Certificat SSL și securitate", "Mici corecții de text"],
-    },
-    {
-      value: "active",
-      label: "Activ",
-      price: `${formatLei(MAINTENANCE_PRICES.active)}/lună`,
       includes: [
-        "Tot din Esențial",
-        "Modificări medii de conținut lunar",
-        "Actualizări de poze și oferte",
+        "Modificări de texte și informații",
+        "Schimbări de poze și prețuri",
+        "Verificări și actualizări de securitate",
+        "Mici ajustări SEO",
       ],
     },
     {
       value: "complete",
-      label: "Complet",
+      label: "Administrare + SEO",
       price: `${formatLei(MAINTENANCE_PRICES.complete)}/lună`,
       includes: [
-        "Tot din Activ",
-        "Modificări mari și pagini noi",
-        "Optimizări de viteză și Google",
+        "Tot din Administrare",
+        "Verificare lunară a poziției în Google",
+        "Optimizarea titlurilor și descrierilor",
+        "Îmbunătățirea textelor și a structurii paginilor",
       ],
     },
     {
       value: "none",
-      label: "Fără mentenanță",
-      desc: `Îmi asum eu administrarea. Modificările punctuale se tarifează cu ${formatLei(MAINTENANCE_PRICES.extraHourly)}/oră.`,
+      label: "Fără administrare",
+      desc: `Site-ul rămâne exact cum e, e al tău. Modificările punctuale se tarifează cu ${formatLei(MAINTENANCE_PRICES.extraHourly)}/oră.`,
     },
   ],
 }

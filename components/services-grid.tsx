@@ -24,6 +24,7 @@ const servicii: Serviciu[] = [
     desc: "Construiesc site-uri moderne, rapide și optimizate pentru afacerea ta.",
     items: [
       "Site de prezentare — restaurante, pensiuni, cabinete, saloane, service auto",
+      "Meniu digital cu cod QR — pentru restaurante și cafenele",
       "Magazin online — pentru orice tip de afacere",
       "Site cu calculator de preț — acoperișuri, panouri solare, mobilier la comandă",
       "Pagină de campanie — pentru reclame și promoții",

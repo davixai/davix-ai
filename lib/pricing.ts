@@ -28,13 +28,13 @@ const ROUNDING_STEP = 50
 export type SiteBase = "landing" | "presentation" | "multipage" | "shop"
 
 export const SITE_PRICES = {
-  /** Landing page — o singură pagină, focus pe conversie. Public: 500–700 lei. */
+  /** Landing page — o singură pagină, focus pe conversie. Public: de la 500 lei. */
   landing: 600,
-  /** Site de prezentare — 2-5 pagini. Public: 800–1.200 lei. */
+  /** Site de prezentare — 3-5 pagini. Public: de la 800 lei. */
   presentation: 1000,
-  /** Site multi-pagină — 6-10 pagini. Public: 1.200–1.800 lei. */
-  multipage: 1500,
-  /** Magazin online cu comenzi și plăți. Public: 1.800–2.200 lei. */
+  /** Site complex, mai multe pagini și funcții. Public: de la 1.400 lei. */
+  multipage: 1700,
+  /** Magazin online cu comenzi și plăți. Public: de la 1.800 lei. */
   shop: 2000,
   /** Fiecare pagină peste 10. */
   extraPage: 150,
@@ -42,6 +42,12 @@ export const SITE_PRICES = {
   assumedExtraPages: 5,
   /** Primul an de domeniu + găzduire este inclus în preț. */
   firstYearHostingIncluded: 0,
+  /**
+   * Reînnoirea domeniului, din anul 2. Se comunică din prima discuție:
+   * fără cifra asta, „fără costuri ascunse" nu e adevărat și ajungi la o
+   * conversație neplăcută în luna 13.
+   */
+  domainRenewalYearly: 100,
   /** Chatbot / asistent virtual pe site. */
   chatbot: 500,
   /** Reducere dacă vine cu domeniu propriu (valoare negativă). */
@@ -59,7 +65,7 @@ export const SITE_PRICES = {
 export const SITE_PRICE_RANGES: Record<SiteBase, [number, number]> = {
   landing: [500, 700],
   presentation: [800, 1200],
-  multipage: [1200, 1800],
+  multipage: [1400, 2000],
   shop: [1800, 2200],
 }
 
@@ -68,6 +74,24 @@ export function siteRangeLabel(base: SiteBase): string {
   const [min, max] = SITE_PRICE_RANGES[base]
   return formatRange(min, max)
 }
+
+/**
+ * Pragul de intrare al fiecărui pachet — capătul de jos al intervalului public.
+ * Se comunică întotdeauna ca „de la X lei", niciodată ca sumă fixă: un site de
+ * 5 pagini pentru un hotel cu galerie și rezervări nu e aceeași muncă cu 3
+ * pagini pentru un frizer, iar un număr fix invită la scope creep.
+ */
+export function siteFrom(base: SiteBase): number {
+  return SITE_PRICE_RANGES[base][0]
+}
+
+/** „de la 800 lei" — eticheta folosită pe /oferta și pe paginile publice. */
+export function siteFromLabel(base: SiteBase): string {
+  return `de la ${formatLei(siteFrom(base))}`
+}
+
+/** Avansul cerut la începerea unui site. Restul se achită la livrare. */
+export const SITE_DEPOSIT_PERCENT = 50
 
 /** Funcționalitățile din pasul A3. Cele cu 0 sunt incluse în pachetul de bază. */
 export const SITE_FEATURE_PRICES: Record<string, number> = {
@@ -85,13 +109,37 @@ export const SITE_FEATURE_PRICES: Record<string, number> = {
 // ----------------------------------------------------------------------------
 // MENTENANȚĂ — recurent lunar
 // ----------------------------------------------------------------------------
+/**
+ * Două trepte, nu trei. Între 80 și 100 de lei nimeni nu simte diferența —
+ * doar creezi o decizie în plus. `active` rămâne definit pentru compatibilitate
+ * cu estimările deja salvate, dar nu se mai oferă nicăieri în interfață.
+ */
 export const MAINTENANCE_PRICES = {
-  essential: 60,
-  active: 100,
-  complete: 150,
+  /** „Administrare" — modificări de conținut, verificări, actualizări. */
+  essential: 100,
+  /** Treaptă intermediară istorică. Nu se mai afișează. */
+  active: 150,
+  /** „Administrare + SEO" — tot ce e mai sus, plus optimizare lunară. */
+  complete: 200,
   none: 0,
   /** Modificare în afara pachetului — taxă unică, pe oră. */
   extraHourly: 80,
+} as const
+
+// ----------------------------------------------------------------------------
+// MENIU DIGITAL CU COD QR — setup + abonament lunar
+// ----------------------------------------------------------------------------
+
+/**
+ * Structura e deliberat „mic la intrare, abonament după": clientul nu dă o
+ * sumă mare pe ceva ce nu a văzut încă, iar administrarea e serviciul real —
+ * eu introduc și actualizez tot conținutul, el nu atinge nimic.
+ */
+export const MENU_PRICES = {
+  /** Avans la începerea meniului: construcție completă + generare cod QR. */
+  setup: 250,
+  /** Administrare lunară: actualizări nelimitate de produse, prețuri și poze. */
+  monthly: 150,
 } as const
 
 // ----------------------------------------------------------------------------
@@ -202,10 +250,10 @@ export const DENTAL_EXTRA_USERS: Record<string, number> = {
 // TERMENE DE LIVRARE (zile lucrătoare)
 // ----------------------------------------------------------------------------
 export const TIMELINES: Record<string, [number, number]> = {
-  landing: [5, 5],
-  presentation: [10, 10],
-  multipage: [15, 15],
-  shop: [15, 25],
+  landing: [2, 3],
+  presentation: [3, 5],
+  multipage: [5, 10],
+  shop: [10, 15],
   automation: [7, 21],
   app: [20, 45],
 }
@@ -468,9 +516,9 @@ function estimateSite(answers: Answers): Estimate {
   const plan = answers.siteMaintenance
   if (plan && plan !== "none") {
     const planLabels = {
-      essential: "Mentenanță Esențial",
-      active: "Mentenanță Activ",
-      complete: "Mentenanță Complet",
+      essential: "Administrare lunară",
+      active: "Administrare lunară (plan intermediar)",
+      complete: "Administrare lunară + SEO",
     }
     monthly.push({ label: planLabels[plan], amount: MAINTENANCE_PRICES[plan] })
     deliverables.push(`${planLabels[plan]} — găzduire, securitate și actualizări incluse`)

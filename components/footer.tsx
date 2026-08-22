@@ -7,6 +7,7 @@ import Link from "next/link"
 const footerLinks = {
   Servicii: [
     { label: "Site-uri web", href: "/site-uri" },
+    { label: "Meniuri digitale QR", href: "/site-uri#meniu-digital" },
     { label: "Aplicații personalizate", href: "/aplicatii" },
     { label: "Chatboți AI", href: "/automatizari" },
     { label: "Davix Dental", href: "/davix-dental" },
@@ -14,7 +15,7 @@ const footerLinks = {
   ],
   Companie: [
     { label: "Despre mine", href: "/despre-mine" },
-    { label: "Studii de caz", href: "/testimoniale" },
+    { label: "Modele construite", href: "/testimoniale" },
     { label: "Întrebări frecvente", href: "/intrebari-frecvente" },
     { label: "Contact", href: "/#contact" },
   ],
@@ -58,7 +59,9 @@ export function Footer() {
               <span className="text-xs text-emerald-700">Disponibil pentru proiecte noi</span>
             </div>
             <div className="space-y-1 text-sm text-zinc-600">
-              <p className="font-medium text-zinc-800">Balta David</p>
+              <p className="font-medium text-zinc-800">
+                Balta David Ioan — Persoană Fizică Autorizată
+              </p>
               <p>
                 <a href="tel:0729369094" className="hover:text-emerald-700 transition-colors">
                   0729 369 094
@@ -101,9 +104,39 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-12 pt-6 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
-          <p className="text-sm text-zinc-500">
-            &copy; {new Date().getFullYear()} DaviX AI. Toate drepturile rezervate.
-          </p>
+          {/* Linkurile ANPC sunt obligatorii pentru orice comerciant online din
+              România — SAL (soluționare alternativă) și SOL (platforma UE). */}
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <p className="text-sm text-zinc-500">
+              &copy; {new Date().getFullYear()} DaviX AI. Toate drepturile rezervate.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
+              <a
+                href="https://anpc.ro/ce-este-sal/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-xs text-zinc-500 hover:text-emerald-700 transition-colors"
+              >
+                ANPC — SAL
+              </a>
+              <a
+                href="https://ec.europa.eu/consumers/odr"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-xs text-zinc-500 hover:text-emerald-700 transition-colors"
+              >
+                ANPC — SOL
+              </a>
+              <a
+                href="https://anpc.ro/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-xs text-zinc-500 hover:text-emerald-700 transition-colors"
+              >
+                anpc.ro
+              </a>
+            </div>
+          </div>
           <div className="flex items-center gap-6">
             <a
               href="https://wa.me/40729369094"

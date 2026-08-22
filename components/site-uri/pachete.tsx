@@ -4,13 +4,22 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { Check, ArrowRight, Globe, Layers, ShoppingBag, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SITE_DEPOSIT_PERCENT, SITE_PRICES, siteFrom } from "@/lib/pricing"
 
+/**
+ * Prețurile vin din lib/pricing.ts, nu scrise de mână: pagina asta, /oferta și
+ * calculatorul trebuie să spună întotdeauna același număr.
+ *
+ * Se comunică „de la X", niciodată sumă fixă — un site de 5 pagini pentru un
+ * hotel cu galerie și rezervări nu e aceeași muncă cu 3 pagini pentru un
+ * frizer, iar un preț fix taie posibilitatea de a tarifa munca grea.
+ */
 const pachete = [
   {
     id: "landing",
     name: "LANDING PAGE",
     icon: Target,
-    price: "500 – 700",
+    price: siteFrom("landing"),
     currency: "lei",
     tagline: "O singură pagină, construită să convertească",
     idealPentru: "Campanii, un singur serviciu, lansări de produs",
@@ -20,69 +29,73 @@ const pachete = [
       "Design modern, responsive (mobil + desktop)",
       "Formular de contact + buton WhatsApp",
       "SEO de bază + Google Maps",
-      "Hosting și SSL incluse (perioadă inițială)",
-      "Livrare în 3–5 zile",
+      "Domeniu și găzduire incluse primul an",
+      "Livrare în 2–3 zile",
     ],
   },
   {
     id: "prezentare",
     name: "PREZENTARE",
     icon: Globe,
-    price: "800 – 1.200",
+    price: siteFrom("presentation"),
     currency: "lei",
     tagline: "Site de prezentare, modern și rapid",
-    idealPentru: "Firme mici, cabinete, saloane, service-uri",
-    popular: false,
+    idealPentru: "Restaurante, cafenele, saloane, cabinete, pensiuni, firme mici",
+    popular: true,
     features: [
       "Tot ce include pachetul Landing Page",
       "3–5 pagini",
       "Servicii, despre și contact, structurate clar",
       "Galerie sau portofoliu de lucrări",
       "SEO de bază pe fiecare pagină",
-      "Livrare în 5–7 zile",
+      "Livrare în 3–5 zile",
     ],
   },
   {
     id: "complex",
-    name: "MAI MULTE PAGINI",
+    name: "SITE COMPLEX",
     icon: Layers,
-    price: "1.200 – 1.800",
+    price: siteFrom("multipage"),
     currency: "lei",
-    tagline: "Site complex, cu funcții și automatizări",
+    tagline: "Mai multe pagini, cu funcții și automatizări",
     idealPentru: "Business-uri care vor mai mult decât o prezentare",
-    popular: true,
+    popular: false,
     features: [
       "Tot ce include pachetul Prezentare",
-      "7–12 pagini + secțiuni personalizate",
+      "Mai multe pagini + secțiuni personalizate",
       "Design premium, animații și interacțiuni",
       "Blog / portofoliu / galerie",
-      "SEO avansat + Google Analytics",
-      "Formulare inteligente și automatizări (email, lead-uri)",
-      "Integrare programări sau chatbot AI",
+      "Rezervări sau programări online",
+      "Calculator de preț sau configurator",
+      "Formulare inteligente și automatizări",
       "Optimizare performanță și viteză",
+      "Livrare în 5–10 zile",
     ],
   },
   {
     id: "magazin",
     name: "MAGAZIN ONLINE",
     icon: ShoppingBag,
-    price: "1.800 – 2.200",
+    price: siteFrom("shop"),
     currency: "lei",
     tagline: "Site cu comenzi online și plăți",
     idealPentru: "Magazine, producători, servicii cu comandă online",
     popular: false,
     features: [
-      "Tot ce include pachetul Mai multe pagini",
+      "Tot ce include pachetul Site complex",
       "Catalog de produse cu variante și stoc",
       "Coș de cumpărături și checkout optimizat",
       "Plată online (card) + ramburs",
       "Integrare curier și facturare",
       "Panou de administrare simplu de folosit",
       "Emailuri automate (comandă, livrare, coș abandonat)",
-      "Training la livrare + suport la lansare",
+      "Livrare în 10–15 zile",
     ],
   },
 ]
+
+/** „1.400" — moneda se stilizează separat, lângă cifră. */
+const lei = (value: number) => new Intl.NumberFormat("ro-RO").format(value)
 
 export default function SiteUriPachete() {
   const ref = useRef(null)
@@ -157,12 +170,19 @@ export default function SiteUriPachete() {
                 </span>
                 <div className="flex items-baseline gap-1.5 mt-2 mb-1.5">
                   <span
+                    className={`text-sm font-medium ${
+                      pachet.popular ? "text-emerald-100" : "text-zinc-500"
+                    }`}
+                  >
+                    de la
+                  </span>
+                  <span
                     className={`text-3xl font-bold ${
                       pachet.popular ? "text-white" : "text-zinc-900"
                     }`}
                     style={{ letterSpacing: "-0.03em" }}
                   >
-                    {pachet.price}
+                    {lei(pachet.price)}
                   </span>
                   <span
                     className={`text-base font-medium ${
@@ -237,13 +257,22 @@ export default function SiteUriPachete() {
             <span className="font-medium text-zinc-900">Prețul final depinde de</span> numărul de
             pagini, complexitatea designului, funcțiile speciale și integrările dorite. Îl stabilim
             împreună, la auditul gratuit — fără costuri ascunse.
+            <br />
+            <span className="font-medium text-zinc-900">Plata:</span> prin transfer bancar,{" "}
+            {SITE_DEPOSIT_PERCENT}% avans la început și restul la livrare. Contract înainte, factură
+            după. Domeniul și găzduirea sunt incluse în primul an; din anul 2, domeniul se
+            reînnoiește cu{" "}
+            <span className="font-medium text-zinc-900">
+              {SITE_PRICES.domainRenewalYearly} lei pe an
+            </span>
+            . Atât — nu apare nimic în plus pe parcurs.
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-zinc-500">
             {[
-              "Plată o singură dată",
-              "Hosting inclus inițial",
+              `${SITE_DEPOSIT_PERCENT}% avans, restul la livrare`,
+              "Domeniu și găzduire, primul an",
               "Site-ul e 100% al tău",
-              "Mentenanță lunară opțională",
+              "Administrare lunară opțională",
             ].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" strokeWidth={2.5} />
